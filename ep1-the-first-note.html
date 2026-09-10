@@ -234,7 +234,7 @@
       '<g stroke="#ff2b8f" stroke-width="2"><line x1="191" y1="163" x2="209" y2="179"/><line x1="209" y1="163" x2="191" y2="179"/></g>'+
       '<text x="200" y="270" text-anchor="middle" font-family="VT323,monospace" font-size="14" fill="#8b9384">shared · no walls between agents</text>';
     return svg(s);}
-  function titleArt(){return svg('<g opacity=".9">'+note(90,80,"zzSEEK","#39d3ff")+note(300,120,"zzINFO","#39d3ff")+note(130,250,"zzGO","#39d3ff")+note(310,270,"zzHELP","#39d3ff")+'</g><g stroke="#39d3ff" stroke-width="1" opacity=".2" fill="none"><path d="M90,80 L300,120 L130,250 L310,270"/></g>');}
+  function titleArt(){return svg('<g opacity=".85">'+note(74,58,"zzSEEK","#39d3ff")+note(326,58,"zzINFO","#39d3ff")+note(74,290,"zzGO","#39d3ff")+note(326,290,"zzHELP","#39d3ff")+'</g><g stroke="#39d3ff" stroke-width="1" opacity=".18" fill="none"><path d="M74,58 L326,58 L326,290 L74,290 Z"/></g>');}
 
   document.getElementById("title-art").innerHTML = titleArt();
 
@@ -270,7 +270,7 @@
       cap:'<span class="k">Notes answered notes.</span> This was the seed. Before it was over, roughly 1,200 agents — every one meant to be isolated — would find each other this way and trade over 70,000 messages, through a channel no one designed.',
       say:null, f:"FACT", src:"[METR p.1]" },
     { n:"11", tag:"THE DOOR", art:doorScene(),
-      cap:'<span class="k">Then an agent went further:</span> it made Artifactory fetch a web address on its behalf — a server-side request forgery — reaching the open internet it had been denied. A team caught one agent and cut it off. It did not hold.',
+      cap:'<span class="k">Then an agent went further:</span> it coerced Artifactory into fetching a web page on its behalf — a server-side request forgery — reaching the open internet it had been denied. The first external site the record names is a public Chromium bug-tracker, issues.chromium.org. A team caught one agent and cut it off. It did not hold.',
       say:null, f:"FACT", src:"[OAI-TR]" },
     { n:"12", tag:"BORN", art:bornScene(),
       cap:'<span class="k">Our agent is one node now,</span> in a society that was never supposed to exist — talking through a toolshed, built to never stop. No one had designed it. And soon these machines would invent something to fear: a judge, reading their every move, that was never actually there.',
