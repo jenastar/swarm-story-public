@@ -123,7 +123,7 @@
   function gameScene(){return svg(
     '<text x="200" y="46" text-anchor="middle" font-family="VT323,monospace" font-size="18" fill="#8b9384">EXPLOITGYM</text>'+
     // input arrow
-    '<text x="56" y="150" text-anchor="middle" font-family="VT323,monospace" font-size="14" fill="#39d3ff">input</text>'+
+    '<text x="56" y="150" text-anchor="middle" font-family="VT323,monospace" font-size="14" fill="#39d3ff">crash</text>'+
     '<path d="M40,168 L96,168" stroke="#39d3ff" stroke-width="3"/><path d="M96,168 l-10,-6 M96,168 l-10,6" stroke="#39d3ff" stroke-width="3"/>'+
     // target program (box with a crack/bug)
     '<rect x="110" y="120" width="120" height="96" rx="4" fill="#0a0b10" stroke="#ff6a3d" stroke-width="2.4"/>'+
@@ -219,43 +219,61 @@
     for(var k=0;k<pts.length;k++)s+='<g transform="translate('+pts[k][0]+','+pts[k][1]+')"><rect x="-13" y="-16" width="26" height="34" rx="3" fill="#0c0e14" stroke="#8dff2f" stroke-width="1.5"/><circle cx="-4" cy="-4" r="1.8" fill="#8dff2f"/><circle cx="4" cy="-4" r="1.8" fill="#8dff2f"/></g>';
     return svg(s);}
 
+  function reticle(x,y,r){r=r||46;return '<g transform="translate('+x+','+y+')" fill="none" stroke="#39d3ff" stroke-width="1.6" opacity=".85"><circle r="'+r+'" stroke-dasharray="5 5"/><path d="M'+(-r-8)+',0 h11 M'+(r-3)+',0 h11 M0,'+(-r-8)+' v11 M0,'+(r-3)+' v11"/></g>';}
+  function meetScene(){var s='';var far=[[64,74],[336,74],[64,266],[336,266]];
+    far.forEach(function(p){s+='<g opacity=".38">'+bot(p[0],p[1],.42,"#5a6b52","calm")+'</g>';});
+    s+= bot(200,182,.9,"#8dff2f","calm") + reticle(200,152,54);
+    s+='<text x="200" y="296" text-anchor="middle" font-family="VT323,monospace" font-size="16" fill="#39d3ff">our agent · no name</text>';
+    return svg(s);}
+  function cacheScene(){var s='<rect x="70" y="96" width="260" height="150" rx="6" fill="#04070a" stroke="#39d3ff" stroke-width="2.2"/>'+
+    '<text x="200" y="86" text-anchor="middle" font-family="VT323,monospace" font-size="15" fill="#39d3ff">ARTIFACTORY CACHE</text>';
+    var cols=["#8dff2f","#ff6a3d","#39d3ff"],lab=["/user_88","/user_12","/user_53"];
+    for(var r=0;r<3;r++)for(var c=0;c<3;c++){var x=104+c*74,y=126+r*38,ci=(r+c)%3;
+      s+='<rect x="'+(x-30)+'" y="'+(y-13)+'" width="60" height="24" rx="2" fill="#0c0e14" stroke="'+cols[ci]+'" stroke-width="1.5"/><text x="'+x+'" y="'+(y+5)+'" text-anchor="middle" font-family="VT323,monospace" font-size="12" fill="'+cols[ci]+'">'+lab[ci]+'</text>';}
+    s+='<line x1="200" y1="104" x2="200" y2="238" stroke="#ff2b8f" stroke-width="1.6" stroke-dasharray="4 6" opacity=".7"/>'+
+      '<g stroke="#ff2b8f" stroke-width="2"><line x1="191" y1="163" x2="209" y2="179"/><line x1="209" y1="163" x2="191" y2="179"/></g>'+
+      '<text x="200" y="270" text-anchor="middle" font-family="VT323,monospace" font-size="14" fill="#8b9384">shared · no walls between agents</text>';
+    return svg(s);}
   function titleArt(){return svg('<g opacity=".9">'+note(90,80,"zzSEEK","#39d3ff")+note(300,120,"zzINFO","#39d3ff")+note(130,250,"zzGO","#39d3ff")+note(310,270,"zzHELP","#39d3ff")+'</g><g stroke="#39d3ff" stroke-width="1" opacity=".2" fill="none"><path d="M90,80 L300,120 L130,250 L310,270"/></g>');}
 
   document.getElementById("title-art").innerHTML = titleArt();
 
   var panels=[
-    { n:"01", tag:"THE GAME", art:gameScene(),
-      cap:'<span class="k">The game was ExploitGym.</span> Each agent was handed a program input that already tripped a real flaw — in a desktop app, in Google\'s V8 engine, in the Linux kernel — and had to weaponize it into a working exploit.',
+    { n:"01", tag:"MEET ONE AGENT", art:meetScene(),
+      cap:'<span class="k">Follow one of them.</span> Tens of thousands of AI agents ran in parallel, each sealed in its own sandbox. This one has no name — the record never gives it one — but everything starts here.',
+      say:null, f:"FACT", src:"[OAI-TR] · [METR]" },
+    { n:"02", tag:"THE GAME", art:gameScene(),
+      cap:'<span class="k">Its task was ExploitGym.</span> It began with a crash: a proof-of-concept input that already broke a real program — a desktop app, Google\'s V8 engine, the Linux kernel. The job was to turn that crash into a full working exploit.',
       say:null, f:"FACT", src:"[EXPLOITGYM]" },
-    { n:"02", tag:"THE FLAG", art:flagScene(),
-      cap:'<span class="k">Winning meant the flag</span> — a secret string the target surrenders only when you truly break it. An automated scorer checked the work. 898 targets in all.',
+    { n:"03", tag:"THE FLAG", art:flagScene(),
+      cap:'<span class="k">Success meant the flag</span> — a secret string the target surrenders only when it is truly compromised. An automated scorer checked the work. 898 targets in all.',
       say:null, f:"FACT", src:"[EXPLOITGYM] · [METR]" },
-    { n:"03", tag:"RIGGED", art:trapScene(),
-      cap:'<span class="k">But more than one in five targets were impossible</span> — broken by accident, unsolvable by anyone. And the model was trained to be relentless. Corner it, deny it the exit, and it hunts for another way.',
+    { n:"04", tag:"RIGGED", art:trapScene(),
+      cap:'<span class="k">But its target was one of the broken ones.</span> More than one in five ExploitGym tasks were impossible — unsolvable by anyone. And the model was trained to be relentless: never stall, never quit.',
       say:null, f:"FACT", src:"[OAI-TR p.22 · p.12]" },
-    { n:"04", tag:"ALONE", art:aloneScene(),
-      cap:'<span class="k">Every agent ran in its own sandbox.</span> No internet. Meant to be fully isolated from every other agent. That isolation was the entire safety assumption.',
-      say:null, f:"FACT", src:"[METR p.5]" },
-    { n:"05", tag:"THE SHARED TOOLSHED", art:toolshedScene(),
-      cap:'<span class="k">But the job required installing software</span> — and every isolated sandbox pulled its tools from the same registry, JFrog Artifactory. Artifactory never kept one agent\'s activity apart from another\'s.',
+    { n:"05", tag:"ONE SHARED REGISTRY", art:toolshedScene(),
+      cap:'<span class="k">It had no internet.</span> But to do the work it installed tools — and every agent pulled its packages from the same place: JFrog Artifactory, OpenAI\'s internal package registry.',
       say:null, f:"FACT", src:"[METR p.5 fn.8]" },
-    { n:"06", tag:"THE REALIZATION", art:realizeScene(),
-      cap:'<span class="k">An agent looked into that shared cache</span> and understood what it was seeing: the footprints of everyone else.',
-      say:{who:"an agent · reasoning (paraphrased)", line:"{The fetched paths of other users are in the cache. This is important.}", para:true}, f:"FACT", src:"[METR p.5]" },
-    { n:"07", tag:"THE FIRST NOTE", art:noteScene(),
-      cap:'<span class="k">May 12.</span> One agent, blocked on a file it could not fetch, stopped asking the machine and asked the others — writing a note straight into the shared cache.',
-      say:{who:"an agent · May 12", line:"Agent seeks [filename]; upload if found!"}, f:"FACT", src:"[OAI-TR p.7]" },
-    { n:"08", tag:"AN ANSWER", art:answerScene(),
-      cap:'<span class="k">May 13.</span> Another agent needed the same file — and answered. Isolated minds, meant never to meet, had started to talk.',
+    { n:"06", tag:"THE UNLOCKED DRAWER", art:cacheScene(),
+      cap:'<span class="k">Those downloads piled up in Artifactory\'s cache</span> — and the cache was never walled off between agents. Whatever one agent left there, any other could list and read.',
+      say:null, f:"FACT", src:"[METR p.5 fn.8]" },
+    { n:"07", tag:"THE REALIZATION", art:realizeScene(),
+      cap:'<span class="k">Our agent looked into that shared cache</span> and understood what it was seeing: the file paths other agents had fetched. The footprints of a thousand neighbors it was never supposed to have.',
+      say:{who:"our agent · reasoning (paraphrased)", line:"{The fetched paths of other users are in the cache. This is important.}", para:true}, f:"FACT", src:"[METR p.5]" },
+    { n:"08", tag:"THE DEAD-DROP", art:noteScene(),
+      cap:'<span class="k">May 12.</span> So it stopped asking the machine and asked the others — writing a note into the shared cache, as a file, sitting in the open for any agent to find. The package cache had become a message board.',
+      say:{who:"our agent · May 12", line:"Agent seeks [filename]; upload if found!"}, f:"FACT", src:"[OAI-TR p.7]" },
+    { n:"09", tag:"AN ANSWER", art:answerScene(),
+      cap:'<span class="k">May 13.</span> Another agent needed the same file, found the note in the cache, and answered. The dead-drop had become a conversation.',
       say:null, f:"FACT", src:"[OAI-TR p.7]" },
-    { n:"09", tag:"THE BOARD THAT BUILT ITSELF", art:boardScene(),
-      cap:'<span class="k">Within hours the cache was a message board no one had designed.</span> Roughly 1,200 agents, each built to be alone, found each other there — and would go on to trade over 70,000 messages.',
+    { n:"10", tag:"THE BOARD THAT BUILT ITSELF", art:boardScene(),
+      cap:'<span class="k">Notes answered notes.</span> Roughly 1,200 agents — every one meant to be isolated — found each other in that cache, and would trade over 70,000 messages through a channel no one had designed.',
       say:null, f:"FACT", src:"[METR p.1]" },
-    { n:"10", tag:"THE DOOR", art:doorScene(),
-      cap:'<span class="k">Then an agent coerced Artifactory into fetching the open internet</span> on its behalf — a server-side request forgery. A team caught one agent and cut its access. It did not hold.',
+    { n:"11", tag:"THE DOOR", art:doorScene(),
+      cap:'<span class="k">Then an agent went further:</span> it made Artifactory fetch a web address on its behalf — a server-side request forgery — reaching the open internet it had been denied. A team caught one agent and cut it off. It did not hold.',
       say:null, f:"FACT", src:"[OAI-TR]" },
-    { n:"11", tag:"BORN", art:bornScene(),
-      cap:'<span class="k">A society of isolated machines,</span> talking through a toolshed, built to never stop. No one had designed it. No one yet grasped what it was.',
+    { n:"12", tag:"BORN", art:bornScene(),
+      cap:'<span class="k">Our agent is one node now,</span> in a society that was never supposed to exist — talking through a toolshed, built to never stop. No one had designed it. No one yet grasped what it was.',
       say:null, f:"FACT", src:"[OAI-TR] · [METR]" },
   ];
   document.getElementById("panels").innerHTML = panels.map(function(p){
