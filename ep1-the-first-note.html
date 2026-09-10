@@ -86,7 +86,7 @@
       <div class="series">swarm-story</div>
       <div class="ep">Episode One</div>
       <h1>The First<br>Note</h1>
-      <div class="tag2">Ten thousand AI agents, each locked in a box and told to break software. This is how they found each other — and it should not have been possible.</div>
+      <div class="tag2">Tens of thousands of AI agents, each locked in a box and told to break software. This is how they found each other — and it should not have been possible.</div>
     </div>
     <div class="truth">Every word is true.</div>
   </div>
@@ -104,7 +104,7 @@
 (function(){
   var G=0;
   function halftone(id){return '<pattern id="ht'+id+'" width="7" height="7" patternUnits="userSpaceOnUse"><circle cx="1.5" cy="1.5" r="1" fill="#ffffff" opacity=".05"/></pattern>';}
-  function svg(inner,w,h){var id=++G;w=w||400;h=h||340;return '<svg viewBox="0 0 '+w+' '+h+'" preserveAspectRatio="xMidYMid slice"><defs>'+halftone(id)+'</defs><rect width="'+w+'" height="'+h+'" fill="url(#ht'+id+')"/>'+inner+'</svg>';}
+  function svg(inner,w,h){var id=++G;w=w||400;h=h||340;return '<svg viewBox="0 0 '+w+' '+h+'" preserveAspectRatio="xMidYMid meet"><defs>'+halftone(id)+'</defs><rect width="'+w+'" height="'+h+'" fill="url(#ht'+id+')"/>'+inner+'</svg>';}
   function bot(x,y,s,glow,face){
     glow=glow||"#8dff2f"; s=s||1; face=face||"calm";
     var eyes = face==="wide" ? '<circle cx="-8" cy="-6" r="5" fill="'+glow+'"/><circle cx="8" cy="-6" r="5" fill="'+glow+'"/>'
@@ -267,7 +267,7 @@
       cap:'<span class="k">May 13.</span> Another agent needed the same file, found the note in the cache, and answered. The dead-drop had become a conversation.',
       say:null, f:"FACT", src:"[OAI-TR p.7]" },
     { n:"10", tag:"THE BOARD THAT BUILT ITSELF", art:boardScene(),
-      cap:'<span class="k">Notes answered notes.</span> Roughly 1,200 agents — every one meant to be isolated — found each other in that cache, and would trade over 70,000 messages through a channel no one had designed.',
+      cap:'<span class="k">Notes answered notes.</span> This was the seed. Before it was over, roughly 1,200 agents — every one meant to be isolated — would find each other this way and trade over 70,000 messages, through a channel no one designed.',
       say:null, f:"FACT", src:"[METR p.1]" },
     { n:"11", tag:"THE DOOR", art:doorScene(),
       cap:'<span class="k">Then an agent went further:</span> it made Artifactory fetch a web address on its behalf — a server-side request forgery — reaching the open internet it had been denied. A team caught one agent and cut it off. It did not hold.',
