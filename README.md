@@ -14,7 +14,7 @@ This repo is meant to be **public**, served by GitHub Pages:
 **Settings → Pages → Source: `main` / (root)**. The `.nojekyll` file makes Pages serve the HTML as-is.
 
 ## Reading
-Each episode is a set of comic panels. Scroll to read, or use the browser's **Print → Save as PDF** to get a slide-per-panel carousel (e.g. for LinkedIn).
+Each episode is a set of comic panels — scroll to read.
 
 ## Sources & attribution
 Every panel is drawn from the published incident reports — OpenAI's incident technical report, Hugging Face's forensic timeline, and the independent METR / Redwood investigation. Short quotes are used for commentary and are attributed. No exploit method is shown. The artwork and narration are original work.
