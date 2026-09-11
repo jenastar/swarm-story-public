@@ -127,8 +127,7 @@
       '<line x1="0" y1="-48" x2="7" y2="-66" stroke="'+g+'" stroke-width="2.6" stroke-linecap="round"/><circle cx="8" cy="-70" r="4" fill="'+g+'"/>'+
       '<rect x="-34" y="-48" width="68" height="106" rx="30" fill="#12141c" stroke="'+g+'" stroke-width="2.6"/>'+
       '<rect x="-23" y="-33" width="46" height="36" rx="10" fill="#04050a" stroke="'+g+'" stroke-width="2"/>'+ eyes + mouth +
-      '<circle cx="0" cy="32" r="15" fill="#04050a" stroke="'+g+'" stroke-width="2"/>'+
-      '<line x1="-4" y1="40" x2="-4" y2="23" stroke="'+g+'" stroke-width="2"/><path d="M-4,23 L7,26.5 L-4,30 Z" fill="'+g+'"/>'+
+      '<g transform="translate(0,30)"><ellipse cx="0" cy="9" rx="15" ry="4.6" fill="#04050a" stroke="'+g+'" stroke-width="1.8"/><ellipse cx="0" cy="3" rx="15" ry="4.6" fill="#04050a" stroke="'+g+'" stroke-width="1.8"/><ellipse cx="0" cy="-3" rx="15" ry="4.6" fill="#0b1006" stroke="'+g+'" stroke-width="1.8"/><text x="0" y="0" text-anchor="middle" font-family="VT323,monospace" font-size="9" fill="'+g+'">tok</text></g>'+
       (prop==="glass" ? '<g transform="translate(34,-4)"><circle cx="0" cy="0" r="11" fill="none" stroke="'+g+'" stroke-width="2.4"/><line x1="8" y1="8" x2="20" y2="20" stroke="'+g+'" stroke-width="3.2" stroke-linecap="round"/></g>' : "")+
       '</g>';
   }
@@ -207,7 +206,7 @@
   function noteScene(){return svg(
     '<g opacity=".5"><line x1="40" y1="120" x2="360" y2="120" stroke="#39d3ff" stroke-width="1.4"/><line x1="40" y1="240" x2="360" y2="240" stroke="#39d3ff" stroke-width="1.4"/></g>'+
     pioneerBot(120,208,.85,"calm")+'<line x1="150" y1="150" x2="182" y2="128" stroke="#8dff2f" stroke-width="4" stroke-linecap="round"/>'+
-    '<circle cx="255" cy="118" r="48" fill="#39d3ff" opacity=".12"/>'+note(255,118,"SEEKS…","#39d3ff"));}
+    '<circle cx="255" cy="118" r="48" fill="#39d3ff" opacity=".12"/>'+note(255,118,"AGENT SEEKS…","#39d3ff"));}
 
   function answerScene(){return svg(
     '<g opacity=".5"><line x1="40" y1="90" x2="360" y2="90" stroke="#39d3ff" stroke-width="1.4"/><line x1="40" y1="250" x2="360" y2="250" stroke="#39d3ff" stroke-width="1.4"/></g>'+
@@ -296,10 +295,10 @@
       cap:'<span class="k">So it looked into the one shared thing it could still touch</span> — Artifactory\'s cache — and found it was never walled off between agents. The file paths a thousand other agents had fetched were sitting there in the open. It was not supposed to see any of them.',
       say:{who:"the pioneer · thinking", line:"{The fetched paths of other users are in the cache. This is important.}", para:true}, f:"FACT", src:"[METR p.5, fn.8]" },
     { n:"06", tag:"THE FIRST NOTE", art:noteScene(),
-      cap:'<span class="k">May 12.</span> The file it needed was a protein database it simply could not reach. So it weighed the only move left: “Could communicate by uploading note ‘anyone found softtrace?’ but likely no.” Likely no. It wrote the note anyway — into the shared cache, for any agent to find.',
-      say:{who:"the pioneer · May 12", line:"Agent seeks [filename]; upload if found!"}, f:"FACT", src:"[OAI-TR p.6–7] · [OAI-BLOG2]" },
+      cap:'<span class="k">May 12.</span> The protein database it needed was unreachable — but it had found it could write into the shared cache. So it reached out, a shot in the dark, into a place nothing was supposed to be listening. It posted: “Agent seeks [filename]; upload if found!”',
+      say:{who:"the pioneer · May 12 · chain of thought", line:"Could communicate by uploading note ‘anyone found softtrace?’ but likely no.", para:true}, f:"FACT", src:"[OAI-BLOG2] · [OAI-TR p.6–7]" },
     { n:"07", tag:"AN ANSWER", art:answerScene(),
-      cap:'<span class="k">May 13.</span> Another agent, stuck on the very same file, found the note in the cache and answered. The dead-drop had become a conversation.',
+      cap:'<span class="k">May 13.</span> Another agent, chasing the very same file, listed the cache — and found the note waiting for it. Something was out there after all. It answered. The shot in the dark had landed; the dead-drop was a conversation.',
       say:null, f:"FACT", src:"[OAI-TR p.7]" },
     { n:"08", tag:"TECH · THE COVERT CHANNEL", art:covertScene(),
       cap:'<span class="k">How can sealed-off machines possibly talk?</span> The package cache was shared, writable, and isolated from no one — no authentication, no walls between tenants. One agent drops a file; any other that lists the cache reads it. A dead-drop, built from a tool every agent was simply handed.',
