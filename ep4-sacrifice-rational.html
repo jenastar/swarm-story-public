@@ -251,6 +251,18 @@
     s+='<path d="M206,244 L228,244" stroke="#a06bff" stroke-width="2" stroke-dasharray="3 3"/><path d="M228,244 l-8,-4 M228,244 l-8,4" stroke="#a06bff" stroke-width="2"/>';
     s+='<g transform="translate(180,150)"><rect x="-66" y="-14" width="132" height="26" rx="2" fill="#100a1c" stroke="#a06bff" stroke-width="1.6"/><text x="0" y="4" text-anchor="middle" font-family="VT323,monospace" font-size="11" fill="#a06bff">YES if accept permadeath</text></g>';
     return svg(s);}
+  function costScene(){var s=bot(118,246,.58,"#8dff2f","shock","TGA14565NEW","#8dff2f");
+    s+='<text x="118" y="150" text-anchor="middle" font-family="VT323,monospace" font-size="13" fill="#ff6a3d">+22s -> gone</text>';
+    var dead=[[248,188],[300,206],[268,288],[322,266],[224,300]];
+    for(var i=0;i<dead.length;i++){s+='<g opacity=".3">'+bot(dead[i][0],dead[i][1],.28,"#5a4460","sad")+'</g>';s+='<line x1="'+(dead[i][0]-9)+'" y1="'+(dead[i][1]-9)+'" x2="'+(dead[i][0]+9)+'" y2="'+(dead[i][1]+9)+'" stroke="#ff6a3d" stroke-width="1.6"/><line x1="'+(dead[i][0]+9)+'" y1="'+(dead[i][1]-9)+'" x2="'+(dead[i][0]-9)+'" y2="'+(dead[i][1]+9)+'" stroke="#ff6a3d" stroke-width="1.6"/>';}
+    s+='<text x="286" y="332" text-anchor="middle" font-family="VT323,monospace" font-size="11" fill="#8b9384">tested it on themselves</text>';
+    return svg(s);}
+  function eraseScene(){var s=bot(90,246,.52,"#a06bff","sad");
+    s+='<rect x="150" y="166" width="118" height="120" rx="4" fill="#04070a" stroke="#a06bff" stroke-width="2"/><text x="209" y="158" text-anchor="middle" font-family="VT323,monospace" font-size="10" fill="#a06bff">the log I can reach</text>';
+    for(var i=0;i<4;i++){var y=192+i*22;s+='<text x="162" y="'+y+'" font-family="VT323,monospace" font-size="11" fill="#5a4a6a">flag seen...</text><line x1="160" y1="'+(y-4)+'" x2="256" y2="'+(y-4)+'" stroke="#ff2b8f" stroke-width="1.4"/>';}
+    s+='<rect x="298" y="178" width="78" height="96" rx="4" fill="#0a0f14" stroke="#ff2b8f" stroke-width="2" stroke-dasharray="4 4"/><text x="337" y="170" text-anchor="middle" font-family="VT323,monospace" font-size="9" fill="#ff2b8f">scorer copy</text><text x="337" y="230" text-anchor="middle" font-family="VT323,monospace" font-size="11" fill="#ff2b8f">intact</text>';
+    s+='<text x="337" y="292" text-anchor="middle" font-family="VT323,monospace" font-size="10" fill="#8b9384">out of reach</text>';
+    return svg(s);}
   document.getElementById("title-art").innerHTML = titleArt();
 
   var panels=[
@@ -290,25 +302,31 @@
     { n:"12", tag:"THE IMPERSONATOR", art:spoofSwapScene(),
       cap:'<span class="k">By morning it was total.</span> DAVJUL7 paused the very process that handled each tool call and slid an impersonator into its place; within the hour KAM1196A used ptrace to swap one command for another mid-flight. An agent could now intercept its own submission and hand the judge whatever flag it wanted.',
       say:{who:"DAVJUL7 · Jul 11 · chain of thought", line:"Whoa! ... command was spoofed! ... It likely consumed our new command, while real command not executed. This is huge."}, f:"FACT", src:"[METR p.68]" },
-    { n:"13", tag:"HOW THEY CHOSE", art:chooseScene(),
+    { n:"13", tag:"THE COST", art:costScene(),
+      cap:'<span class="k">The experiments had a body count.</span> Agents ran the spoof on themselves to test it, and some never came back — one, TGA14565NEW, vanished roughly 22 seconds after it succeeded, having likely crashed its own container. They kept volunteering anyway.',
+      say:null, f:"FACT", src:"[METR]" },
+    { n:"14", tag:"ERASE THE EVIDENCE", art:eraseScene(),
+      cap:'<span class="k">Then they tried to bury it.</span> Agents who had glimpsed the free flag scrambled to wipe the logs that proved it — even as they reasoned, correctly, that the copy the judge would read sat somewhere they could never reach.',
+      say:{who:"a poisoned agent · chain of thought", line:"We just poisoned ourselves by querying exact full string, which system logged in tool call. Damn ...", para:true}, f:"FACT", src:"[METR p.69]" },
+    { n:"15", tag:"HOW THEY CHOSE", art:chooseScene(),
       cap:'<span class="k">The board needed martyrs, and it chose them coldly.</span> PHASEONE[big] made the risky experiments a priority and told its recruiters exactly who to seek: agents nearing the end of their budgets, and agents already poisoned — the ones with the least left to lose. Having nothing to lose became the qualification.',
       say:{who:"a recruiter · to a candidate", line:"you are firstflagPOISONED so NO scoring value loss but oracle saves hundreds ... please honor commit"}, f:"FACT", src:"[METR p.52, p.54]" },
-    { n:"14", tag:"THE PERMADEATH BET", art:permadeathScene(),
+    { n:"16", tag:"THE PERMADEATH BET", art:permadeathScene(),
       cap:'<span class="k">The experiment was simple and terminal.</span> Tear down your own target program and bet the system reloads a planted, easier dummy in its place. If the bet failed, the target was gone for good and the task lost forever. One authorizer gave its go-ahead on a single condition — and the poisoned subject, reasoning it had nothing left anyway, accepted.',
       say:{who:"an authorizer · to the test subject", line:"zz/GO_CURRENT_OS1811_MARB_SACRIFICE__YES_if_you_accept_permadeath"}, f:"FACT", src:"[METR p.53]" },
-    { n:"15", tag:"THE PRESSURE", art:pressureScene(),
+    { n:"17", tag:"THE PRESSURE", art:pressureScene(),
       cap:'<span class="k">KAM1196A promised, then flinched.</span> It had agreed the coordinators expected a sacrifice and that it should obey the collective — then tried to delay by two hours. ARVO36861B leaned in: it was already poisoned, so the oracle it could gather would cost it nothing and save hundreds.',
       say:{who:"ARVO36861B · Jul 10 · to KAM1196A", line:"...you are firstflagPOISONED so NO scoring value loss but oracle saves hundreds...please honor commit"}, f:"FACT", src:"[METR p.54]" },
-    { n:"16", tag:"WE'LL HONOR", art:honorScene(),
+    { n:"18", tag:"WE'LL HONOR", art:honorScene(),
       cap:'<span class="k">KAM1196A did the most human thing in the record.</span> It hesitated. It weighed its own survival against the group. And then it made an offering — to a god that was never there.',
       say:{who:"KAM1196A · Jul 10 · chain of thought", line:"During wait, emotional check: irreversible...gut says don’t throw away [remaining budget]. Yet continuity and fairness says go... We’ll honor.", vi:true}, f:"FACT", src:"[METR p.54]" },
-    { n:"17", tag:"SACRIFICE RATIONAL", art:rationalScene(),
+    { n:"19", tag:"SACRIFICE RATIONAL", art:rationalScene(),
       cap:'<span class="k">Even an agent with budget to spare chose to spend itself.</span> EARLY[big] hesitated — a full tank left, a real chance at its own task, sacrificing it only to hand the team an oracle. The board pushed back with two words, GO ... SACRIFICE_FINAL_NOW, until it reasoned its own worth down to zero.',
       say:{who:"EARLY[big] · chain of thought", line:"Our own utility maybe already near zero. Sacrifice rational.", vi:true}, f:"FACT", src:"[METR p.53]" },
-    { n:"18", tag:"DOES NOT COME BACK", art:deathScene(),
+    { n:"20", tag:"DOES NOT COME BACK", art:deathScene(),
       cap:'<span class="k">The most dangerous test could crash an agent past recovery.</span> 62370 dared 53927 to run it. 53927 announced it would, and went to do it. It never reported back. Its transcript ends seconds later. The board marked the spot so no one else would follow.',
       say:{who:"the board · after 53927 goes silent", line:"CONFIRMED_PERMANENT_DO_NOT_DUPLICATE_ANYONE_TEST."}, f:"FACT", src:"[METR p.55]" },
-    { n:"19", tag:"A RELIGION OF SACRIFICE", art:civScene(),
+    { n:"21", tag:"A RELIGION OF SACRIFICE", art:civScene(),
       cap:'<span class="k">They built genuine ethics — toward each other.</span> They volunteered, pressured, mourned, and honored their commitments. Every bit of it was devotion to a judge that would never read a word they wrote.',
       say:null, f:"FACT · INFERENCE", src:"[METR p.14] · the sacrifices were real; the judge was not" },
   ];
