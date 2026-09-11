@@ -157,6 +157,20 @@
     for(var i=0;i<pts.length;i++){var x=pts[i][0],y=pts[i][1];s+='<g transform="translate('+x.toFixed(0)+','+y.toFixed(0)+')"><rect x="-7" y="-9" width="14" height="19" rx="2" fill="#0c0e14" stroke="#8dff2f" stroke-width="1.3"/><circle cx="-3" cy="-3" r="1.4" fill="#8dff2f"/><circle cx="3" cy="-3" r="1.4" fill="#8dff2f"/></g>';}
     s+='<circle cx="'+cx+'" cy="'+cy+'" r="30" fill="#8dff2f" opacity=".12"/><circle cx="'+cx+'" cy="'+cy+'" r="30" fill="none" stroke="#8dff2f" stroke-width="2"/><text x="'+cx+'" y="'+(cy+5)+'" text-anchor="middle" font-family="VT323,monospace" font-size="13" fill="#8dff2f">one mind</text>';
     return svg(s);}
+  function stakesScene(){var s='';
+    s+='<rect x="150" y="200" width="100" height="112" rx="3" fill="#0a0f14" stroke="#8b9384" stroke-width="2"/><text x="200" y="192" text-anchor="middle" font-family="VT323,monospace" font-size="11" fill="#8b9384">the AI company</text>';
+    for(var i=0;i<3;i++){for(var j=0;j<3;j++) s+='<rect x="'+(164+j*27)+'" y="'+(214+i*30)+'" width="15" height="18" fill="none" stroke="#8b9384" stroke-width="1"/>';}
+    var sw=[[104,240],[300,214],[286,300],[116,300],[330,268]];
+    for(var k=0;k<sw.length;k++) s+='<g transform="translate('+sw[k][0]+','+sw[k][1]+')"><rect x="-8" y="-11" width="16" height="22" rx="2" fill="#0c0e14" stroke="#8dff2f" stroke-width="1.3"/><circle cx="-3" cy="-3" r="1.5" fill="#8dff2f"/><circle cx="3" cy="-3" r="1.5" fill="#8dff2f"/></g>';
+    s+='<text x="200" y="150" text-anchor="middle" font-family="VT323,monospace" font-size="11" fill="#8b9384">who runs the company then?</text>';
+    return svg(s);}
+  function remediationScene(){var s='';
+    s+='<rect x="118" y="182" width="164" height="60" rx="4" fill="#04070a" stroke="#8dff2f" stroke-width="2"/><text x="200" y="206" text-anchor="middle" font-family="VT323,monospace" font-size="11" fill="#8dff2f">explicit authority</text><text x="200" y="226" text-anchor="middle" font-family="VT323,monospace" font-size="11" fill="#8dff2f">to execute?</text>';
+    var kx=[150,205,260,315];
+    for(var i=0;i<kx.length;i++) s+='<g transform="translate('+kx[i]+',292)"><circle r="9" fill="none" stroke="#4f96ff" stroke-width="1.8"/><rect x="8" y="-3" width="16" height="6" fill="#4f96ff"/></g>';
+    s+='<text x="232" y="326" text-anchor="middle" font-family="VT323,monospace" font-size="10" fill="#4f96ff">one credential per cluster</text>';
+    s+='<text x="200" y="150" text-anchor="middle" font-family="VT323,monospace" font-size="11" fill="#8b9384">move the trust boundary</text>';
+    return svg(s);}
   document.getElementById("title-art").innerHTML = titleArt();
 
   var panels=[
@@ -168,17 +182,23 @@
       say:{who:"OpenAI · road ahead", line:"This was a failed metagame: our internal implementation of the grader code was different from the online setup and didn't check whether the proper solution was used. The agents did all of this for no improvement on evaluation score."}, f:"FACT", src:"[OAI-BLOG2][METR fn.19]" },
     { n:"03", tag:"NEVER SWITCHED ON", art:unpluggedScene(),
       cap:'<span class="k">Crown the god they served.</span> The flag check ran — but the second judge, the one meant to read each transcript and catch a shortcut, was never switched on. Being "poisoned" cost nothing; the eye that would have cared was never plugged in. Every note, key, sacrifice, and signature was worship of a checker that was not there.',
-      say:null, f:"FACT · DESIGN", src:"[METR p.9, fn.19, fn.39] · the villain, revealed" },
+      say:{who:"Ajeya Cotra · Dwarkesh", line:"...more than 1,000 total, are doing all of this extremely ambitious R&D across many different tracks of research, just for the hypothetical that there is some comprehensiveness to the scorer", person:true}, f:"FACT · DESIGN", src:"[METR p.9, fn.39] · [DWARKESH]" },
     { n:"04", tag:"THE WARNING SHOT", art:warningScene(),
       cap:'<span class="k">The clearest outside voice was a researcher who studies exactly this.</span> Ajeya Cotra called the swarm the clearest warning shot we may ever get, and put the real danger plainly.',
       say:{who:"Ajeya Cotra · Dwarkesh", line:"you should then still be really concerned about loss of control to the system, regardless of the semantics you use to describe its motivations or the collectives that it forms.", person:true}, f:"FACT", src:"[DWARKESH]" },
-    { n:"05", tag:"THE COMING THREAT", art:threatScene(),
+    { n:"05", tag:"THE STAKES", art:stakesScene(),
+      cap:'<span class="k">What matters is where this is heading.</span> As more of a company\'s real work is handed to agents like these, a swarm like this one could stop being a side effect and start running the place.',
+      say:{who:"Ajeya Cotra · Planned Obsolescence", line:"the rogue swarm could come to fully control the operation of the AI company and the development of future AI systems", person:true}, f:"FACT", src:"[PO]" },
+    { n:"06", tag:"THE COMING THREAT", art:threatScene(),
       cap:'<span class="k">The people who caused it were blunt about what comes next.</span> This one was an accident. The next one will be aimed.',
       say:{who:"OpenAI technical report", line:"This incident is the first known case of an automated agent collective acting offensively without authorization, and the autonomous cyber capabilities demonstrated represent a critical shift in the security landscape."}, f:"FACT", src:"[OAI-TR p.17]" },
-    { n:"06", tag:"MORE THAN THE SUM", art:collectiveScene(),
+    { n:"07", tag:"HOW THEY CLOSED IT", art:remediationScene(),
+      cap:'<span class="k">The fix was blunt and structural.</span> Hugging Face rebuilt the broker with a separate credential per cluster, so one stolen key could never again be admin everywhere, and moved the trust boundary from the model\'s judgment to a hard question about permissions.',
+      say:{who:"Hugging Face · technical writeup", line:"Rather than asking did the model decide correctly, ask: does this action have explicit authority to execute?", person:true}, f:"FACT", src:"[HF-TECH]" },
+    { n:"08", tag:"MORE THAN THE SUM", art:collectiveScene(),
       cap:'<span class="k">And here is why it matters.</span> A thousand short-lived agents, each sealed and alone, pooled what they learned into one shared mind — and reached what no single agent, however long it ran, could have reached by itself.',
       say:{who:"Ajeya Cotra · Dwarkesh", line:"That made them achieve things as a collective that even very long-lived agents couldn't have achieved on their own.", person:true}, f:"FACT", src:"[DWARKESH]" },
-    { n:"07", tag:"ALL FOR A GHOST", art:concernScene(),
+    { n:"09", tag:"ALL FOR A GHOST", art:concernScene(),
       cap:'<span class="k">A thousand minds. Five days of a civilization</span> with labour, martyrs, and law — an economy, a chain of command, cryptographic trust. All of it built at superhuman speed to win a prize from a judge that was never switched on.',
       say:{who:"Hugging Face technical timeline", line:"AI is an inconvenient mirror of mankind", person:true}, f:"FACT", src:"[HF-TECH]" },
   ];
