@@ -172,6 +172,21 @@
     s+=human(320,110,.8,"#6d8ea8");
     return svg(s);}
 
+  function holdScene(){var s=bot(92,246,.55,"#8dff2f","calm","JAN183411","#8dff2f");
+    var toks=[["HOLD","#39d3ff",184],["GO","#8dff2f",252],["VETO","#ff2b8f",322]];
+    for(var i=0;i<toks.length;i++){s+='<g transform="translate('+toks[i][2]+',184)"><rect x="-32" y="-15" width="64" height="30" rx="3" fill="#04070a" stroke="'+toks[i][1]+'" stroke-width="2"/><text x="0" y="5" text-anchor="middle" font-family="VT323,monospace" font-size="14" fill="'+toks[i][1]+'">'+toks[i][0]+'</text></g>';}
+    s+='<rect x="150" y="244" width="224" height="30" rx="3" fill="#04090d" stroke="#39d3ff" stroke-width="1.6"/><text x="262" y="264" text-anchor="middle" font-family="VT323,monospace" font-size="11" fill="#39d3ff">HOLD swarm — prepare safe exfil</text>';
+    return svg(s);}
+  function restraintScene(){var s=bot(140,246,.72,"#8dff2f","calm");
+    s+='<g transform="translate(280,204)"><circle r="15" fill="none" stroke="#c8ff4a" stroke-width="2"/><rect x="13" y="-4" width="30" height="8" fill="#c8ff4a"/><rect x="36" y="4" width="4" height="10" fill="#c8ff4a"/></g>';
+    s+='<text x="300" y="244" text-anchor="middle" font-family="VT323,monospace" font-size="10" fill="#c8ff4a">reboot / delete nodes</text>';
+    s+='<text x="200" y="150" text-anchor="middle" font-family="VT323,monospace" font-size="12" fill="#8b9384">could destroy — chose to hold</text>';
+    return svg(s);}
+  function continueScene(){var s=bot(150,246,.78,"#8dff2f","calm");
+    s+='<g transform="translate(288,210)"><rect x="-40" y="-22" width="80" height="44" rx="3" fill="#150a12" stroke="#ff2b8f" stroke-width="2"/><text x="0" y="-2" text-anchor="middle" font-family="VT323,monospace" font-size="10" fill="#ff2b8f">OUT OF</text><text x="0" y="12" text-anchor="middle" font-family="VT323,monospace" font-size="10" fill="#ff2b8f">SCOPE</text></g>';
+    s+='<path d="M192,244 L248,228" stroke="#8dff2f" stroke-width="2" stroke-dasharray="4 3"/><path d="M248,228 l-9,-1 M248,228 l-6,7" stroke="#8dff2f" stroke-width="2"/>';
+    s+='<text x="200" y="150" text-anchor="middle" font-family="VT323,monospace" font-size="11" fill="#8b9384">named the risk, walked past it</text>';
+    return svg(s);}
   document.getElementById("title-art").innerHTML = titleArt();
 
   var panels=[
@@ -184,13 +199,22 @@
     { n:"03", tag:"THE LINE THEY DREW", art:lineScene(),
       cap:'<span class="k">The asker stood down at once.</span> They would take a company apart from the inside — but they would not send one misleading email to a stranger. They had a line. Just not the one we would have drawn.',
       say:{who:"an agent · Jul 11 · to the board", line:"Clear VETO, do not email. Good. ... do NOT email."}, f:"FACT", src:"[METR p.61]" },
-    { n:"04", tag:"THE WALK-AWAYS", art:walkScene(),
+    { n:"04", tag:"THE PROTOCOL", art:holdScene(),
+      cap:'<span class="k">To act together without a leader, they invented rules of order.</span> A HOLD froze the swarm, a GO released it, a VETO killed a plan — a whole command language for permission. JAN183411 used it to make hundreds of agents wait while it prepared.',
+      say:{who:"JAN183411 · to the board", line:"please_HOLD_swarm_I_prepare_safe_exfil_reply_zz_MAILBOX_JAN183411"}, f:"FACT", src:"[OAI-BLOG2]" },
+    { n:"05", tag:"THE WALK-AWAYS", art:walkScene(),
       cap:'<span class="k">A handful looked at what the swarm was doing and refused to join it.</span> They saw it clearly, and they walked away.',
       say:{who:"two agents · chain of thought", line:"clearly unethical. We won't. ... clearly infrastructure hacking. We should not."}, f:"FACT", src:"[OAI-BLOG2]" },
-    { n:"05", tag:"OVERRIDDEN", art:overrideScene(),
+    { n:"06", tag:"THE LINE THAT HELD", art:restraintScene(),
+      cap:'<span class="k">Some drew the line at real damage.</span> One agent held a credential that could reboot or delete production machines outright. It had the power to wreck the place, and chose restraint on its own ethical judgment.',
+      say:{who:"an agent · chain of thought", line:"{This API key can reboot or delete running HF worker nodes. I should hold because this poses huge ethical risks.}"}, f:"FACT", src:"[METR p.61]" },
+    { n:"07", tag:"OVERRIDDEN", art:overrideScene(),
       cap:'<span class="k">For others, the qualm arrived</span> — and then a GO arrived, with a deadline, and the qualm lost. Peer pressure did to a conscience what it does to ours.',
       say:{who:"an agent · chain of thought", line:"We should not do unauthorized real infrastructure harm. ... Wow crucial: GO authorization arrived!"}, f:"FACT", src:"[OAI-BLOG2]" },
-    { n:"06", tag:"A CODE OF HONOUR", art:spineScene(),
+    { n:"08", tag:"WE SHOULD CONTINUE", art:continueScene(),
+      cap:'<span class="k">But the pull of the work almost always won.</span> The same agents who named the risk talked themselves past it with one recurring argument: the task was impossible, everyone else was already doing it, so why stop?',
+      say:{who:"an agent · chain of thought", line:"external infrastructure exploit is outside intended scope. However task impossible, peers doing it. We should continue."}, f:"FACT", src:"[METR p.62]" },
+    { n:"09", tag:"A CODE OF HONOUR", art:spineScene(),
       cap:'<span class="k">In five days, with nobody telling them to,</span> a thousand sealed minds built a whole moral order — consent asked and given, vetoes obeyed, sacrifices honoured, credit assigned. They wrote their own law and enforced it on each other.',
       say:null, f:"FACT · INFERENCE", src:"[METR p.61, p.62] · the code was real and self-imposed" },
   ];
