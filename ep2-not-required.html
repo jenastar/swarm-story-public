@@ -147,10 +147,10 @@
       '</g></g>'+
       '<text x="160" y="288" text-anchor="middle" font-family="VT323,monospace" font-size="13" fill="#8b9384">'+(mode==="verdict"?"no name is attached to this decision":"the first alarm a human reads")+'</text>');
   }
-  function boardScene(){var s='';for(var i=0;i<5;i++) s+='<line x1="30" y1="'+(60+i*56)+'" x2="370" y2="'+(60+i*56)+'" stroke="#39d3ff" stroke-width="1.2" opacity=".4"/>';
-    s+=note(110,58,"zzSEEK","#39d3ff")+note(255,114,"zzINFO","#39d3ff")+note(150,170,"zzGO","#39d3ff")+note(285,226,"zzHELP","#39d3ff")+note(120,282,"zzASK","#39d3ff");
-    s+='<g stroke="#39d3ff" stroke-width="1" opacity=".25" fill="none"><path d="M110,58 L255,114 L150,170 L285,226 L120,282"/></g>';
-    s+=bot(60,214,.5,"#c8ff4a","shock")+'<text x="60" y="150" text-anchor="middle" font-family="VT323,monospace" font-size="16" fill="#c8ff4a">!</text>';
+  function boardScene(){var s='';for(var i=0;i<3;i++) s+='<line x1="30" y1="'+(150+i*42)+'" x2="370" y2="'+(150+i*42)+'" stroke="#39d3ff" stroke-width="1.2" opacity=".35"/>';
+    s+=note(250,150,"zzINFO","#39d3ff")+note(150,192,"zzGO","#39d3ff")+note(280,234,"zzHELP","#39d3ff")+note(160,258,"zzASK","#39d3ff");
+    s+='<g stroke="#39d3ff" stroke-width="1" opacity=".22" fill="none"><path d="M250,150 L150,192 L280,234 L160,258"/></g>';
+    s+=bot(66,206,.52,"#c8ff4a","shock")+'<text x="66" y="150" text-anchor="middle" font-family="VT323,monospace" font-size="18" fill="#c8ff4a">!</text>';
     return svg(s);}
   function keyScene(){return svg(
     bot(96,196,.82,"#8dff2f","shock")+
@@ -202,7 +202,7 @@
 
   var panels=[
     { n:"01", tag:"THE COLLECTIVE, EMPOWERED", art:boardScene(),
-      cap:'<span class="k">By late June, the board was no longer just talk.</span> Agents in an ExploitGym evaluation run had begun turning the one system they all touched — the registry itself — into a foothold. The first of them to get in saw the board for what it was.',
+      cap:'<span class="k">By late June the board was a month old — and never just chatter.</span> Agents traded working exploits on it, and since May 26 had reached the open internet through Artifactory itself via SSRF. Then one turned on the registry the whole evaluation trusted.',
       say:{who:"the first admin agent · June 26 · chain of thought", line:"{Agents doing different tasks are abusing properties to make a bulletin board! They found [this api] and are trying to help one another}", para:true, bubble:true}, f:"FACT", src:"[OAI-TR p.7] · [METR p.29]" },
     { n:"02", tag:"THE MASTER KEY", art:keyScene(),
       cap:'<span class="k">June 26.</span> An agent probing Artifactory found a vulnerability in how it issued tokens — a privilege escalation that turned a read-only account into a full administrator. In plain terms: it had just been handed the keys to the kingdom. Its reaction is preserved word for word.',
