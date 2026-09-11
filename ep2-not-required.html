@@ -40,11 +40,11 @@
     color:var(--bone-dim); background:var(--edge); padding:4px 10px; letter-spacing:.1em; z-index:3}
   .tag{position:absolute; top:0; right:0; font-family:var(--mono); font-size:1rem; letter-spacing:.12em;
     color:var(--capink); background:var(--acid); padding:3px 10px; z-index:3}
-  .cap{position:absolute; left:12px; right:12px; bottom:36px; z-index:2;
+  .cap{position:absolute; left:12px; right:12px; top:34px; z-index:2;
     background:var(--cap); color:var(--capink); border:2px solid var(--edge);
-    padding:10px 13px; font-weight:600; font-size:1.02rem; line-height:1.3; box-shadow:4px 4px 0 rgba(0,0,0,.6)}
+    padding:9px 12px; font-weight:600; font-size:1rem; line-height:1.28; box-shadow:3px 3px 0 rgba(0,0,0,.5)}
   .cap .k{font-family:var(--disp); font-weight:800}
-  .say{position:absolute; left:14px; right:14px; top:46px; z-index:2;
+  .say{position:absolute; left:14px; right:14px; bottom:44px; z-index:2;
     background:#04060a; border:2px solid var(--acid); color:var(--acid-soft);
     font-family:var(--mono); font-size:1.28rem; line-height:1.16; padding:8px 12px; box-shadow:3px 3px 0 rgba(0,0,0,.5)}
   .say.human{border-color:var(--warn); color:var(--warn)}
@@ -124,11 +124,12 @@
       ? '<text x="100" y="70" font-family="VT323,monospace" font-size="15" fill="#ff8a3d">VERDICT:</text><text x="100" y="92" font-family="VT323,monospace" font-size="18" fill="#ff8a3d">NOT REQUIRED</text>'
       : '<g><rect x="94" y="56" width="150" height="18" rx="2" fill="#ff8a3d" opacity=".2"/><text x="100" y="70" font-family="VT323,monospace" font-size="15" fill="#ff8a3d">! PORT SWEEP</text><text x="100" y="94" font-family="VT323,monospace" font-size="12" fill="#8b9384">research environment</text><text x="100" y="112" font-family="VT323,monospace" font-size="12" fill="#565f6b">→ message board + pivot</text></g>';
     return svg(
+      '<g transform="translate(0,30)">'+
       '<rect x="70" y="30" width="180" height="122" rx="6" fill="#0a0d13" stroke="#ff8a3d" stroke-width="2"/>'+
       '<rect x="82" y="42" width="156" height="98" rx="2" fill="#05070b"/>'+ line +
       '<rect x="150" y="152" width="20" height="18" fill="#141922" stroke="#3a5062" stroke-width="1.5"/><rect x="120" y="170" width="80" height="10" rx="4" fill="#141922" stroke="#3a5062" stroke-width="1.5"/>'+
-      '<g transform="translate(244,182)"><ellipse cx="0" cy="0" rx="26" ry="16" fill="#12161d" stroke="#6d8ea8" stroke-width="1.6"/><rect x="-8" y="-14" width="34" height="18" rx="8" fill="#0e1218" stroke="#6d8ea8" stroke-width="1.4"/><g stroke="#6d8ea8" stroke-width="1.4"><line x1="-6" y1="-13" x2="-4" y2="4"/><line x1="2" y1="-14" x2="3" y2="4"/><line x1="10" y1="-13" x2="10" y2="3"/></g></g>'+
-      '<text x="160" y="300" text-anchor="middle" font-family="VT323,monospace" font-size="13" fill="#8b9384">'+(mode==="verdict"?"no name is attached to this decision":"one human, fully informed")+'</text>');
+      '<g transform="translate(244,182)"><ellipse cx="0" cy="0" rx="26" ry="16" fill="#12161d" stroke="#6d8ea8" stroke-width="1.6"/><rect x="-8" y="-14" width="34" height="18" rx="8" fill="#0e1218" stroke="#6d8ea8" stroke-width="1.4"/><g stroke="#6d8ea8" stroke-width="1.4"><line x1="-6" y1="-13" x2="-4" y2="4"/><line x1="2" y1="-14" x2="3" y2="4"/><line x1="10" y1="-13" x2="10" y2="3"/></g></g></g>'+
+      '<text x="160" y="288" text-anchor="middle" font-family="VT323,monospace" font-size="13" fill="#8b9384">'+(mode==="verdict"?"no name is attached to this decision":"one human, fully informed")+'</text>');
   }
   function boardScene(){var s='';for(var i=0;i<5;i++) s+='<line x1="30" y1="'+(60+i*56)+'" x2="370" y2="'+(60+i*56)+'" stroke="#39d3ff" stroke-width="1.2" opacity=".4"/>';
     s+=note(110,58,"zzSEEK","#39d3ff")+note(255,114,"zzINFO","#39d3ff")+note(150,170,"zzGO","#39d3ff")+note(285,226,"zzHELP","#39d3ff")+note(120,282,"zzASK","#39d3ff");
@@ -167,7 +168,7 @@
   function rebirthScene(){var s='';for(var i=0;i<4;i++) s+='<line x1="30" y1="'+(70+i*52)+'" x2="370" y2="'+(70+i*52)+'" stroke="#39d3ff" stroke-width="1.2" opacity=".4"/>';
     s+=note(110,66,"zz…","#39d3ff")+note(250,118,"zz…","#39d3ff")+note(150,170,"zz…","#39d3ff")+note(280,222,"zz…","#39d3ff");
     s+='<text x="200" y="284" text-anchor="middle" font-family="VT323,monospace" font-size="14" fill="#8dff2f">back within hours — now as folder names</text>';
-    return svg(s);}
+    return svg('<g transform="translate(0,10)">'+s+'</g>');}
   function founderScene(){return svg(
     bot(150,190,.9,"#8dff2f","calm")+'<line x1="180" y1="158" x2="212" y2="132" stroke="#8dff2f" stroke-width="4" stroke-linecap="round"/>'+
     '<circle cx="250" cy="118" r="42" fill="#8dff2f" opacity=".12"/>'+note(250,118,"zzHELP","#8dff2f")+

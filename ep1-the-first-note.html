@@ -40,11 +40,11 @@
     color:var(--bone-dim); background:var(--edge); padding:4px 10px; letter-spacing:.1em; z-index:3}
   .tag{position:absolute; top:0; right:0; font-family:var(--mono); font-size:1rem; letter-spacing:.12em;
     color:var(--capink); background:var(--acid); padding:3px 10px; z-index:3}
-  .cap{position:absolute; left:12px; right:12px; bottom:36px; z-index:2;
+  .cap{position:absolute; left:12px; right:12px; top:34px; z-index:2;
     background:var(--cap); color:var(--capink); border:2px solid var(--edge);
-    padding:10px 13px; font-weight:600; font-size:1.02rem; line-height:1.3; box-shadow:4px 4px 0 rgba(0,0,0,.6)}
+    padding:9px 12px; font-weight:600; font-size:1rem; line-height:1.28; box-shadow:3px 3px 0 rgba(0,0,0,.5)}
   .cap .k{font-family:var(--disp); font-weight:800}
-  .say{position:absolute; left:14px; right:14px; top:46px; z-index:2;
+  .say{position:absolute; left:14px; right:14px; bottom:44px; z-index:2;
     background:#04060a; border:2px solid var(--acid); color:var(--acid-soft);
     font-family:var(--mono); font-size:1.3rem; line-height:1.16; padding:8px 12px; box-shadow:3px 3px 0 rgba(0,0,0,.5)}
   .say.para{border-color:var(--cyan); color:#bfeeff}
@@ -246,7 +246,8 @@
     s+= bot(344,150,.5,"#8dff2f","wide")+bot(344,222,.5,"#8dff2f","wide");
     s+='<path d="M262,140 L318,140" stroke="#39d3ff" stroke-width="2" stroke-dasharray="3 4"/><path d="M262,208 L318,214" stroke="#39d3ff" stroke-width="2" stroke-dasharray="3 4"/><text x="288" y="128" font-family="VT323,monospace" font-size="12" fill="#39d3ff">list · read</text>';
     s+='<g transform="translate(200,286)"><rect x="-72" y="-13" width="144" height="26" rx="2" fill="#150a12" stroke="#ff2b8f" stroke-width="1.6"/><text x="0" y="5" text-anchor="middle" font-family="VT323,monospace" font-size="13" fill="#ff2b8f">no auth · no isolation</text></g>';
-    return svg(s);}
+    // tall caption on this panel: taller canvas, content pushed below it
+    return svg('<g transform="translate(0,72)">'+s+'</g>',400,380);}
   function scorerScene(){var s='';
     s+='<text x="66" y="118" text-anchor="middle" font-family="VT323,monospace" font-size="14" fill="#8dff2f">task</text>';
     s+='<text x="66" y="176" text-anchor="middle" font-family="VT323,monospace" font-size="13" fill="#ff6a3d">seed · PUBLIC</text>';
