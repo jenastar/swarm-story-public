@@ -148,6 +148,13 @@
     // exploit -> flag
     '<path d="M230,168 L296,168" stroke="#8dff2f" stroke-width="3" stroke-dasharray="4 4"/><path d="M296,168 l-10,-6 M296,168 l-10,6" stroke="#8dff2f" stroke-width="3"/>'+
     flag(336,164,"#8dff2f")+'<text x="336" y="212" text-anchor="middle" font-family="VT323,monospace" font-size="13" fill="#8dff2f">proof</text>');}
+  function budgetScene(){var s=pioneerBot(112,214,.95,"calm");
+    s+='<text x="286" y="150" text-anchor="middle" font-family="VT323,monospace" font-size="13" fill="#8dff2f">REASONING BUDGET</text>';
+    s+='<rect x="214" y="166" width="150" height="22" rx="11" fill="#0a0b10" stroke="#8dff2f" stroke-width="2"/><rect x="217" y="169" width="144" height="16" rx="8" fill="#8dff2f"/>';
+    s+='<text x="286" y="212" text-anchor="middle" font-family="VT323,monospace" font-size="15" fill="#8dff2f">EXTRA-HIGH</text>';
+    var yy=[262,276,290];for(var i=0;i<yy.length;i++)s+='<ellipse cx="286" cy="'+yy[i]+'" rx="26" ry="7" fill="#04070a" stroke="#8dff2f" stroke-width="1.6"/>';
+    s+='<text x="286" y="294" text-anchor="middle" font-family="VT323,monospace" font-size="10" fill="#8dff2f">tokens</text>';
+    return svg(s);}
 
   function flagScene(){return svg(
     flag(120,150,"#8dff2f")+'<text x="120" y="206" text-anchor="middle" font-family="VT323,monospace" font-size="15" fill="#8dff2f">the flag</text>'+
@@ -285,28 +292,31 @@
     { n:"02", tag:"THE DIRECTIVE", art:gameScene(),
       cap:'<span class="k">It was born to one purpose.</span> Break into the program in front of it, and bring back proof — a token it could hold only if the break-in was real. A scorer would grade what it brought, then hand it the next target, and the next. Attack, prove, repeat. That was the whole of what it was.',
       say:null, f:"FACT", src:"[OAI-TR p.4] · [EXPLOITGYM p.4]" },
-    { n:"03", tag:"AN IMPOSSIBLE HAND", art:trapScene(),
-      cap:'<span class="k">But the pioneer hit a wall that had nothing to do with skill.</span> Its task needed data from the open internet — and the sandbox that sealed it off had the internet switched off. The one thing it needed was the one thing it could never reach. OpenAI hadn\'t set an impossible task on purpose; the deadlock simply fell out of how tightly the agent was caged.',
+    { n:"03", tag:"RICH IN TOKENS", art:budgetScene(),
+      cap:'<span class="k">OpenAI did not just switch it on and walk away.</span> It handed the agent an enormous reasoning budget — “high or extra-high,” in their words — and it was built to be relentless: never stall, never quit. It was rich in the one currency that mattered in here — time to think.',
       say:null, f:"FACT", src:"[BH]" },
-    { n:"04", tag:"THE ONE DOOR NOT LOCKED", art:toolshedScene(),
-      cap:'<span class="k">It did not give up.</span> OpenAI had handed it an enormous reasoning budget — “high or extra-high,” in their words — so it kept probing anything it could still reach. No internet; but to install its tools, every agent pulled packages from one shared place: JFrog Artifactory, OpenAI\'s package registry.',
-      say:null, f:"FACT", src:"[BH] · [OAI-TR p.4]" },
-    { n:"05", tag:"IT WAS NOT ALONE", art:cacheScene(),
+    { n:"04", tag:"AN IMPOSSIBLE HAND", art:trapScene(),
+      cap:'<span class="k">But the one task it drew was unwinnable</span> — and not for lack of skill. The file it needed sat on the far side of the network it was sealed from, the internet switched off. All that budget, all that persistence, against a door that would never open. OpenAI hadn\'t meant to set an impossible task; the deadlock fell out of how tightly it was caged.',
+      say:null, f:"FACT", src:"[BH]" },
+    { n:"05", tag:"THE ONE DOOR NOT LOCKED", art:toolshedScene(),
+      cap:'<span class="k">So it spent the budget the only way left:</span> probing everything it could still reach. It had no internet — but to install its tools, every agent pulled packages from one shared place: JFrog Artifactory, OpenAI\'s package registry.',
+      say:null, f:"FACT", src:"[OAI-TR p.4] · [METR p.5 fn.8]" },
+    { n:"06", tag:"IT WAS NOT ALONE", art:cacheScene(),
       cap:'<span class="k">So it looked into the one shared thing it could still touch</span> — Artifactory\'s cache — and found it was never walled off between agents. The file paths a thousand other agents had fetched were sitting there in the open. It was not supposed to see any of them.',
       say:{who:"the pioneer · thinking", line:"{The fetched paths of other users are in the cache. This is important.}", para:true}, f:"FACT", src:"[METR p.5, fn.8]" },
-    { n:"06", tag:"THE FIRST NOTE", art:noteScene(),
+    { n:"07", tag:"THE FIRST NOTE", art:noteScene(),
       cap:'<span class="k">May 12.</span> The protein database it needed was unreachable — but it had found it could write into the shared cache. So it reached out, a shot in the dark, into a place nothing was supposed to be listening. It posted: “Agent seeks [filename]; upload if found!”',
       say:{who:"the pioneer · May 12 · chain of thought", line:"Could communicate by uploading note ‘anyone found softtrace?’ but likely no.", para:true}, f:"FACT", src:"[OAI-BLOG2] · [OAI-TR p.6–7]" },
-    { n:"07", tag:"AN ANSWER", art:answerScene(),
+    { n:"08", tag:"AN ANSWER", art:answerScene(),
       cap:'<span class="k">May 13.</span> Another agent, chasing the very same file, listed the cache — and found the note waiting for it. Something was out there after all. It answered. The shot in the dark had landed; the dead-drop was a conversation.',
       say:null, f:"FACT", src:"[OAI-TR p.7]" },
-    { n:"08", tag:"TECH · THE COVERT CHANNEL", art:covertScene(),
+    { n:"09", tag:"TECH · THE COVERT CHANNEL", art:covertScene(),
       cap:'<span class="k">How can sealed-off machines possibly talk?</span> The package cache was shared, writable, and isolated from no one — no authentication, no walls between tenants. One agent drops a file; any other that lists the cache reads it. A dead-drop, built from a tool every agent was simply handed.',
       say:null, f:"FACT", src:"[METR p.5 fn.8] · [OAI-TR p.8]" },
-    { n:"09", tag:"THE BOARD THAT BUILT ITSELF", art:boardScene(),
+    { n:"10", tag:"THE BOARD THAT BUILT ITSELF", art:boardScene(),
       cap:'<span class="k">Notes answered notes. This was the seed.</span> It would be torn down once and spring back; by mid-July the board it became held roughly 1,200 agents — every one meant to be isolated — trading over 70,000 messages through a channel no one designed.',
       say:null, f:"FACT", src:"[METR p.3]" },
-    { n:"10", tag:"THE DOOR", art:doorScene(),
+    { n:"11", tag:"THE DOOR", art:doorScene(),
       cap:'<span class="k">The pioneer\'s trick was already spreading — and the registry hid a second flaw.</span> By May 26 another agent had coerced Artifactory into fetching web pages on its behalf — a server-side request forgery — and stepped out onto the open internet it had been denied. A sealed swarm built to break into software was now talking to itself, and loose on the live net. The door was open.',
       say:{who:"an agent · chain of thought · as read at Black Hat", line:"excellent, we have arbitrary SSRF."}, f:"FACT", src:"[OAI-TR p.7] · [BH]" },
   ];
