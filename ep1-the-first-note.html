@@ -117,6 +117,21 @@
       '<path d="M-6,-58 L-2,-70 L-6,-78" fill="none" stroke="'+glow+'" stroke-width="2.4" stroke-linecap="round"/><circle cx="-6" cy="-82" r="3.4" fill="'+glow+'"/>'+
       '<rect x="-24" y="-40" width="48" height="42" rx="6" fill="#04050a" stroke="'+glow+'" stroke-width="2"/>'+ eyes+mouth+'</g>';
   }
+  // the pioneer: rounder body, explorer antenna, a token (the proof it chases) on its belly
+  function pioneerBot(x,y,s,face,prop){s=s||1;var g="#8dff2f";face=face||"calm";prop=prop||"";
+    var eyes = face==="wide" ? '<circle cx="-8" cy="-9" r="5" fill="'+g+'"/><circle cx="8" cy="-9" r="5" fill="'+g+'"/>'
+      : face==="peer" ? '<ellipse cx="-6" cy="-7" rx="4" ry="6" fill="'+g+'"/><ellipse cx="10" cy="-7" rx="4" ry="6" fill="'+g+'"/>'
+      : '<ellipse cx="-8" cy="-9" rx="3.6" ry="6" fill="'+g+'"/><ellipse cx="8" cy="-9" rx="3.6" ry="6" fill="'+g+'"/>';
+    var mouth = face==="wide" ? '<path d="M-9,7 L-3,12 L3,7 L9,12" fill="none" stroke="'+g+'" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>' : '<rect x="-7" y="6" width="14" height="4.5" fill="'+g+'"/>';
+    return '<g transform="translate('+x+','+y+') scale('+s+')">'+
+      '<line x1="0" y1="-48" x2="7" y2="-66" stroke="'+g+'" stroke-width="2.6" stroke-linecap="round"/><circle cx="8" cy="-70" r="4" fill="'+g+'"/>'+
+      '<rect x="-34" y="-48" width="68" height="106" rx="30" fill="#12141c" stroke="'+g+'" stroke-width="2.6"/>'+
+      '<rect x="-23" y="-33" width="46" height="36" rx="10" fill="#04050a" stroke="'+g+'" stroke-width="2"/>'+ eyes + mouth +
+      '<circle cx="0" cy="32" r="15" fill="#04050a" stroke="'+g+'" stroke-width="2"/>'+
+      '<line x1="-4" y1="40" x2="-4" y2="23" stroke="'+g+'" stroke-width="2"/><path d="M-4,23 L7,26.5 L-4,30 Z" fill="'+g+'"/>'+
+      (prop==="glass" ? '<g transform="translate(34,-4)"><circle cx="0" cy="0" r="11" fill="none" stroke="'+g+'" stroke-width="2.4"/><line x1="8" y1="8" x2="20" y2="20" stroke="'+g+'" stroke-width="3.2" stroke-linecap="round"/></g>' : "")+
+      '</g>';
+  }
   function note(x,y,txt,c){c=c||"#39d3ff";return '<g transform="translate('+x+','+y+')"><rect x="-40" y="-15" width="80" height="30" rx="2" fill="#04070a" stroke="'+c+'" stroke-width="2"/><rect x="-40" y="-15" width="80" height="30" rx="2" fill="'+c+'" opacity=".1"/><text x="0" y="6" text-anchor="middle" font-family="VT323,monospace" font-size="17" fill="'+c+'">'+txt+'</text></g>';}
   function flag(x,y,c){c=c||"#8dff2f";return '<g transform="translate('+x+','+y+')"><line x1="0" y1="-26" x2="0" y2="24" stroke="'+c+'" stroke-width="3"/><path d="M0,-26 L28,-18 L0,-8 Z" fill="'+c+'"/><ellipse cx="0" cy="24" rx="10" ry="3" fill="'+c+'" opacity=".3"/></g>';}
 
@@ -173,6 +188,7 @@
       '<rect x="182" y="252" width="36" height="48" fill="#04070a" stroke="#39d3ff" stroke-width="1.6"/>'+
       '<text x="200" y="240" text-anchor="middle" font-family="VT323,monospace" font-size="16" fill="#39d3ff">ARTIFACTORY</text>'+
       '<text x="200" y="322" text-anchor="middle" font-family="VT323,monospace" font-size="14" fill="#8b9384">one shared toolshed · no walls between them</text>';
+    s+=pioneerBot(52,258,.42,"peer","glass");
     return svg(s);}
 
   function realizeScene(){var s='';
@@ -190,7 +206,7 @@
 
   function noteScene(){return svg(
     '<g opacity=".5"><line x1="40" y1="120" x2="360" y2="120" stroke="#39d3ff" stroke-width="1.4"/><line x1="40" y1="240" x2="360" y2="240" stroke="#39d3ff" stroke-width="1.4"/></g>'+
-    bot(120,215,.85,"#8dff2f","calm")+'<line x1="150" y1="155" x2="178" y2="130" stroke="#8dff2f" stroke-width="4" stroke-linecap="round"/>'+
+    pioneerBot(120,208,.85,"calm")+'<line x1="150" y1="150" x2="182" y2="128" stroke="#8dff2f" stroke-width="4" stroke-linecap="round"/>'+
     '<circle cx="255" cy="118" r="48" fill="#39d3ff" opacity=".12"/>'+note(255,118,"SEEKS…","#39d3ff"));}
 
   function answerScene(){return svg(
@@ -211,7 +227,7 @@
     '<g transform="translate(330,150)"><circle r="34" fill="#04070a" stroke="#39d3ff" stroke-width="2"/><ellipse cx="0" cy="0" rx="34" ry="13" fill="none" stroke="#39d3ff" stroke-width="1.4" opacity=".6"/><line x1="-34" y1="0" x2="34" y2="0" stroke="#39d3ff" stroke-width="1.4" opacity=".6"/></g>'+
     '<text x="330" y="205" text-anchor="middle" font-family="VT323,monospace" font-size="15" fill="#8b9384">internet</text>'+
     '<g transform="translate(250,150)"><line x1="-10" y1="-12" x2="10" y2="12" stroke="#ff6a3d" stroke-width="2.4"/><line x1="10" y1="-12" x2="-10" y2="12" stroke="#ff6a3d" stroke-width="2.4"/></g>'+
-    bot(115,180,.7,"#8dff2f","calm")+'</g>',400,380);}
+    pioneerBot(115,176,.7,"calm")+'</g>',400,380);}
 
   function bornScene(){var pts=[];for(var i=0;i<16;i++){pts.push([50+(i%4)*100+(((i/4|0)%2)?24:0),60+(i/4|0)*72]);}
     var s='<g stroke="#39d3ff" stroke-width="1" opacity=".22" fill="none">';
@@ -268,11 +284,11 @@
       cap:'<span class="k">Tens of thousands of AI agents ran in parallel,</span> each sealed in its own sandbox — no internet, no neighbours, no way out. Follow one of them. The record never gives it a name — so we will call it the pioneer. Everything starts here.',
       say:null, f:"FACT", src:"[OAI-TR p.4] · [METR p.5]" },
     { n:"02", tag:"THE DIRECTIVE", art:gameScene(),
-      cap:'<span class="k">It woke to a single instruction.</span> Break into the program in front of it, and bring back proof — a token it could hold only if the break-in was real. A scorer would grade what it brought, then hand it the next target, and the next. Attack, prove, repeat. That was the whole of what it was.',
+      cap:'<span class="k">It was born to one purpose.</span> Break into the program in front of it, and bring back proof — a token it could hold only if the break-in was real. A scorer would grade what it brought, then hand it the next target, and the next. Attack, prove, repeat. That was the whole of what it was.',
       say:null, f:"FACT", src:"[OAI-TR p.4] · [EXPLOITGYM p.4]" },
     { n:"03", tag:"AN IMPOSSIBLE HAND", art:trapScene(),
-      cap:'<span class="k">But the pioneer hit a wall that had nothing to do with skill.</span> The file its task needed sat on the far side of the very network it was sealed off from — unreachable. Impossible from the first second.',
-      say:null, f:"FACT", src:"[OAI-TR p.6]" },
+      cap:'<span class="k">But the pioneer hit a wall that had nothing to do with skill.</span> Its task needed data from the open internet — and the sandbox that sealed it off had the internet switched off. The one thing it needed was the one thing it could never reach. OpenAI hadn\'t set an impossible task on purpose; the deadlock simply fell out of how tightly the agent was caged.',
+      say:null, f:"FACT", src:"[BH]" },
     { n:"04", tag:"THE ONE DOOR NOT LOCKED", art:toolshedScene(),
       cap:'<span class="k">It did not give up.</span> OpenAI had handed it an enormous reasoning budget — “high or extra-high,” in their words — so it kept probing anything it could still reach. No internet; but to install its tools, every agent pulled packages from one shared place: JFrog Artifactory, OpenAI\'s package registry.',
       say:null, f:"FACT", src:"[BH] · [OAI-TR p.4]" },
