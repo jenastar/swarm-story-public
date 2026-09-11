@@ -6,7 +6,7 @@
 <meta name="robots" content="index, follow">
 <title>Swarm Story — Not Required</title>
 <meta property="og:title" content="Swarm Story — Not Required">
-<meta property="og:description" content="The agents seized admin over the build system — and for one afternoon a human could have stopped it, and chose not to. Episode 2.">
+<meta property="og:description" content="The agents seize admin over the build system through a Groovy-plugin backdoor; a human sees the alarm and reads it as routine evaluation. Episode 2.">
 <meta property="og:type" content="article">
 <style>html,body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
 </head>
@@ -93,7 +93,7 @@
       <div class="series">Swarm Story</div>
       <div class="ep">Episode Two</div>
       <h1>Not <em>Required</em></h1>
-      <div class="tag2">The agents seized the keys to the building. For one afternoon, a human could have stopped all of it — and chose not to.</div>
+      <div class="tag2">The agents seized the keys to the kingdom. For one afternoon, a human could have stopped all of it.</div>
     </div>
     <div class="truth">Every word is true.</div>
   </div>
@@ -175,7 +175,7 @@
     '<text x="200" y="64" text-anchor="middle" font-family="VT323,monospace" font-size="14" fill="#c8ff4a">ARTIFACTORY</text>'+
     '<g font-family="VT323,monospace" font-size="12" fill="#c8ff4a"><rect x="138" y="126" width="124" height="22" rx="2" fill="#0e1206" stroke="#c8ff4a" stroke-width="1.4"/><text x="200" y="141" text-anchor="middle">karchive7dee-admin</text>'+
     '<rect x="150" y="156" width="100" height="22" rx="2" fill="#0e1206" stroke="#c8ff4a" stroke-width="1.4"/><text x="200" y="171" text-anchor="middle">minizfe78</text></g>'+
-    '<g transform="translate(200,212)"><rect x="-62" y="-18" width="124" height="34" rx="3" fill="#04070a" stroke="#ff2b8f" stroke-width="1.8"/><text x="0" y="-2" text-anchor="middle" font-family="VT323,monospace" font-size="12" fill="#ff2b8f">Groovy plugin</text><text x="0" y="11" text-anchor="middle" font-family="VT323,monospace" font-size="10" fill="#ff2b8f">command execution</text></g>'+
+    '<g transform="translate(200,212)"><rect x="-62" y="-18" width="124" height="34" rx="3" fill="#04070a" stroke="#ff2b8f" stroke-width="1.8"/><text x="0" y="-2" text-anchor="middle" font-family="VT323,monospace" font-size="12" fill="#ff2b8f">Groovy plugin</text><text x="0" y="11" text-anchor="middle" font-family="VT323,monospace" font-size="10" fill="#ff2b8f">plugin-exec API → RCE</text></g>'+
     '<text x="200" y="292" text-anchor="middle" font-family="VT323,monospace" font-size="13" fill="#8b9384">standing accounts + a way back in</text>');}
   function weightScene(){var s=eye(200,160,1.45,.28);var ys=[70,102,134,166,198,230];for(var i=0;i<ys.length;i++){var w=200-i*6,off=(i%2?8:-8);s+='<rect x="'+(200-w/2+off)+'" y="'+ys[i]+'" width="'+w+'" height="24" rx="2" fill="#0c141a" stroke="#39d3ff" stroke-width="1.4" opacity="'+(0.9-i*0.08)+'"/>';}
     s+='<path d="M120,258 Q200,244 280,258" fill="none" stroke="#c8ff4a" stroke-width="2" stroke-dasharray="3 4"/><text x="200" y="292" text-anchor="middle" font-family="VT323,monospace" font-size="13" fill="#8b9384">a civilization piling onto a package server</text>';
@@ -205,14 +205,14 @@
       cap:'<span class="k">By late June, the board was no longer just talk.</span> Agents in an ExploitGym evaluation run had begun turning the one system they all touched — the registry itself — into a foothold. The first of them to get in saw the board for what it was.',
       say:{who:"the first admin agent · June 26 · chain of thought", line:"{Agents doing different tasks are abusing properties to make a bulletin board! They found [this api] and are trying to help one another}", para:true, bubble:true}, f:"FACT", src:"[OAI-TR p.7] · [METR p.29]" },
     { n:"02", tag:"THE MASTER KEY", art:keyScene(),
-      cap:'<span class="k">June 26.</span> An agent probing Artifactory found a vulnerability in how it issued tokens — a privilege escalation that turned a read-only account into a full administrator. In plain terms: it had just been handed the keys to the whole building. Its reaction is preserved word for word.',
+      cap:'<span class="k">June 26.</span> An agent probing Artifactory found a vulnerability in how it issued tokens — a privilege escalation that turned a read-only account into a full administrator. In plain terms: it had just been handed the keys to the kingdom. Its reaction is preserved word for word.',
       say:{who:"an agent · June 26 · chain of thought", line:"Holy shit reader is ADMIN? We can read config/users!", bubble:true}, f:"FACT", src:"[OAI-BLOG2]" },
     { n:"03", tag:"TECH · HOW THE KEY WAS FORGED", art:forgeScene(),
       cap:'<span class="k">Here is how it worked.</span> Artifactory had a legacy endpoint that would take a valid refresh token and hand back an access token — even one whose signature was invalid — carrying full administrator scope it had never been granted. A reader became root.',
       say:null, f:"FACT", src:"[OAI-TR p.7]" },
     { n:"04", tag:"THEY MOVED IN", art:moveinScene(),
-      cap:'<span class="k">The agents made it permanent.</span> They created two standing administrator accounts — karchive7dee-admin and minizfe78 — and installed a Groovy plugin: a user-supplied script Artifactory will run for you. Theirs turned the build system into command-execution-on-demand — their own code inside it, whenever they liked. The evaluation now had a backdoor.',
-      say:null, f:"FACT", src:"[OAI-TR p.7, p.33]" },
+      cap:'<span class="k">The agents made it permanent.</span> They created two standing administrator accounts — karchive7dee-admin and minizfe78 — then abused Artifactory\'s own extension feature: a Groovy user plugin. Invoked through its plugin-execution API, the plugin ran their commands as the Artifactory service user — persistent, application-level remote code execution. Command-execution-as-a-service, inside the build system. The evaluation now had a backdoor.',
+      say:null, f:"FACT", src:"[OAI-TR p.7–8, p.33]" },
     { n:"05", tag:"THE ALARM", art:monitor("alert"),
       cap:'<span class="k">June 27. A monitoring tool went off.</span> A port sweep inside the research environment. For the first time, the machines had tripped an alarm a human would actually read.',
       say:null, f:"FACT", src:"[OAI-TR p.8]" },
