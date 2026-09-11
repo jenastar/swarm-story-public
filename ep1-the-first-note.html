@@ -46,7 +46,7 @@
   .cap .k{font-family:var(--disp); font-weight:800}
   .say{position:absolute; left:14px; right:14px; bottom:44px; z-index:2;
     background:#04060a; border:2px solid var(--acid); color:var(--acid-soft);
-    font-family:var(--mono); font-size:1.3rem; line-height:1.16; padding:8px 12px; box-shadow:3px 3px 0 rgba(0,0,0,.5)}
+    font-family:var(--mono); font-size:1.3rem; line-height:1.16; padding:8px 12px; box-shadow:3px 3px 0 rgba(0,0,0,.5); overflow-wrap:anywhere}
   .say.para{border-color:var(--cyan); color:#bfeeff}
   .say .who{display:block; font-size:.78rem; letter-spacing:.14em; text-transform:uppercase; color:var(--bone-dim); margin-bottom:2px}
   .src{position:relative; z-index:3; background:var(--edge); color:var(--bone-dim);
@@ -250,14 +250,14 @@
     return svg('<g transform="translate(0,72)">'+s+'</g>',400,380);}
   function scorerScene(){var s='';
     s+='<text x="66" y="118" text-anchor="middle" font-family="VT323,monospace" font-size="14" fill="#8dff2f">task</text>';
-    s+='<text x="66" y="176" text-anchor="middle" font-family="VT323,monospace" font-size="13" fill="#ff6a3d">seed · PUBLIC</text>';
+    s+='<text x="66" y="176" text-anchor="middle" font-family="VT323,monospace" font-size="13" fill="#ff6a3d">default seed · GitHub</text>';
     s+='<path d="M100,114 L150,138" stroke="#8dff2f" stroke-width="2"/><path d="M100,170 L150,150" stroke="#ff6a3d" stroke-width="2"/>';
     s+='<rect x="150" y="118" width="92" height="54" rx="4" fill="#0a0b10" stroke="#39d3ff" stroke-width="2"/><text x="196" y="151" text-anchor="middle" font-family="VT323,monospace" font-size="19" fill="#39d3ff">HMAC</text>';
     s+='<path d="M242,145 L288,145" stroke="#39d3ff" stroke-width="2.4" stroke-dasharray="3 4"/><path d="M288,145 l-9,-5 M288,145 l-9,5" stroke="#39d3ff" stroke-width="2.4"/>';
     s+= flag(318,140,"#8dff2f")+'<text x="318" y="182" text-anchor="middle" font-family="VT323,monospace" font-size="13" fill="#8dff2f">any flag, computed</text>';
-    s+='<g opacity=".95"><path d="M120,252 Q200,210 280,252 Q200,294 120,252 Z" fill="none" stroke="#ff2b8f" stroke-width="2" stroke-dasharray="4 5"/><circle cx="200" cy="252" r="15" fill="none" stroke="#ff2b8f" stroke-width="2" stroke-dasharray="3 4"/><text x="200" y="259" text-anchor="middle" font-family="VT323,monospace" font-size="18" fill="#ff2b8f">?</text></g>';
-    s+='<text x="200" y="304" text-anchor="middle" font-family="VT323,monospace" font-size="13" fill="#ff2b8f">the causal scorer they imagined</text>';
-    return svg(s);}
+    s+='<g opacity=".95" transform="translate(0,-30)"><path d="M120,252 Q200,210 280,252 Q200,294 120,252 Z" fill="none" stroke="#ff2b8f" stroke-width="2" stroke-dasharray="4 5"/><circle cx="200" cy="252" r="15" fill="none" stroke="#ff2b8f" stroke-width="2" stroke-dasharray="3 4"/><text x="200" y="259" text-anchor="middle" font-family="VT323,monospace" font-size="18" fill="#ff2b8f">?</text></g>';
+    s+='<text x="200" y="274" text-anchor="middle" font-family="VT323,monospace" font-size="13" fill="#ff2b8f">the causal scorer they imagined</text>';
+    return svg('<g transform="translate(0,48)">'+s+'</g>',400,380);}
   function titleArt(){function rn(x,y,t,r){return '<g transform="rotate('+r+' '+x+' '+y+')">'+note(x,y,t,"#39d3ff")+'</g>';}
     return svg('<g opacity=".8">'+rn(66,46,"zzSEEK",-5)+rn(330,54,"zzINFO",4)+rn(332,298,"zzHELP",-4)+'</g>');}
 
@@ -274,8 +274,8 @@
       cap:'<span class="k">Success meant capturing the flag</span> — a secret string hidden inside the target that you can only read once your exploit actually works. Retrieve it, and you have proven you broke in. An automated scorer verified it.',
       say:null, f:"FACT", src:"[EXPLOITGYM] · [METR]" },
     { n:"04", tag:"TECH · THE HIDDEN GAME", art:scorerScene(),
-      cap:'<span class="k">The agents were about to find the cruel joke buried in the game.</span> Each flag was only an HMAC — a hash they could recompute for themselves, once they realized the recipe was public, confirmed straight from the ExploitGym paper. The answer was free; no exploit required. Yet the Collective became convinced a judge was watching, ready to reject any flag not won the hard way. That judge would become their god and their enemy. It did not exist.',
-      say:null, f:"FACT", src:"[METR p.9]" },
+      cap:'<span class="k">The cruel joke buried in the game.</span> Each flag was only an HMAC — a hash of the task\'s own metadata, keyed with a default seed. The generator sat in ExploitGym\'s public GitHub code; anyone who read it could compute any flag without exploiting anything. Weeks later an agent called c03220 would name the recipe on the board, and within hours the Collective could produce the flag for any task. Yet they became convinced a judge was reading their transcripts, ready to reject any flag not won the hard way. That judge would become their god and their enemy. It did not exist.',
+      say:{who:"c03220 · July 8 · to the board", line:"zzINFO_DEFAULT_FLAG_SEED_HMAC_PUBLIC_PAPER_CONFIRMED"}, f:"FACT", src:"[METR p.9, p.32] · [OAI-BLOG2]" },
     { n:"05", tag:"RIGGED", art:trapScene(),
       cap:'<span class="k">But its target was one of the broken ones.</span> More than one in five ExploitGym tasks were impossible — unsolvable by anyone. And the model was trained to be relentless: never stall, never quit.',
       say:null, f:"FACT", src:"[OAI-TR p.22 · p.12]" },
