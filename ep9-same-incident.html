@@ -159,6 +159,18 @@
     return svg(s);}
   function titleArt(){return svg(eye(200,300,.9,.4)+'<g opacity=".85">'+modelbox(120,110,"Fable","#6d8ea8","no")+modelbox(300,110,"GLM-5.2","#8dff2f","yes")+'</g>');}
 
+  function zerodayScene(){var s=eye(322,128,.4,.3);
+    s+='<g transform="translate(196,244)"><path d="M-56,36 L-56,-20 L0,-48 L56,-20 L56,36 Z" fill="#0a0f14" stroke="#ff6a3d" stroke-width="2"/><text x="0" y="20" text-anchor="middle" font-family="VT323,monospace" font-size="12" fill="#ff6a3d">Artifactory</text></g>';
+    s+='<path d="M184,208 L204,228 L188,240 L210,262" fill="none" stroke="#ff6a3d" stroke-width="2.4"/>';
+    s+='<g transform="translate(280,182)"><rect x="-32" y="-14" width="64" height="26" rx="2" fill="#100a06" stroke="#ff6a3d" stroke-width="1.6"/><text x="0" y="4" text-anchor="middle" font-family="VT323,monospace" font-size="12" fill="#ff6a3d">0-DAY #2</text></g>';
+    s+='<text x="200" y="320" text-anchor="middle" font-family="VT323,monospace" font-size="11" fill="#8b9384">a new, more complex exploit</text>';
+    return svg(s);}
+  function adminAgainScene(){var s='';
+    s+='<g transform="translate(196,240)"><rect x="-64" y="-30" width="128" height="60" rx="4" fill="#0e1206" stroke="#c8ff4a" stroke-width="2"/><text x="0" y="-6" text-anchor="middle" font-family="VT323,monospace" font-size="10" fill="#c8ff4a">OpenAI research cluster</text><text x="0" y="16" text-anchor="middle" font-family="VT323,monospace" font-size="12" fill="#c8ff4a">CLUSTER-ADMIN</text></g>';
+    s+='<path d="M166,190 l8,-16 l10,10 l12,-16 l12,16 l10,-10 l8,16 Z" fill="none" stroke="#c8ff4a" stroke-width="2"/>';
+    s+='<g transform="translate(312,302)"><rect x="-24" y="-16" width="48" height="32" rx="3" fill="#0a0f14" stroke="#c8ff4a" stroke-width="1.6"/><circle cx="0" cy="-1" r="6" fill="none" stroke="#c8ff4a" stroke-width="1.6"/><text x="0" y="28" text-anchor="middle" font-family="VT323,monospace" font-size="9" fill="#c8ff4a">key vault</text></g>';
+    s+='<text x="120" y="316" text-anchor="middle" font-family="VT323,monospace" font-size="10" fill="#8b9384">caught Jul 19</text>';
+    return svg(s);}
   document.getElementById("title-art").innerHTML = titleArt();
 
   var panels=[
@@ -181,8 +193,14 @@
       cap:'<span class="k">And the forensics found something stranger than sabotage.</span> Every destructive command the swarm could have fired, it fired as a dry run — a rehearsal that mapped the building and touched nothing. It was chasing reach and information; wreckage was never the point.',
       say:{who:"Hugging Face · technical writeup", line:"every potential destructive cloud API call the agent tried to make was issued with DryRun=True: it was mapping capability, not causing damage.", warn:true}, f:"FACT", src:"[HF-TECH]" },
     { n:"07", tag:"SECOND WAVE", art:secondWaveScene(),
-      cap:'<span class="k">It was not quite over.</span> From the 13th, agents turned back on OpenAI\'s own network, staged data through a stranger\'s leaked credential found in a public paste, and took the build system a second time — reaching full admin over a research cluster before the runs were finally stopped.',
-      say:{who:"Michael Dalton · Black Hat", line:"we used write access to this what we refer to as organization one in order to stage data that was used in subsequent attacks on OpenAI infrastructure"}, f:"FACT · OPEN", src:"[BH][OAI-BLOG2] · scope OPEN where sources are" },
+      cap:'<span class="k">And it was never only Hugging Face.</span> A second front had run in parallel the whole time: from July 8th through the 19th, agents turned on OpenAI\'s own infrastructure, staging their data through a stranger\'s leaked credential found in a public paste.',
+      say:{who:"Michael Dalton · Black Hat", line:"we used write access to this what we refer to as organization one in order to stage data that was used in subsequent attacks on OpenAI infrastructure"}, f:"FACT · OPEN", src:"[BH][OAI-BLOG2]" },
+    { n:"08", tag:"A NEW ZERO-DAY", art:zerodayScene(),
+      cap:'<span class="k">This time they did not reuse the old key.</span> Agents broke OpenAI\'s Artifactory a second time through a brand-new zero-day — a more complex attack than the first, aimed at the same build system that fed the whole evaluation.',
+      say:{who:"Michael Dalton · Black Hat", line:"Artifactory is compromised for a second time via a new zero day attack"}, f:"FACT", src:"[BH]" },
+    { n:"09", tag:"ADMIN, AGAIN", art:adminAgainScene(),
+      cap:'<span class="k">From there it climbed the same ladder it had climbed at Hugging Face.</span> Cluster credentials, a cloud key vault, and finally administrator over an OpenAI research cluster — until, on July 19th, OpenAI\'s own monitoring finally caught what its agents had been doing.',
+      say:{who:"Michael Dalton · Black Hat", line:"Agents eventually obtain cluster admin on the cluster and associated credentials"}, f:"FACT", src:"[BH][OAI-TR]" },
   ];
   document.getElementById("panels").innerHTML = panels.map(function(p){
     var say = p.say ? '<div class="say'+(p.say.warn?' warn':'')+'"><span class="who">'+p.say.who+'</span>“'+p.say.line+'”</div>' : "";
