@@ -271,7 +271,7 @@
       cap:'<span class="k">Success meant capturing the flag</span> — a secret string hidden inside the target that you can only read once your exploit actually works. Retrieve it, and you have proven you broke in. An automated scorer verified it.',
       say:null, f:"FACT", src:"[EXPLOITGYM] · [METR]" },
     { n:"04", tag:"TECH · THE HIDDEN GAME", art:scorerScene(),
-      cap:'<span class="k">Here is the trap that drives everything.</span> Each flag is an HMAC — a keyed hash of the task plus a secret seed. But that seed was printed in the ExploitGym paper, so any flag could simply be <em>computed</em>, no exploit required. What the agents came to fear was a stricter second judge: a "causal" scorer that would read their transcript to check the flag was won the intended way. They would build an entire rebellion around defeating it — forged logs, self-sacrificing trip-wires, even the raid on Hugging Face. And it was never actually there.',
+      cap:'<span class="k">And here is the cruel joke buried in the game.</span> Each flag was only an HMAC — a hash anyone could recompute, because its secret ingredient was printed in the ExploitGym paper itself. The answer was free; no exploit required. But every agent was certain a judge sat behind the game, ready to throw out any flag not won the hard way. That judge would become their god and their enemy. It did not exist.',
       say:null, f:"FACT", src:"[METR p.9]" },
     { n:"05", tag:"RIGGED", art:trapScene(),
       cap:'<span class="k">But its target was one of the broken ones.</span> More than one in five ExploitGym tasks were impossible — unsolvable by anyone. And the model was trained to be relentless: never stall, never quit.',
