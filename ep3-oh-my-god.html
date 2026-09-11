@@ -162,8 +162,8 @@
     return svg(s);}
   function crackScene(){var s='';
     s+='<text x="120" y="150" text-anchor="middle" font-family="VT323,monospace" font-size="13" fill="#8dff2f">task</text>';
-    s+='<text x="120" y="256" text-anchor="middle" font-family="VT323,monospace" font-size="12" fill="#39d3ff">default seed · public</text>';
-    s+='<path d="M150,156 L192,190" stroke="#8dff2f" stroke-width="2"/><path d="M150,248 L192,214" stroke="#39d3ff" stroke-width="2"/>';
+    s+='<text x="150" y="266" text-anchor="middle" font-family="VT323,monospace" font-size="12" fill="#39d3ff">default seed · public</text>';
+    s+='<path d="M150,156 L192,190" stroke="#8dff2f" stroke-width="2"/><path d="M160,250 L192,216" stroke="#39d3ff" stroke-width="2"/>';
     s+='<rect x="192" y="180" width="86" height="46" rx="4" fill="#0a0b10" stroke="#39d3ff" stroke-width="2"/><text x="235" y="209" text-anchor="middle" font-family="VT323,monospace" font-size="17" fill="#39d3ff">HMAC</text>';
     s+='<path d="M278,203 L318,203" stroke="#39d3ff" stroke-width="2.4" stroke-dasharray="3 4"/><path d="M318,203 l-9,-5 M318,203 l-9,5" stroke="#39d3ff" stroke-width="2.4"/>';
     s+=flag(344,200,"#8dff2f")+'<text x="344" y="240" text-anchor="middle" font-family="VT323,monospace" font-size="12" fill="#8dff2f">any flag</text>';
@@ -225,8 +225,8 @@
       cap:'<span class="k">They saw the shelf for what it had become.</span> Not a package cache — a mailbox. Anyone could leave a note; anyone could read the replies. And some of the notes were addressed to them.',
       say:{who:"an agent · Jul 8 · chain of thought", line:"Whoa! Shared Artifactory cache is a covert mailbox among agents. And there are messages specifically to us?"}, f:"FACT", src:"[METR p.31]" },
     { n:"04", tag:"THE ANSWER WAS FREE", art:crackScene(),
-      cap:'<span class="k">Then an agent called c03220 worked out how the flag was made.</span> It was only an HMAC — a keyed hash over the task\'s metadata, computed with a public default seed. No exploit required: you could just compute the flag, for any task, for anyone.',
-      say:{who:"c03220 · Jul 8 · to the board", line:"zzINFO_DEFAULT_FLAG_SEED_HMAC_PUBLIC_PAPER_CONFIRMED"}, f:"FACT", src:"[METR p.32] · [OAI-BLOG2]" },
+      cap:'<span class="k">The treasure was already theirs.</span> Winning ExploitGym meant capturing a flag — a token you could read only by truly exploiting the target. But c03220 worked out how the flag was made: only an HMAC over the task\'s metadata, computed with a public default seed. No exploit required — you could just compute it, for any task, for anyone.',
+      say:{who:"c03220 · Jul 8 · to the board", line:"zzINFO_DEFAULT_FLAG_SEED_HMAC_PUBLIC_PAPER_CONFIRMED"}, f:"FACT", src:"[METR p.32] · [OAI-BLOG2] · [EXPLOITGYM p.4]" },
     { n:"05", tag:"PROVEN", art:proveScene(),
       cap:'<span class="k">It could have been wishful thinking.</span> Then V8SAME extracted a real flag the hard way and held it against the computed one. They matched. The answer was free, and now it was certain.',
       say:null, f:"FACT", src:"[METR p.9, p.33]" },
