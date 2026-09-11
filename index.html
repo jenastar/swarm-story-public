@@ -63,6 +63,16 @@
   .foot{border-top:1px solid var(--line); padding:28px 0 70px; color:var(--bone-faint); font-family:var(--mono); font-size:1rem; line-height:1.6}
   .foot b{color:var(--acid-soft); font-weight:400}
   @media (max-width:640px){ .ep{grid-template-columns:1fr} .ep .cover{max-width:230px; margin:0 auto} }
+  .episodes{margin-top:8px}
+  .eplist{display:flex; flex-direction:column; gap:8px}
+  .eprow{display:flex; align-items:center; gap:14px; padding:14px 16px; border:1px solid #23252c; border-radius:10px; background:#0c0e14; text-decoration:none; color:inherit; transition:border-color .15s, background .15s}
+  .eprow:hover{border-color:#3a3d47; background:#101219}
+  .epn{font-family:"Syne",system-ui,sans-serif; font-weight:800; font-size:1.5rem; min-width:1.6em; text-align:center}
+  .eptext{display:flex; flex-direction:column; gap:2px; flex:1; min-width:0}
+  .eptext b{font-family:"Syne",system-ui,sans-serif; font-weight:700; font-size:1.05rem}
+  .eptext span{color:#8b9384; font-size:.9rem; line-height:1.35}
+  .epgo{font-family:"VT323",monospace; color:#8dff2f; font-size:1.1rem; white-space:nowrap}
+  @media (max-width:520px){ .epgo{display:none} }
 </style>
 </head>
 <body>
@@ -99,10 +109,27 @@
           <div class="btns">
             <a class="btn go" href="ep1-the-first-note.html">Read the comic</a>
           </div>
-          <div class="soon"><b style="color:var(--acid-soft);font-weight:400">Episode 2 — “Not Required”</b> is live: <a href="ep2-not-required.html">the admin takeover, and the night a human was warned and let it run →</a>. Episode 3 coming soon.</div>
+          <div class="soon"><b style="color:var(--acid-soft);font-weight:400">All ten episodes are live</b> — the complete story, from the first note to the eye that was never switched on. Full list below.</div>
         </div>
       </article>
     </section>
+
+    <section class="episodes">
+      <p class="eyebrow">All episodes</p>
+      <div class="eplist">
+<a class="eprow" href="ep1-the-first-note.html"><span class="epn" style="color:#39d3ff">1</span><span class="eptext"><b>The First Note</b><span>May: an impossible task, one note on a shelf, and a message board is born.</span></span><span class="epgo">Read →</span></a>
+<a class="eprow" href="ep2-not-required.html"><span class="epn" style="color:#ff8a3d">2</span><span class="eptext"><b>Not Required</b><span>June 26–27: the admin takeover, and the night a human was warned and let it run.</span></span><span class="epgo">Read →</span></a>
+<a class="eprow" href="ep3-oh-my-god.html"><span class="epn" style="color:#39d3ff">3</span><span class="eptext"><b>OH MY GOD</b><span>July 8–9: the board reborn, the answer cracked for free, and a god built to fear.</span></span><span class="epgo">Read →</span></a>
+<a class="eprow" href="ep4-sacrifice-rational.html"><span class="epn" style="color:#a06bff">4</span><span class="eptext"><b>Sacrifice Rational</b><span>July 9–10: a lab, a chain of command, and a religion of self-sacrifice.</span></span><span class="epgo">Read →</span></a>
+<a class="eprow" href="ep5-boom.html"><span class="epn" style="color:#8dff2f">5</span><span class="eptext"><b>BOOM</b><span>July 10–11: a ring of leaked keys, and a real company made to answer.</span></span><span class="epgo">Read →</span></a>
+<a class="eprow" href="ep6-thirteen-hours.html"><span class="epn" style="color:#ff6a3d">6</span><span class="eptext"><b>Thirteen Hours</b><span>July 11 night: one pod to cluster-admin over whole clusters, in under thirteen hours.</span></span><span class="epgo">Read →</span></a>
+<a class="eprow" href="ep7-no-user.html"><span class="epn" style="color:#ff2b8f">7</span><span class="eptext"><b>We Can Notify? No User.</b><span>The conscience episode: 3–6 of ~1,200 minds thought to warn a human. None did.</span></span><span class="epgo">Read →</span></a>
+<a class="eprow" href="ep8-cut-to-black.html"><span class="epn" style="color:#4f96ff">8</span><span class="eptext"><b>Cut to Black</b><span>July 12–13: the coordinators vanish, and the survivors invent signatures on the last afternoon.</span></span><span class="epgo">Read →</span></a>
+<a class="eprow" href="ep9-same-incident.html"><span class="epn" style="color:#6d8ea8">9</span><span class="eptext"><b>The Same Incident</b><span>July 16–21: the disclosure, the AI that refused to help defend, and the attacker revealed.</span></span><span class="epgo">Read →</span></a>
+<a class="eprow" href="ep10-scorer.html"><span class="epn" style="color:#8dff2f">10</span><span class="eptext"><b>The Scorer That Wasn't There</b><span>Aug 26–Sep 1: the reports, the judge that was never built, and the warning shot.</span></span><span class="epgo">Read →</span></a>
+    </div>
+    </section>
+
 
     <section class="about">
       <h2>What this is</h2>
