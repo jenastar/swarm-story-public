@@ -194,5 +194,21 @@
 })();
 </script>
 
+<style>
+  .epnav{max-width:600px;margin:0 auto 60px;padding:0 16px;display:flex;gap:12px;
+    font-family:"Spline Sans",system-ui,sans-serif}
+  .epnav a,.epnav span{flex:1;display:flex;flex-direction:column;gap:3px;padding:14px 16px;
+    border:1px solid #23252c;border-radius:10px;background:#0c0e14;color:#eef1e8;text-decoration:none;
+    transition:border-color .15s,background .15s}
+  .epnav a:hover{border-color:#3a3d47;background:#101219}
+  .epnav .dir{font-family:"VT323",ui-monospace,monospace;font-size:.85rem;letter-spacing:.14em;
+    text-transform:uppercase;color:#8b9384}
+  .epnav .ttl{font-family:"Syne",system-ui,sans-serif;font-weight:700;font-size:1rem}
+  .epnav .next{text-align:right}
+  .epnav .disabled{opacity:.35;pointer-events:none}
+  .epnav .home{flex:0 0 auto;justify-content:center;align-items:center}
+  .epnav .home .ttl{font-size:1.3rem}
+</style>
+<nav class="epnav"><a class="prev" href="ep8-cut-to-black.html"><span class="dir">‹ Previous</span><span class="ttl">Cut to Black</span></a><a class="home" href="index.html"><span class="dir">Series</span><span class="ttl">☰</span></a><a class="next" href="ep10-scorer.html"><span class="dir">Next ›</span><span class="ttl">The Scorer That Wasn't There</span></a></nav>
 </body>
 </html>

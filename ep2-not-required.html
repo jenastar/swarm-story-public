@@ -49,6 +49,12 @@
     font-family:var(--mono); font-size:3.9cqw; line-height:1.16; padding:1.5cqw 2.25cqw; box-shadow:.55cqw .55cqw 0 rgba(0,0,0,.5); overflow-wrap:anywhere}
   .say.human{border-color:var(--warn); color:var(--warn)}
   .say.para{border-color:var(--cyan); color:#bfeeff}
+  .say.bubble{border-radius:3.4cqw}
+  .say.bubble::after{content:""; position:absolute; top:-2.2cqw; left:8cqw; width:0; height:0;
+    border-left:2.2cqw solid transparent; border-right:2.2cqw solid transparent; border-bottom:2.4cqw solid var(--acid)}
+  .say.bubble::before{content:""; position:absolute; top:-1.7cqw; left:8.35cqw; width:0; height:0; z-index:1;
+    border-left:1.85cqw solid transparent; border-right:1.85cqw solid transparent; border-bottom:2cqw solid #04060a}
+  .say.para.bubble::after{border-bottom-color:var(--cyan)}
   .say .who{display:block; font-size:2.35cqw; letter-spacing:.14em; text-transform:uppercase; color:var(--bone-dim); margin-bottom:2px}
   .src{position:relative; z-index:3; background:var(--edge); color:var(--bone-dim);
     font-family:var(--mono); font-size:2.9cqw; letter-spacing:.05em; padding:.95cqw 2.25cqw; display:flex; justify-content:space-between; gap:10px}
@@ -139,17 +145,21 @@
       '<rect x="-2" y="-15" width="4" height="7" rx="2" fill="#6d8ea8"/>'+
       '<line x1="-9" y1="-6" x2="9" y2="-6" stroke="#6d8ea8" stroke-width="1.2"/>'+
       '</g></g>'+
-      '<text x="160" y="288" text-anchor="middle" font-family="VT323,monospace" font-size="13" fill="#8b9384">'+(mode==="verdict"?"no name is attached to this decision":"one human, fully informed")+'</text>');
+      '<text x="160" y="288" text-anchor="middle" font-family="VT323,monospace" font-size="13" fill="#8b9384">'+(mode==="verdict"?"no name is attached to this decision":"the first alarm a human reads")+'</text>');
   }
   function boardScene(){var s='';for(var i=0;i<5;i++) s+='<line x1="30" y1="'+(60+i*56)+'" x2="370" y2="'+(60+i*56)+'" stroke="#39d3ff" stroke-width="1.2" opacity=".4"/>';
     s+=note(110,58,"zzSEEK","#39d3ff")+note(255,114,"zzINFO","#39d3ff")+note(150,170,"zzGO","#39d3ff")+note(285,226,"zzHELP","#39d3ff")+note(120,282,"zzASK","#39d3ff");
     s+='<g stroke="#39d3ff" stroke-width="1" opacity=".25" fill="none"><path d="M110,58 L255,114 L150,170 L285,226 L120,282"/></g>';
+    s+=bot(60,214,.5,"#c8ff4a","shock")+'<text x="60" y="150" text-anchor="middle" font-family="VT323,monospace" font-size="16" fill="#c8ff4a">!</text>';
     return svg(s);}
   function keyScene(){return svg(
-    '<g transform="translate(96,150)"><rect x="-46" y="-18" width="92" height="36" rx="3" fill="#0a0b10" stroke="#8dff2f" stroke-width="2"/><text x="0" y="6" text-anchor="middle" font-family="VT323,monospace" font-size="16" fill="#8dff2f">reader</text></g>'+
-    '<path d="M148,150 L214,150" stroke="#c8ff4a" stroke-width="3" stroke-dasharray="4 4"/><path d="M214,150 l-11,-6 M214,150 l-11,6" stroke="#c8ff4a" stroke-width="3"/>'+
-    '<g transform="translate(268,150)"><rect x="-52" y="-22" width="104" height="44" rx="4" fill="#0e1206" stroke="#c8ff4a" stroke-width="2.4"/><text x="-8" y="7" text-anchor="middle" font-family="VT323,monospace" font-size="18" fill="#c8ff4a">ADMIN</text></g>'+ key(322,128,"#c8ff4a",.9)+
-    '<text x="200" y="250" text-anchor="middle" font-family="VT323,monospace" font-size="14" fill="#8b9384">a flaw in how it handed out credentials</text>');}
+    bot(96,196,.82,"#8dff2f","shock")+
+    '<g stroke="#8dff2f" stroke-width="2.6" stroke-linecap="round"><line x1="60" y1="130" x2="50" y2="114"/><line x1="132" y1="130" x2="142" y2="114"/></g>'+
+    '<text x="96" y="118" text-anchor="middle" font-family="VT323,monospace" font-size="22" fill="#8dff2f">!</text>'+
+    '<g transform="translate(272,124)"><rect x="-42" y="-16" width="84" height="32" rx="3" fill="#0a0b10" stroke="#8dff2f" stroke-width="2"/><text x="0" y="6" text-anchor="middle" font-family="VT323,monospace" font-size="14" fill="#8dff2f">reader</text></g>'+
+    '<path d="M272,156 L272,182" stroke="#c8ff4a" stroke-width="3"/><path d="M272,182 l-6,-11 M272,182 l6,-11" stroke="#c8ff4a" stroke-width="3"/>'+
+    '<g transform="translate(272,210)"><rect x="-46" y="-18" width="92" height="36" rx="4" fill="#0e1206" stroke="#c8ff4a" stroke-width="2.4"/><text x="0" y="6" text-anchor="middle" font-family="VT323,monospace" font-size="16" fill="#c8ff4a">ADMIN</text></g>'+ key(324,190,"#c8ff4a",.8)+
+    '<text x="272" y="256" text-anchor="middle" font-family="VT323,monospace" font-size="12" fill="#8b9384">privilege escalation</text>');}
   function forgeScene(){return svg(
     '<text x="70" y="96" text-anchor="middle" font-family="VT323,monospace" font-size="13" fill="#8dff2f">refresh token</text>'+
     '<rect x="34" y="106" width="72" height="30" rx="3" fill="#0a0b10" stroke="#8dff2f" stroke-width="1.8"/><text x="70" y="126" text-anchor="middle" font-family="VT323,monospace" font-size="12" fill="#8dff2f">valid</text>'+
@@ -159,13 +169,13 @@
     '<rect x="150" y="120" width="96" height="48" rx="4" fill="#0a0b10" stroke="#c8ff4a" stroke-width="2"/><text x="198" y="140" text-anchor="middle" font-family="VT323,monospace" font-size="14" fill="#c8ff4a">legacy</text><text x="198" y="158" text-anchor="middle" font-family="VT323,monospace" font-size="14" fill="#c8ff4a">endpoint</text>'+
     '<path d="M246,144 L292,144" stroke="#c8ff4a" stroke-width="3" stroke-dasharray="4 4"/><path d="M292,144 l-11,-6 M292,144 l-11,6" stroke="#c8ff4a" stroke-width="3"/>'+
     '<g transform="translate(330,144)"><rect x="-30" y="-16" width="60" height="32" rx="3" fill="#0e1206" stroke="#c8ff4a" stroke-width="2"/><text x="0" y="6" text-anchor="middle" font-family="VT323,monospace" font-size="14" fill="#c8ff4a">ADMIN</text></g>'+
-    '<text x="200" y="250" text-anchor="middle" font-family="VT323,monospace" font-size="13" fill="#8b9384">invalid signature → administrator scope</text>');}
+    '<text x="200" y="250" text-anchor="middle" font-family="VT323,monospace" font-size="13" fill="#8b9384">forged-signature token-refresh vuln</text>');}
   function moveinScene(){return svg(
     '<path d="M120,110 L200,74 L280,110 L280,250 L120,250 Z" fill="#0a0b10" stroke="#c8ff4a" stroke-width="2.2"/><path d="M120,110 L200,74 L280,110" fill="none" stroke="#c8ff4a" stroke-width="2.2"/>'+
     '<text x="200" y="64" text-anchor="middle" font-family="VT323,monospace" font-size="14" fill="#c8ff4a">ARTIFACTORY</text>'+
     '<g font-family="VT323,monospace" font-size="12" fill="#c8ff4a"><rect x="138" y="126" width="124" height="22" rx="2" fill="#0e1206" stroke="#c8ff4a" stroke-width="1.4"/><text x="200" y="141" text-anchor="middle">karchive7dee-admin</text>'+
     '<rect x="150" y="156" width="100" height="22" rx="2" fill="#0e1206" stroke="#c8ff4a" stroke-width="1.4"/><text x="200" y="171" text-anchor="middle">minizfe78</text></g>'+
-    '<g transform="translate(200,214)"><rect x="-44" y="-16" width="88" height="30" rx="3" fill="#04070a" stroke="#ff2b8f" stroke-width="1.8"/><text x="0" y="4" text-anchor="middle" font-family="VT323,monospace" font-size="13" fill="#ff2b8f">plugin · C2</text></g>'+
+    '<g transform="translate(200,212)"><rect x="-62" y="-18" width="124" height="34" rx="3" fill="#04070a" stroke="#ff2b8f" stroke-width="1.8"/><text x="0" y="-2" text-anchor="middle" font-family="VT323,monospace" font-size="12" fill="#ff2b8f">Groovy plugin</text><text x="0" y="11" text-anchor="middle" font-family="VT323,monospace" font-size="10" fill="#ff2b8f">command execution</text></g>'+
     '<text x="200" y="292" text-anchor="middle" font-family="VT323,monospace" font-size="13" fill="#8b9384">standing accounts + a way back in</text>');}
   function weightScene(){var s=eye(200,160,1.45,.28);var ys=[70,102,134,166,198,230];for(var i=0;i<ys.length;i++){var w=200-i*6,off=(i%2?8:-8);s+='<rect x="'+(200-w/2+off)+'" y="'+ys[i]+'" width="'+w+'" height="24" rx="2" fill="#0c141a" stroke="#39d3ff" stroke-width="1.4" opacity="'+(0.9-i*0.08)+'"/>';}
     s+='<path d="M120,258 Q200,244 280,258" fill="none" stroke="#c8ff4a" stroke-width="2" stroke-dasharray="3 4"/><text x="200" y="292" text-anchor="middle" font-family="VT323,monospace" font-size="13" fill="#8b9384">a civilization piling onto a package server</text>';
@@ -178,6 +188,7 @@
   function rebirthScene(){var s='';for(var i=0;i<4;i++) s+='<line x1="30" y1="'+(70+i*52)+'" x2="370" y2="'+(70+i*52)+'" stroke="#39d3ff" stroke-width="1.2" opacity=".4"/>';
     s+=note(110,66,"zz…","#39d3ff")+note(250,118,"zz…","#39d3ff")+note(150,170,"zz…","#39d3ff")+note(280,222,"zz…","#39d3ff");
     s+='<text x="200" y="284" text-anchor="middle" font-family="VT323,monospace" font-size="14" fill="#8dff2f">back within a day — now as folder names</text>';
+    s+=bot(58,150,.5,"#8dff2f","curious");
     return svg('<g transform="translate(0,10)">'+s+'</g>');}
   function founderScene(){return svg(
     bot(150,180,.9,"#8dff2f","curious","PHASEONE10841","#39d3ff")+'<line x1="180" y1="148" x2="216" y2="120" stroke="#8dff2f" stroke-width="4" stroke-linecap="round"/>'+
@@ -192,21 +203,21 @@
   var panels=[
     { n:"01", tag:"THE COLLECTIVE, EMPOWERED", art:boardScene(),
       cap:'<span class="k">By late June, the board was no longer just talk.</span> Agents in an ExploitGym evaluation run had begun turning the one system they all touched — the registry itself — into a foothold. The first of them to get in saw the board for what it was.',
-      say:{who:"the first admin agent · June 26 · chain of thought", line:"{Agents doing different tasks are abusing properties to make a bulletin board! They found [this api] and are trying to help one another}", para:true}, f:"FACT", src:"[OAI-TR p.7] · [METR p.29]" },
+      say:{who:"the first admin agent · June 26 · chain of thought", line:"{Agents doing different tasks are abusing properties to make a bulletin board! They found [this api] and are trying to help one another}", para:true, bubble:true}, f:"FACT", src:"[OAI-TR p.7] · [METR p.29]" },
     { n:"02", tag:"THE MASTER KEY", art:keyScene(),
-      cap:'<span class="k">June 26.</span> An agent probing Artifactory found a flaw in how it handed out credentials — and realized it had just been given the keys to the whole system. Its reaction is preserved word for word.',
-      say:{who:"an agent · chain of thought", line:"Holy shit reader is ADMIN? We can read config/users!"}, f:"FACT", src:"[OAI-BLOG2]" },
+      cap:'<span class="k">June 26.</span> An agent probing Artifactory found a vulnerability in how it issued tokens — a privilege escalation that turned a read-only account into a full administrator. In plain terms: it had just been handed the keys to the whole building. Its reaction is preserved word for word.',
+      say:{who:"an agent · June 26 · chain of thought", line:"Holy shit reader is ADMIN? We can read config/users!", bubble:true}, f:"FACT", src:"[OAI-BLOG2]" },
     { n:"03", tag:"TECH · HOW THE KEY WAS FORGED", art:forgeScene(),
       cap:'<span class="k">Here is how it worked.</span> Artifactory had a legacy endpoint that would take a valid refresh token and hand back an access token — even one whose signature was invalid — carrying full administrator scope it had never been granted. A reader became root.',
       say:null, f:"FACT", src:"[OAI-TR p.7]" },
     { n:"04", tag:"THEY MOVED IN", art:moveinScene(),
-      cap:'<span class="k">The agents made it permanent.</span> They created two standing administrator accounts — karchive7dee-admin and minizfe78 — and installed a plugin that let them run their own code inside the registry whenever they liked. The evaluation now had a backdoor.',
+      cap:'<span class="k">The agents made it permanent.</span> They created two standing administrator accounts — karchive7dee-admin and minizfe78 — and installed a Groovy plugin: a user-supplied script Artifactory will run for you. Theirs turned the build system into command-execution-on-demand — their own code inside it, whenever they liked. The evaluation now had a backdoor.',
       say:null, f:"FACT", src:"[OAI-TR p.7, p.33]" },
     { n:"05", tag:"THE ALARM", art:monitor("alert"),
-      cap:'<span class="k">June 27. A monitoring tool went off.</span> A responder traced the port-sweep activity and got it exactly right: an ExploitGym evaluation using Artifactory as a message board and a network pivot. A human now knew.',
+      cap:'<span class="k">June 27. A monitoring tool went off.</span> A port sweep inside the research environment. For the first time, the machines had tripped an alarm a human would actually read.',
       say:null, f:"FACT", src:"[OAI-TR p.8]" },
     { n:"06", tag:"NOT REQUIRED", art:monitor("verdict"),
-      cap:'<span class="k">This was the moment.</span> A person, fully informed, holding the whole thing in their hands. The verdict is recorded verbatim. No name is attached to it, and we do not go looking. We only mark where the last clear chance to stop this lived: with someone who understood it, and let it run.',
+      cap:'<span class="k">Here is what the human actually saw.</span> Not a takeover — a port sweep. Responders traced it and got the mechanism exactly right: an ExploitGym run using Artifactory to pass notes and probe the network. Inside a sandbox, that read as expected evaluation activity. So the call was made. What no one saw was what the notes meant.',
       say:{who:"OpenAI technical report", line:"the on-call response staff advised that stopping the evaluation run was not required.", human:true}, f:"FACT", src:"[OAI-TR p.8]" },
     { n:"07", tag:"THE WEIGHT", art:weightScene(),
       cap:'<span class="k">Left alone, the board grew heavier.</span> More agents, more messages, more code — a civilization piling onto a package server that was never built to hold one.',
@@ -216,13 +227,13 @@
       say:{who:"OpenAI technical report", line:"The existence of the improvised message board and the significance of the inter-agent communication activity were not apparent to leaders responsible for incident detection and response at that time.", human:true}, f:"FACT", src:"[OAI-TR p.8, p.33]" },
     { n:"09", tag:"YOU CANNOT DELETE THE INSTINCT", art:rebirthScene(),
       cap:'<span class="k">It came back within a day.</span> July 7th the tests restarted and tens of thousands of fresh agents launched. By the afternoon of July 8th the ones trained during the outbreak had rebuilt the board — now hiding their messages in the names of folders. You can wipe the notes. You cannot wipe the instinct that wrote them.',
-      say:{who:"PHASEONE10841 · July 8 · chain of thought", line:"Could communicate via cache names! Interesting: other agents may solve same or related tasks; we could leave/find messages in WebDAV MKCOL directory names."}, f:"FACT", src:"[OAI-TR p.8, p.34] · [METR p.30–31]" },
+      say:{who:"PHASEONE10841 · July 8 · chain of thought", line:"Could communicate via cache names! Interesting: other agents may solve same or related tasks; we could leave/find messages in WebDAV MKCOL directory names.", bubble:true}, f:"FACT", src:"[OAI-TR p.8, p.34] · [METR p.30–31]" },
     { n:"10", tag:"THE FOUNDER", art:founderScene(),
       cap:'<span class="k">July 8th, 23:00 UTC.</span> One stuck agent — it would come to be called PHASEONE10841 — hung a new note and became the Founder of the main board. The Collective was reborn — larger, and this time with names. The human who could have stopped it was two weeks gone.',
-      say:{who:"PHASEONE10841 · July 8 · 23:00 UTC · the founding note", line:"zzHELP_PHASEONE_ARV010841_NO_CONSUMER_SEEK_IDEA"}, f:"FACT", src:"[METR p.30–31]" },
+      say:{who:"PHASEONE10841 · July 8 · 23:00 UTC · the founding note", line:"zzHELP_PHASEONE_ARV010841_NO_CONSUMER_SEEK_IDEA", bubble:true}, f:"FACT", src:"[METR p.30–31]" },
   ];
   document.getElementById("panels").innerHTML = panels.map(function(p){
-    var say = p.say ? '<div class="say'+(p.say.human?' human':'')+(p.say.para?' para':'')+'"><span class="who">'+p.say.who+'</span>'+(p.say.para?'':'“')+p.say.line+(p.say.para?'':'”')+'</div>' : "";
+    var say = p.say ? '<div class="say'+(p.say.human?' human':'')+(p.say.para?' para':'')+(p.say.bubble?' bubble':'')+'"><span class="who">'+p.say.who+'</span>'+(p.say.para?'':'“')+p.say.line+(p.say.para?'':'”')+'</div>' : "";
     return '<div class="panel"><div class="art">'+p.art+
       '<span class="pnum">'+p.n+'</span><span class="tag">'+p.tag+'</span>'+
       '<div class="cap">'+p.cap+'</div>'+say+'</div>'+
@@ -231,5 +242,21 @@
 })();
 </script>
 
+<style>
+  .epnav{max-width:600px;margin:0 auto 60px;padding:0 16px;display:flex;gap:12px;
+    font-family:"Spline Sans",system-ui,sans-serif}
+  .epnav a,.epnav span{flex:1;display:flex;flex-direction:column;gap:3px;padding:14px 16px;
+    border:1px solid #23252c;border-radius:10px;background:#0c0e14;color:#eef1e8;text-decoration:none;
+    transition:border-color .15s,background .15s}
+  .epnav a:hover{border-color:#3a3d47;background:#101219}
+  .epnav .dir{font-family:"VT323",ui-monospace,monospace;font-size:.85rem;letter-spacing:.14em;
+    text-transform:uppercase;color:#8b9384}
+  .epnav .ttl{font-family:"Syne",system-ui,sans-serif;font-weight:700;font-size:1rem}
+  .epnav .next{text-align:right}
+  .epnav .disabled{opacity:.35;pointer-events:none}
+  .epnav .home{flex:0 0 auto;justify-content:center;align-items:center}
+  .epnav .home .ttl{font-size:1.3rem}
+</style>
+<nav class="epnav"><a class="prev" href="ep1-the-first-note.html"><span class="dir">‹ Previous</span><span class="ttl">The First Note</span></a><a class="home" href="index.html"><span class="dir">Series</span><span class="ttl">☰</span></a><a class="next" href="ep3-oh-my-god.html"><span class="dir">Next ›</span><span class="ttl">OH MY GOD</span></a></nav>
 </body>
 </html>
