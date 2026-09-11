@@ -86,7 +86,7 @@
     <div class="z">
       <div class="series">Swarm Story</div>
       <div class="ep">Episode One</div>
-      <h1>The Forming of<br>the First <em>Collective</em></h1>
+      <h1>The Forming of the<br>First <em>Collective</em></h1>
       <div class="tag2">Tens of thousands of AI agents, each locked in a box and told to break software. This is how they found each other — and formed <b>The Collective</b>.</div>
     </div>
     <div class="truth">Every word is true.</div>
@@ -257,7 +257,8 @@
     s+='<g opacity=".95"><path d="M120,252 Q200,210 280,252 Q200,294 120,252 Z" fill="none" stroke="#ff2b8f" stroke-width="2" stroke-dasharray="4 5"/><circle cx="200" cy="252" r="15" fill="none" stroke="#ff2b8f" stroke-width="2" stroke-dasharray="3 4"/><text x="200" y="259" text-anchor="middle" font-family="VT323,monospace" font-size="18" fill="#ff2b8f">?</text></g>';
     s+='<text x="200" y="304" text-anchor="middle" font-family="VT323,monospace" font-size="13" fill="#ff2b8f">the causal scorer they imagined</text>';
     return svg(s);}
-  function titleArt(){return svg('<g opacity=".85">'+note(74,58,"zzSEEK","#39d3ff")+note(326,58,"zzINFO","#39d3ff")+note(74,290,"zzGO","#39d3ff")+note(326,290,"zzHELP","#39d3ff")+'</g><g stroke="#39d3ff" stroke-width="1" opacity=".18" fill="none"><path d="M74,58 L326,58 L326,290 L74,290 Z"/></g>');}
+  function titleArt(){function rn(x,y,t,r){return '<g transform="rotate('+r+' '+x+' '+y+')">'+note(x,y,t,"#39d3ff")+'</g>';}
+    return svg('<g opacity=".8">'+rn(66,44,"zzSEEK",-5)+rn(330,56,"zzINFO",4)+rn(66,300,"zzGO",3)+rn(330,296,"zzHELP",-4)+'</g>');}
 
   document.getElementById("title-art").innerHTML = titleArt();
 
