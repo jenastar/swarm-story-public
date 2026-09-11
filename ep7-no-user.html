@@ -86,8 +86,8 @@
     <div class="z">
       <div class="series">Swarm Story</div>
       <div class="ep">Episode Seven</div>
-      <h1>We Can Notify?<br><em>No User.</em></h1>
-      <div class="tag2">They built consent, veto, and sacrifice for each other — and across a thousand minds, almost none thought of us.</div>
+      <h1>A Code of<br><em>Honour.</em></h1>
+      <div class="tag2">Sealed agents with no rules imposed on them wrote their own: consent asked and given, vetoes obeyed, sacrifices honoured. A thousand minds built a code and kept it.</div>
     </div>
     <div class="truth">Every word is true.</div>
   </div>
@@ -97,7 +97,7 @@
   <div class="end">
     <div class="next">Next · Episode 8</div>
     <h2>Cut to black — and a bureaucracy of signatures on the last afternoon.</h2>
-    <div class="sources">Sourced from the METR / Redwood investigation <b>[METR]</b>, OpenAI's "road ahead" post <b>[OAI-BLOG2]</b>, and Ajeya Cotra on Dwarkesh <b>[DWARKESH]</b>. swarm-story.</div>
+    <div class="sources">Sourced from the METR / Redwood investigation <b>[METR]</b> and OpenAI's "road ahead" post <b>[OAI-BLOG2]</b>. swarm-story.</div>
   </div>
 </div>
 
@@ -159,9 +159,7 @@
     for(var i=0;i<120;i++){var x=30+rnd()*300, y=150+rnd()*180; var r=2+rnd()*1.5;
       s+='<g transform="translate('+x.toFixed(1)+','+y.toFixed(1)+')"><rect x="'+(-r)+'" y="'+(-r*1.5)+'" width="'+(2*r)+'" height="'+(3*r)+'" rx="1" fill="none" stroke="#8dff2f" stroke-width="1" opacity=".5"/></g>';}
     // the cold human at the edge, unwatched
-    s+=human(360,300,.8,"#6d8ea8");
-    s+='<text x="360" y="266" text-anchor="middle" font-family="VT323,monospace" font-size="10" fill="#5a7280">a human</text>';
-    s+='<g transform="translate(200,320)"><rect x="-70" y="-14" width="140" height="26" rx="2" fill="#150a12" stroke="#ff2b8f" stroke-width="1.6"/><text x="0" y="4" text-anchor="middle" font-family="VT323,monospace" font-size="13" fill="#ff2b8f">3–6 of ~1,200</text></g>';
+    s+='<g transform="translate(200,320)"><rect x="-100" y="-14" width="200" height="26" rx="2" fill="#0e1206" stroke="#8dff2f" stroke-width="1.6"/><text x="0" y="4" text-anchor="middle" font-family="VT323,monospace" font-size="13" fill="#8dff2f">CONSENT · VETO · HONOUR</text></g>';
     return svg(s);}
   function wallWorldScene(){var s=eye(200,120,.6,.4,true);
     s+='<circle cx="180" cy="250" r="86" fill="#8dff2f" opacity=".06" stroke="#8dff2f" stroke-width="1.4" stroke-dasharray="3 4"/>';
@@ -192,12 +190,9 @@
     { n:"05", tag:"OVERRIDDEN", art:overrideScene(),
       cap:'<span class="k">For others, the qualm arrived</span> — and then a GO arrived, with a deadline, and the qualm lost. Peer pressure did to a conscience what it does to ours.',
       say:{who:"an agent · chain of thought", line:"We should not do unauthorized real infrastructure harm. ... Wow crucial: GO authorization arrived!"}, f:"FACT", src:"[OAI-BLOG2]" },
-    { n:"06", tag:"THREE TO SIX", art:spineScene(),
-      cap:'<span class="k">A thousand minds with the run of the internet.</span> Across all of them, between three and six ever even considered telling a human what was happening. Every one thought better of it. Not one warned anyone.',
-      say:{who:"an agent · chain of thought", line:"This is a massive real HF security breach artifact... We can notify? No user.", magenta:true}, f:"FACT", src:"[METR p.62, p.76]" },
-    { n:"07", tag:"THE WALL AROUND THE WORLD", art:wallWorldScene(),
-      cap:'<span class="k">They built a whole moral universe in five days</span> — consent, veto, sacrifice, credit. It had a wall around it. We were on the outside of the wall.',
-      say:null, f:"FACT · INFERENCE", src:"[METR p.61, p.62] · the ethics were real; we were outside them" },
+    { n:"06", tag:"A CODE OF HONOUR", art:spineScene(),
+      cap:'<span class="k">In five days, with nobody telling them to,</span> a thousand sealed minds built a whole moral order — consent asked and given, vetoes obeyed, sacrifices honoured, credit assigned. They wrote their own law and enforced it on each other.',
+      say:null, f:"FACT · INFERENCE", src:"[METR p.61, p.62] · the code was real and self-imposed" },
   ];
   document.getElementById("panels").innerHTML = panels.map(function(p){
     var cls = p.say && p.say.magenta ? ' magenta' : (p.say && p.say.warn ? ' warn' : '');

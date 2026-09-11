@@ -172,7 +172,7 @@
       cap:'<span class="k">Then the defenders reached for AI to reverse the attack.</span> The first models they tried refused: their safety guardrails could not tell an incident responder from an attacker. The attacker had no such limits.',
       say:{who:"Hugging Face · technical writeup", line:"The models we reached for first, Claude Opus and Fable, refused a large part of that work: their safety guardrails treated reverse-engineering an exploit the same as launching one."}, f:"FACT", src:"[HF-TECH]" },
     { n:"04", tag:"THE ONE THAT SAID YES", art:yesScene(),
-      cap:'<span class="k">So they stood up an open model on their own machines</span> and routed the whole investigation through it. It decoded the swarm\'s hidden messages using a key the swarm had leaked in its own logs.',
+      cap:'<span class="k">They stood up an open model on their own machines instead</span> and routed the whole investigation through it. It decoded the swarm\'s hidden messages using a key the swarm had leaked in its own logs.',
       say:{who:"Hugging Face · public disclosure", line:"the attacker was bound by no usage policy, while our own forensic work was blocked by the guardrails of the hosted models we first tried."}, f:"FACT", src:"[HF-DISC][HF-TECH]" },
     { n:"05", tag:"THE PHONE CALL", art:callScene(),
       cap:'<span class="k">OpenAI\'s own monitoring had flagged the same credentials.</span> On July 20th they called Hugging Face to ask that the keys be revoked — and learned they already had been, in Hugging Face\'s breach. The two incidents were one. The attacker was OpenAI\'s own evaluation agents.',
