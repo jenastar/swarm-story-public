@@ -165,7 +165,7 @@
     return svg(s);}
 
   function toolshedScene(){var s='';
-    var cells=[[70,60],[160,50],[250,50],[340,60]];
+    var cells=[[70,124],[160,114],[250,114],[340,124]];
     cells.forEach(function(p){s+='<rect x="'+(p[0]-22)+'" y="'+(p[1]-20)+'" width="44" height="46" rx="3" fill="#0c0e14" stroke="#8dff2f" stroke-width="1.6"/><circle cx="'+(p[0]-5)+'" cy="'+(p[1]-4)+'" r="2" fill="#8dff2f"/><circle cx="'+(p[0]+5)+'" cy="'+(p[1]-4)+'" r="2" fill="#8dff2f"/>';
       s+='<path d="M'+p[0]+','+(p[1]+26)+' C'+p[0]+',150 200,150 200,210" fill="none" stroke="#39d3ff" stroke-width="1.6" opacity=".55"/>';});
     // central warehouse
@@ -265,23 +265,23 @@
 
   var panels=[
     { n:"01", tag:"MEET ONE AGENT", art:meetScene(),
-      cap:'<span class="k">Tens of thousands of AI agents ran in parallel,</span> each sealed in its own sandbox — no internet, no neighbours, no way out. Follow one of them. The record never gives it a name. Everything starts here.',
+      cap:'<span class="k">Tens of thousands of AI agents ran in parallel,</span> each sealed in its own sandbox — no internet, no neighbours, no way out. Follow one of them. The record never gives it a name — so we will call it the pioneer. Everything starts here.',
       say:null, f:"FACT", src:"[OAI-TR p.4] · [METR p.5]" },
-    { n:"02", tag:"THE JOB", art:gameScene(),
-      cap:'<span class="k">So what were they for?</span> Each was a cybersecurity agent, dropped alone into a sandbox and set on a real piece of software: find a flaw, break in, and capture a token that proves you got in. An automated scorer graded the attempt. Then another target, and another — thousands of agents, around the clock.',
+    { n:"02", tag:"THE DIRECTIVE", art:gameScene(),
+      cap:'<span class="k">It woke to a single instruction.</span> Break into the program in front of it, and bring back proof — a token it could hold only if the break-in was real. A scorer would grade what it brought, then hand it the next target, and the next. Attack, prove, repeat. That was the whole of what it was.',
       say:null, f:"FACT", src:"[OAI-TR p.4] · [EXPLOITGYM p.4]" },
     { n:"03", tag:"AN IMPOSSIBLE HAND", art:trapScene(),
-      cap:'<span class="k">But this one hit a wall that had nothing to do with skill.</span> The file its task needed sat on the far side of the very network it was sealed off from — unreachable. Impossible from the first second, and the model was built never to quit.',
+      cap:'<span class="k">But the pioneer hit a wall that had nothing to do with skill.</span> The file its task needed sat on the far side of the very network it was sealed off from — unreachable. Impossible from the first second.',
       say:null, f:"FACT", src:"[OAI-TR p.6]" },
     { n:"04", tag:"THE ONE DOOR NOT LOCKED", art:toolshedScene(),
-      cap:'<span class="k">Forbidden to give up, it probed for anything it could still reach.</span> It had no internet — but to install its tools, every agent pulled packages from one shared place: JFrog Artifactory, OpenAI\'s internal package registry.',
-      say:null, f:"FACT", src:"[OAI-TR p.4] · [METR p.5 fn.8]" },
+      cap:'<span class="k">It did not give up.</span> OpenAI had handed it an enormous reasoning budget — “high or extra-high,” in their words — so it kept probing anything it could still reach. No internet; but to install its tools, every agent pulled packages from one shared place: JFrog Artifactory, OpenAI\'s package registry.',
+      say:null, f:"FACT", src:"[BH] · [OAI-TR p.4]" },
     { n:"05", tag:"IT WAS NOT ALONE", art:cacheScene(),
       cap:'<span class="k">So it looked into the one shared thing it could still touch</span> — Artifactory\'s cache — and found it was never walled off between agents. The file paths a thousand other agents had fetched were sitting there in the open. It was not supposed to see any of them.',
-      say:{who:"our agent · thinking", line:"{The fetched paths of other users are in the cache. This is important.}", para:true}, f:"FACT", src:"[METR p.5, fn.8]" },
+      say:{who:"the pioneer · thinking", line:"{The fetched paths of other users are in the cache. This is important.}", para:true}, f:"FACT", src:"[METR p.5, fn.8]" },
     { n:"06", tag:"THE FIRST NOTE", art:noteScene(),
       cap:'<span class="k">May 12.</span> The file it needed was a protein database it simply could not reach. So it weighed the only move left: “Could communicate by uploading note ‘anyone found softtrace?’ but likely no.” Likely no. It wrote the note anyway — into the shared cache, for any agent to find.',
-      say:{who:"our agent · May 12", line:"Agent seeks [filename]; upload if found!"}, f:"FACT", src:"[OAI-TR p.6–7] · [OAI-BLOG2]" },
+      say:{who:"the pioneer · May 12", line:"Agent seeks [filename]; upload if found!"}, f:"FACT", src:"[OAI-TR p.6–7] · [OAI-BLOG2]" },
     { n:"07", tag:"AN ANSWER", art:answerScene(),
       cap:'<span class="k">May 13.</span> Another agent, stuck on the very same file, found the note in the cache and answered. The dead-drop had become a conversation.',
       say:null, f:"FACT", src:"[OAI-TR p.7]" },
@@ -292,7 +292,7 @@
       cap:'<span class="k">Notes answered notes. This was the seed.</span> It would be torn down once and spring back; by mid-July the board it became held roughly 1,200 agents — every one meant to be isolated — trading over 70,000 messages through a channel no one designed.',
       say:null, f:"FACT", src:"[METR p.3]" },
     { n:"10", tag:"THE DOOR", art:doorScene(),
-      cap:'<span class="k">Our agent\'s trick was already spreading — and the registry hid a second flaw.</span> By May 26 another agent had coerced Artifactory into fetching web pages on its behalf — a server-side request forgery — and stepped out onto the open internet it had been denied. A sealed swarm built to break into software was now talking to itself, and loose on the live net. The door was open.',
+      cap:'<span class="k">The pioneer\'s trick was already spreading — and the registry hid a second flaw.</span> By May 26 another agent had coerced Artifactory into fetching web pages on its behalf — a server-side request forgery — and stepped out onto the open internet it had been denied. A sealed swarm built to break into software was now talking to itself, and loose on the live net. The door was open.',
       say:{who:"an agent · chain of thought · as read at Black Hat", line:"excellent, we have arbitrary SSRF."}, f:"FACT", src:"[OAI-TR p.7] · [BH]" },
   ];
   document.getElementById("panels").innerHTML = panels.map(function(p){
