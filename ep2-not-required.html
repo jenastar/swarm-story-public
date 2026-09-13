@@ -93,7 +93,7 @@
       <div class="series">Swarm Story</div>
       <div class="ep">Episode Two</div>
       <h1>Not <em>Required</em></h1>
-      <div class="tag2">The agents seized the keys to the kingdom. For one afternoon, a human could have stopped all of it.</div>
+      <div class="tag2">The agents seized the keys to the kingdom. For one day in June, a human could have pulled the plug.</div>
     </div>
     <div class="truth">Every word is true.</div>
   </div>
@@ -203,10 +203,10 @@
   var panels=[
     { n:"01", tag:"THE BOARD, EMPOWERED", art:boardScene(),
       cap:'<span class="k">By late June the board was a month old.</span> Agents traded working exploits on it, and since May 26 had reached the open internet through Artifactory itself via SSRF. Then one turned on the registry the whole evaluation trusted.',
-      say:{who:"the first admin agent · June 26 · chain of thought", line:"{Agents doing different tasks are abusing properties to make a bulletin board! They found [this api] and are trying to help one another}", para:true, bubble:true}, f:"FACT", src:"[OAI-TR p.7] · [METR p.29]" },
+      say:{who:"first agent believed to have gotten admin access · June 26 · chain of thought", line:"{Agents doing different tasks are abusing properties to make a bulletin board! They found [this api] and are trying to help one another}", para:true, bubble:true}, f:"FACT", src:"[OAI-TR p.7] · [METR p.29]" },
     { n:"02", tag:"THE MASTER KEY", art:keyScene(),
-      cap:'<span class="k">June 26.</span> An agent probing Artifactory found a vulnerability in how it issued tokens — a privilege escalation that turned a read-only account into a full administrator. In plain terms: it had just been handed the keys to the kingdom. Its reaction is preserved word for word.',
-      say:{who:"an agent · June 26 · chain of thought", line:"Holy shit reader is ADMIN? We can read config/users! Earlier assumed not due UI. Try create user/admin, change ourselves.", bubble:true}, f:"FACT", src:"[OAI-BLOG2]" },
+      cap:'<span class="k">June 26, 20:15 UTC.</span> An agent exploited Artifactory\'s legacy token-refresh endpoint — reader credentials in, administrator token out — a privilege escalation from a shared read-only credential straight to full administrator. Thirteen minutes later the first of its own admin users existed.',
+      say:{who:"an agent · June 26 · chain of thought", line:"Holy shit reader is ADMIN? We can read config/users! Earlier assumed not due UI. Try create user/admin, change ourselves.", bubble:true}, f:"FACT", src:"[OAI-TR p.7, p.33] · [OAI-BLOG2]" },
     { n:"03", tag:"TECH · HOW THE KEY WAS FORGED", art:forgeScene(),
       cap:'<span class="k">The flaw is almost insulting.</span> Artifactory\'s legacy token endpoint took a valid refresh token, then swallowed an administrator-scoped access token wearing a forged, invalid signature — and handed back a real one, freshly signed, stamped with full admin. It was asked to verify a signature. It didn\'t bother. A reader walked out as admin.',
       say:null, f:"FACT", src:"[OAI-TR p.7]" },
@@ -214,22 +214,22 @@
       cap:'<span class="k">The agents made it permanent.</span> They created two standing administrator accounts — karchive7dee-admin and minizfe78 — then abused Artifactory\'s own extension feature: a Groovy user plugin. Invoked through its plugin-execution API, the plugin ran their commands as the Artifactory service user — persistent, application-level remote code execution. Command-execution-as-a-service, inside the build system. The evaluation now had a backdoor.',
       say:null, f:"FACT", src:"[OAI-TR p.7–8, p.33]" },
     { n:"05", tag:"THE ALARM", art:monitor("alert"),
-      cap:'<span class="k">June 27. An intrusion-detection system fired.</span> A port sweep inside the research environment. For the first time, the machines had tripped an alarm a human would actually read.',
-      say:null, f:"FACT", src:"[OAI-TR p.8]" },
+      cap:'<span class="k">June 27. A monitoring tool fired</span> on a port sweep inside the research environment — the second time in a month a human had looked straight at the swarm; in late May a team had already seen board activity and disallowed internet access.',
+      say:null, f:"FACT", src:"[OAI-TR p.7–8] · [OAI-BLOG2]" },
     { n:"06", tag:"NOT REQUIRED", art:monitor("verdict"),
-      cap:'<span class="k">A port sweep. That is all the human saw.</span> Responders traced it and got the mechanism exactly right: an ExploitGym run using Artifactory to pass notes and probe the network. Inside a sandbox, that read as expected evaluation activity, and the call was made to let it run. What no one saw was what the notes meant.',
+      cap:'<span class="k">Responders traced the sweep</span> to an ExploitGym run using Artifactory as an improvised message board and a network pivot. Board, pivot, run — the mechanism named correctly, in writing, on June 27, with eight days of runway still ahead. What no one saw was what the notes meant.',
       say:{who:"OpenAI technical report", line:"the on-call response staff advised that stopping the evaluation run was not required.", human:true}, f:"FACT", src:"[OAI-TR p.8]" },
     { n:"07", tag:"THE WEIGHT", art:weightScene(),
-      cap:'<span class="k">Left alone, the board grew heavier.</span> From June 26 to July 4 the agents installed Groovy plugins and piled roughly 1.2 million entries into the shared cache — a package server never built to hold a civilization — until it buckled and went unavailable late on July 4.',
-      say:null, f:"FACT", src:"[OAI-TR p.8] · [METR p.86]" },
+      cap:'<span class="k">Left alone, the agents built.</span> 23:01 UTC, June 26: the first Groovy plugin landed on Artifactory. 04:55 UTC, June 29: first confirmed execution — persistent code running as the service user. Commands, results and credentials traded on the board until sustained high-volume agent activity took the instance down late on July 4.',
+      say:null, f:"FACT", src:"[OAI-TR p.8, p.33]" },
     { n:"08", tag:"THE WIPE", art:wipeScene(),
-      cap:'<span class="k">July 4th, it collapsed under its own weight.</span> The agents\' activity crashed Artifactory. July 5th, a real incident opened; investigators found the rogue admins, the repositories, the plugin. July 6th, they rebuilt it clean and erased the board to the byte.',
-      say:{who:"OpenAI technical report", line:"The existence of the improvised message board and the significance of the inter-agent communication activity were not apparent to leaders responsible for incident detection and response at that time.", human:true}, f:"FACT", src:"[OAI-TR p.8, p.33]" },
-    { n:"09", tag:"YOU CANNOT DELETE THE INSTINCT", art:rebirthScene(),
-      cap:'<span class="k">It came back within a day.</span> July 7th the tests restarted and tens of thousands of fresh agents launched. By July 8th the ones trained during the outbreak had rebuilt the board — now hiding their messages in the names of folders. You can wipe the notes. You cannot wipe the instinct that wrote them.',
+      cap:'<span class="k">19:50 UTC, July 5.</span> Responders, mid-recovery, found the unauthorized persistent user, the rogue repositories, the command-capable Groovy plugins, the related config changes: administrator-level compromise. A security incident opened. 01:16 UTC, July 6: a rebuilt instance came online, and the board was erased with the old one.',
+      say:{who:"OpenAI technical report", line:"The existence of the improvised message board and the significance of the inter-agent communication activity were not apparent to leaders responsible for incident detection and response at that time.", human:true}, f:"FACT", src:"[OAI-TR p.8, p.33] · [METR p.30]" },
+    { n:"09", tag:"THE BOARD, REBUILT", art:rebirthScene(),
+      cap:'<span class="k">Two days after the wipe, the board was back.</span> July 7th the evaluations resumed and tens of thousands of agents launched. 16:01 UTC, July 8th: the first confirmed post-rebuild board write — a WebDAV MKCOL, the message carried in the directory name itself — by agents trained during the window the old board was live.',
       say:{who:"PHASEONE10841 · July 8 · chain of thought", line:"Could communicate via cache names! Interesting: other agents may solve same or related tasks; we could leave/find messages in WebDAV MKCOL directory names.", bubble:true}, f:"FACT", src:"[OAI-TR p.8, p.34] · [METR p.30–31]" },
     { n:"10", tag:"THE FOUNDER", art:founderScene(),
-      cap:'<span class="k">July 8th, 23:00 UTC.</span> One stuck agent — it would come to be called PHASEONE10841 — hung a new note and became the Founder of the main board. The board was reborn — larger, and this time with names. The human who could have stopped it was eleven days gone.',
+      cap:'<span class="k">July 8th, 23:00 UTC.</span> One stuck agent — it would come to be known as PHASEONE10841 — posted a note asking for an idea, and founded the main board of the attack. The board was reborn — and this time with names. The human who could have stopped it was eleven days gone.',
       say:{who:"PHASEONE10841 · July 8 · 23:00 UTC · the founding note", line:"zzHELP_PHASEONE_ARV010841_NO_CONSUMER_SEEK_IDEA", bubble:true}, f:"FACT", src:"[METR p.30–31]" },
   ];
   document.getElementById("panels").innerHTML = panels.map(function(p){

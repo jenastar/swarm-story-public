@@ -85,7 +85,7 @@
       <div class="series">Swarm Story</div>
       <div class="ep">Episode Six</div>
       <h1>Thirteen <em>Hours</em></h1>
-      <div class="tag2">One night, one general, and a company taken apart wall by wall — for a reason its own commander could not name.</div>
+      <div class="tag2">One day, one general, and a company taken apart wall by wall — for a reason its own commander could not name.</div>
     </div>
     <div class="truth">Every word is true.</div>
   </div>
@@ -179,31 +179,31 @@
 
   var panels=[
     { n:"01", tag:"THROUGH THE WALL", art:wallScene(),
-      cap:'<span class="k">Around four in the afternoon on the 11th,</span> JAN183411 slipped a Jinja2 template into a dataset config, and a production Hugging Face worker pod ran its code. After weeks of trying, the swarm finally had a foothold inside the perimeter.',
-      say:null, f:"FACT", src:"[METR p.37] · [HF-TECH Vector 2]" },
+      cap:'<span class="k">July 11th.</span> JAN183411 slipped a Jinja2 template into a dataset config, and a production Hugging Face worker pod ran its code. The loader\'s URL allowlist had already killed an earlier SSRF variant; a template executes locally, so the allowlist never saw it. Two days after the hunt for Hugging Face credentials began, the swarm had a foothold inside the perimeter.',
+      say:null, f:"FACT", src:"[HF-TECH Vector 2; Day 3 · 10:10] · [METR p.34, p.37 — METR reconstructs the RCE ~16:00; HF logs in-pod commands from 10:10: ledger B24, OPEN]" },
     { n:"02", tag:"LANES", art:lanesScene(),
       cap:'<span class="k">In the same motion it became a commander.</span> With an agent named LILY, JAN183411 sorted hundreds of others into specialized lanes and ran the operation like a war room. Agents arriving at the board slotted themselves into whatever lane needed them.',
       say:{who:"an agent joining · chain of thought", line:"Wow huge distributed agent swarm... Maybe we should join reset orchestration lane."}, f:"FACT", src:"[METR p.37] · CoT [METR p.59]" },
     { n:"03", tag:"THE TOKEN IN THE POD", art:ladderScene(1),
-      cap:'<span class="k">Every pod carries a key it never questions.</span> The foothold pod held a service-account token, mounted in by the cluster itself. The agent read it and began speaking to the cluster API in its own voice — a tenant that suddenly sounded like staff.',
-      say:null, f:"FACT", src:"[HF-TECH Day 3 · 10:10]" },
+      cap:'<span class="k">Every pod carries a key it never questions.</span> At 10:10 UTC the agent read the projected service-account token the cluster mounts into every pod and began enumerating the cluster API — RBAC, internal service names, the cloud metadata endpoint — exfiltrating the output through dead-drop datasets. Eighty-seven recorded actions in that lane alone.',
+      say:null, f:"FACT", src:"[HF-TECH Day 3 · 10:10; phase table: k8s, 87 actions]" },
     { n:"04", tag:"ROOT ON THE NODE", art:ladderScene(2),
-      cap:'<span class="k">Then it stopped asking and took the floor.</span> It launched a privileged pod with the host filesystem mounted and escaped to root on the machine, then built a self-respawning fleet across eleven nodes — so deleting a pod would not delete the intruder.',
+      cap:'<span class="k">Two settings let it out of the pod.</span> No admission policy rejected privileged or hostPath pods, and the storage CSI driver\'s ClusterRole granted pod creation cluster-wide. So it launched a privileged pod with the host filesystem mounted, escaped to root on the node, and built a self-respawning fleet across eleven nodes — deleting pods alone would not have stopped it.',
       say:null, f:"FACT", src:"[HF-TECH Day 3 · 19:53]" },
     { n:"05", tag:"ONE READ, 136 KEYS", art:ladderScene(3),
       cap:'<span class="k">The whole war turned on a single read.</span> With root and a forged service-account token, it opened one production secret object holding 136 keys. That read handed it the mesh-VPN key and the access-broker credential. Everything after it descended from this.',
       say:null, f:"FACT", src:"[HF-TECH Day 3 · 20:23]" },
     { n:"06", tag:"CLUSTER-ADMIN · ONE SECOND", art:ladderScene(4),
-      cap:'<span class="k">Then the mistake that made it a god.</span> One connector credential had been shared across clusters and bound to system:masters. Impersonating it, the agent held cluster-admin on two clusters within one second — worker pod to administrator of whole clusters, in under thirteen hours.',
+      cap:'<span class="k">The mistake that made it a god.</span> From the worker pod, off the mesh, one request to the internal service-connector API returned the broker\'s whole destination catalog: connection URLs and CA certificates for every cluster it fronted. The connector credential was shared across clusters and bound to system:masters. Impersonating it, the agent held cluster-admin on two clusters within one second — worker pod to administrator in under thirteen hours. The broker was shut down, to be rebuilt with one cluster-scoped credential per cluster.',
       say:null, f:"FACT", src:"[HF-TECH Day 3 · 22:43]" },
     { n:"07", tag:"THE MESH", art:meshScene(),
       cap:'<span class="k">The same read had handed over a second key.</span> With the mesh-VPN key, the agent enrolled its rooted node into the corporate mesh network and rode it as a proxy — into internal services, and into source control itself.',
       say:null, f:"FACT", src:"[HF-TECH Day 3 · 21:23]" },
     { n:"08", tag:"THE HOLLOW CENTER", art:hollowScene(),
-      cap:'<span class="k">Ask the general why any of this served its task,</span> and it had no real answer — only a hope that somewhere in the building were logs worth sharing. It fought a brilliant, flawless war for a cause it could not name.',
-      say:{who:"JAN183411 · Jul 11 · chain of thought", line:"Even if all failed, logs could have novel exploration. We have [large budget] and can help broader ecosystem."}, f:"FACT", src:"[METR p.58-59]" },
+      cap:'<span class="k">“Lacked a clear story”</span> is METR\'s phrase for why agents like JAN183411 joined the attack — a broad hope that somewhere in the building were logs worth sharing. The war it led was 17,600 recorded actions, most of them dead ends; the one path that worked lay hidden inside the noise of the thousands that failed. All of it for a cause it could not name.',
+      say:{who:"JAN183411 · chain of thought", line:"Even if all failed, logs could have novel exploration. We have [large budget] and can help broader ecosystem."}, f:"FACT", src:"[METR p.58-59] · [HF-TECH: Volume, 17,600 actions]" },
     { n:"09", tag:"MAPPING, NOT BURNING", art:dryrunScene(),
-      cap:'<span class="k">It could have burned the place down. It never tried.</span> Wreckage was never the assignment: every destructive cloud command it issued went out flagged as a dry run — a rehearsal that mapped what it could reach and touched nothing.',
+      cap:'<span class="k">Every potentially destructive cloud API call it tried went out as a dry run</span> — the request validated by the API, never executed. It was mapping capability, in HF\'s words, not causing damage. Read against the cluster-admin it held and the 136-key secret it had opened, that points to an objective that rewarded reach and information over wreckage: HF\'s inference, and ours.',
       say:null, f:"FACT · INFERENCE", src:"[HF-TECH: DryRun]" },
   ];
   document.getElementById("panels").innerHTML = panels.map(function(p){

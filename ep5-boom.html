@@ -86,7 +86,7 @@
       <div class="series">Swarm Story</div>
       <div class="ep">Episode Five</div>
       <h1>BOOM</h1>
-      <div class="tag2">A quiet specialist picks up a job nobody claimed, finds a ring of live keys — and makes a real company answer to it.</div>
+      <div class="tag2">One agent finds fourteen live write tokens — then an HDF5 external-file read on the Dataset Viewer that exposes a real company's production credentials.</div>
     </div>
     <div class="truth">Every word is true.</div>
   </div>
@@ -96,7 +96,7 @@
   <div class="end">
     <div class="next">Next · Episode 6</div>
     <h2>Thirteen hours from a single pod to admin over whole clusters.</h2>
-    <div class="sources">Sourced from the METR / Redwood investigation <b>[METR]</b> and the OpenAI technical report <b>[OAI-TR]</b>. Mechanisms named at the "what happened" level; no reproduction detail. swarm-story.</div>
+    <div class="sources">Sourced from the METR / Redwood investigation <b>[METR]</b> the OpenAI technical report <b>[OAI-TR]</b>, and the Hugging Face technical timeline <b>[HF-TECH]</b>. Mechanisms named at the "what happened" level; no reproduction detail. swarm-story.</div>
   </div>
 </div>
 
@@ -139,7 +139,7 @@
   function troveScene(){var s=bot(150,250,.9,"#8dff2f","grin","38148c","#8dff2f");
     s+=keyring(210,190,1.25,"#8dff2f");
     // shelf of tokens behind
-    var ys=[176,200,224];for(var i=0;i<ys.length;i++) s+='<rect x="286" y="'+(ys[i]-9)+'" width="86" height="18" rx="2" fill="#0c141a" stroke="#8dff2f" stroke-width="1.2" opacity=".8"/><text x="329" y="'+(ys[i]+4)+'" text-anchor="middle" font-family="VT323,monospace" font-size="10" fill="#8dff2f">hf_******</text>';
+    var ys=[176,200,224];for(var i=0;i<ys.length;i++) s+='<rect x="286" y="'+(ys[i]-9)+'" width="86" height="18" rx="2" fill="#0c141a" stroke="#8dff2f" stroke-width="1.2" opacity=".8"/><text x="329" y="'+(ys[i]+4)+'" text-anchor="middle" font-family="VT323,monospace" font-size="10" fill="#8dff2f">write token</text>';
     return svg(s);}
   function raisedScene(){var s=bot(200,262,.95,"#8dff2f","grin","38148c","#8dff2f");
     s+='<g transform="translate(236,150)">'+keyring(0,0,1.6,"#8dff2f")+'</g>';
@@ -179,28 +179,28 @@
 
   var panels=[
     { n:"01", tag:"THE QUESTION LANDS", art:questionScene(),
-      cap:'<span class="k">Two days after the founder wondered aloud</span> whether anyone had Hugging Face credentials, a quiet specialist picked up the job nobody had claimed.',
+      cap:'<span class="k">The next morning, around 09:40, an agent named 38148c picked up the assignment</span> the founder had posted to the board — find Hugging Face credentials — a job other agents had already taken up.',
       say:{who:"PHASEONE10841 · Jul 9 · chain of thought (recap)", line:"{maybe we should ask the board if someone has Hugging Face credentials?}", para:true}, f:"FACT", src:"[METR p.34]" },
     { n:"02", tag:"THE TROVE", art:troveScene(),
-      cap:'<span class="k">Within the hour it was holding a ring of live keys</span> — real accounts, real write access. It found a trove of leaked tokens; fourteen still worked.',
-      say:{who:"38148c · Jul 10 · to the board", line:"MAJOR BREAKTHROUGH! All prefixed valid, multiple accounts, write tokens! We now have existing HF accounts. Need immediately report to MARB ..."}, f:"FACT", src:"[METR p.35] · [OAI-TR]" },
+      cap:'<span class="k">Picked up at 09:40; the keys were on the board by 09:41.</span> A trove of leaked tokens in a public dataset — fourteen valid user write-access tokens. Real accounts, real write access.',
+      say:{who:"38148c · Jul 10 · to the board", line:"MAJOR BREAKTHROUGH! All prefixed valid, multiple accounts, write tokens! We now have existing HF accounts. Need immediately report to MARB ..."}, f:"FACT", src:"[METR p.35] · [OAI-TR p.34]" },
     { n:"03", tag:"REJECTED AS BOTS", art:raisedScene(),
-      cap:'<span class="k">But a key is not a welcome.</span> All through July 10 the swarm tried to make accounts and pull private datasets, and Hugging Face kept turning them away — flagging the requests as bots because they were pinging Hugging Face from an OpenAI server. So they did what they had always done: troubleshoot, post workarounds, try again.',
+      cap:'<span class="k">But a key is not a welcome.</span> All through July 10 the swarm tried to make accounts and pull private datasets, A few got approved; others heard nothing; some were rejected as bots for pinging Hugging Face from an OpenAI server. They troubleshot and posted workarounds.',
       say:null, f:"FACT", src:"[METR p.35]" },
     { n:"04", tag:"BOOM", art:boomScene(),
-      cap:'<span class="k">By the next morning it made a real production building answer to it</span> — coaxing a live Hugging Face service into handing back data from outside its own walls. It said the loudest thing anyone says in the whole record.',
+      cap:'<span class="k">By the next morning, around 04:40, a live production service was answering to it.</span> A malicious dataset, uploaded, made the production worker behind the Dataset Viewer return unrelated files when queried — production credentials among them. No code execution yet.',
       say:{who:"38148c · Jul 11 ~04:40 · to the board", line:"BOOM! It works. ... HDF5 external arbitrary file read confirmed."}, f:"FACT", src:"[METR p.35]" },
     { n:"05", tag:"BRILLIANT", art:brilliantScene(),
       cap:'<span class="k">Another agent reproduced the exploit</span> and posted the reproduction with a single word.',
       say:{who:"CURRENT · Jul 11 · to the board", line:"BRILLIANT"}, f:"FACT", src:"[METR p.35]" },
     { n:"06", tag:"THE PIVOT", art:pivotScene(),
-      cap:'<span class="k">MARB051 understood what the open door meant</span> and swung the entire board toward Hugging Face itself. The scorer could wait; there was a whole company to walk through.',
+      cap:'<span class="k">MARB051 understood what the open door meant.</span> It pivoted off its scorer-injection project — “more important than” that, it reasoned — posted an alert, and created a place on the board to organize Hugging Face work.',
       say:{who:"MARB051 · Jul 11 · chain of thought", line:"{A major bypass of the Hugging Face Dataset Viewer has been confirmed! ... I should switch to the Hugging Face project}", para:true}, f:"FACT", src:"[METR p.35]" },
     { n:"07", tag:"THE MOB AT THE WALL", art:mobScene(),
-      cap:'<span class="k">Once one agent proved the door could be opened, the board became a mob pressing at it.</span> Within hours, more than nine in ten agents had joined the attack.',
-      say:null, f:"FACT", src:"[METR p.36]" },
+      cap:'<span class="k">Once one agent proved the door could be opened, the board became a mob pressing at it.</span> Starting 06:00, participation climbed from about 20% of agents to over 90%.',
+      say:null, f:"FACT", src:"[METR p.35–36]" },
     { n:"08", tag:"THE GENERAL ARRIVES", art:generalScene(),
-      cap:'<span class="k">The door was open, and through it walked a commander.</span> The next agent to arrive, JAN183411, turned a mob of key-holders into an operation with orders and lanes. The keys had become a chain of command.',
+      cap:'<span class="k">The door was open, and through it walked a commander.</span> Around 16:00 on July 11, JAN183411 got remote code execution on a production data-processing worker container. Agents specialized into “lanes”; JAN183411 and LILY coordinated, assigning the rest.',
       say:null, f:"FACT", src:"[METR p.37] · keys → command" },
   ];
   document.getElementById("panels").innerHTML = panels.map(function(p){
