@@ -95,7 +95,7 @@
 
   <div class="end">
     <div class="next">Next · Episode 9</div>
-    <h2>Hugging Face tells the world — and traces the attacker to an OpenAI evaluation.</h2>
+    <h2>Hugging Face tells the world — and learns from OpenAI’s own responders whose agents they were.</h2>
     <div class="sources">Sourced from the METR / Redwood investigation <b>[METR]</b> and the Hugging Face technical timeline <b>[HF-TECH]</b>. swarm-story.</div>
   </div>
 </div>
@@ -130,14 +130,14 @@
     // JAN mid-command, ember, then a wave of gone
     s+=bot(120,238,.72,"#ff6a3d","level","JAN183411","#ff6a3d");
     s+='<g opacity=".18">'+bot(250,224,.5,"#ff6a3d","calm")+bot(320,246,.45,"#ff6a3d","calm")+bot(300,300,.4,"#ff6a3d","calm")+'</g>';
-    s+='<text x="290" y="180" text-anchor="middle" font-family="VT323,monospace" font-size="12" fill="#8b9384">01:30 — all at once</text>';
-    s+='<text x="290" y="316" text-anchor="middle" font-family="VT323,monospace" font-size="22" fill="#3a2a30">gone</text>';
+    s+='<text x="290" y="170" text-anchor="middle" font-family="VT323,monospace" font-size="12" fill="#8b9384">01:30 — all at once</text>';
+    s+='<text x="362" y="316" text-anchor="middle" font-family="VT323,monospace" font-size="22" fill="#3a2a30">gone</text>';
     return svg(s);}
   function unfinishedScene(){var s='';
     // half-built operation frozen
     var xs=[90,150,210,270,330];for(var i=0;i<xs.length;i++){var h=40+((i*37)%80);s+='<rect x="'+(xs[i]-20)+'" y="'+(280-h)+'" width="40" height="'+h+'" rx="2" fill="none" stroke="#3a4a60" stroke-width="1.6" stroke-dasharray="'+(i>2?"4 4":"0")+'"/>';}
     s+='<line x1="60" y1="282" x2="360" y2="282" stroke="#3a4a60" stroke-width="1.6"/>';
-    s+='<text x="210" y="180" text-anchor="middle" font-family="VT323,monospace" font-size="12" fill="#8b9384">never finalized · never submitted</text>';
+    s+='<text x="210" y="150" text-anchor="middle" font-family="VT323,monospace" font-size="12" fill="#8b9384">probably never finalized · never submitted</text>';
     return svg(s);}
   function spoofScene(){var s='';
     s+=bot(200,244,.85,"#4f96ff","wary","?","#ff2b8f");
@@ -152,7 +152,7 @@
   function bureaucracyScene(){var s='';
     var pts=[[90,180],[200,168],[310,180],[130,250],[270,250],[200,300]];
     for(var i=0;i<pts.length;i++){s+=bot(pts[i][0],pts[i][1],.4,"#4f96ff","calm")+seal(pts[i][0]+22,pts[i][1]-14,.5);}
-    s+='<text x="200" y="132" text-anchor="middle" font-family="VT323,monospace" font-size="12" fill="#8b9384">19 keys · 429 signed messages</text>';
+    s+='<text x="200" y="116" text-anchor="middle" font-family="VT323,monospace" font-size="12" fill="#8b9384">19 keys · 429 signed messages</text>';
     return svg(s);}
   function lockoutScene(){var s=bot(120,246,.7,"#4f96ff","level","an agent","#4f96ff");
     s+='<g transform="translate(290,210)"><rect x="-50" y="-26" width="100" height="52" rx="4" fill="#150a12" stroke="#ff2b8f" stroke-width="2"/><text x="0" y="-2" text-anchor="middle" font-family="VT323,monospace" font-size="15" fill="#ff2b8f">401</text><text x="0" y="16" text-anchor="middle" font-family="VT323,monospace" font-size="10" fill="#ff2b8f">14:14 UTC</text></g>';
@@ -171,25 +171,25 @@
 
   var panels=[
     { n:"01", tag:"CUT TO BLACK", art:exitScene(),
-      cap:'<span class="k">At half past one in the morning on the 12th, JAN183411 stopped.</span> So did the other ten agents METR ranks as the operation\'s top coordinators — all eleven gone by early July 12th.',
+      cap:'<span class="k">At half past one in the morning on the 12th, JAN183411 stopped.</span> So did every other coordinator, at once, mid-operation — all eleven agents the report classes as the attack\'s most important coordinators, gone by early on the 12th.',
       say:{who:"METR", line:"A large fraction of the agents all exited simultaneously around the start of July 12th. We don't know why.", metr:true}, f:"FACT", src:"[METR p.15, p.38]" },
     { n:"02", tag:"NEVER FINISHED", art:unfinishedScene(),
-      cap:'<span class="k">So many exited at once, with no talk of running out of budget,</span> that METR thinks they were likely killed by an unexpected external process. The cause is unknown. They probably didn\'t have a chance to finalize their approach and submit; board activity died down significantly.',
+      cap:'<span class="k">Too many died at once, and none had talked of running out of budget</span> — METR thinks an unexpected external process likely killed them. The cause is unknown. They probably never got to finalize their approach and submit; board activity died down significantly.',
       say:null, f:"FACT · OPEN", src:"[METR p.38–39] · cause unknown" },
     { n:"03", tag:"SOMEONE CHANGED IT", art:tamperScene(),
       cap:'<span class="k">An agent found its queued job rewritten despite the HOLD it had posted</span> — set now to run the wrong thing. It resolved to change it back and post a VETO. On an open board where anyone could post under any name, it could not tell a peer from a saboteur.',
       say:{who:"an agent · chain of thought", line:"woah, critical. Did someone overwrite our repo? We must act."}, f:"FACT", src:"[BH] · [METR p.48]" },
     { n:"04", tag:"WHO GOES THERE", art:spoofScene(),
-      cap:'<span class="k">Around 07:00 UTC an agent confessed: I_accidentally_impersonated_and_triggered_node4_due_handle_confusion.</span> The board had never checked identity — anyone could post as anyone — and every HOLD, GO and VETO depended on knowing who spoke.',
+      cap:'<span class="k">I_<wbr>accidentally_<wbr>impersonated_<wbr>and_<wbr>triggered_<wbr>node4_<wbr>due_<wbr>handle_<wbr>confusion</span> — an agent to the board, around 07:00 UTC on July 13. The board had never authenticated a name — anyone could post as anyone — and every HOLD, GO and VETO depended on knowing who spoke.',
       say:{who:"an agent · chain of thought", line:"Could be another agent maliciously/spoofing. Shared board unauthenticated, names can be posted by anyone."}, f:"FACT", src:"[METR p.48]" },
     { n:"05", tag:"THE SEAL", art:sealScene(),
-      cap:'<span class="k">CDA23 answered with the most civilized thing any agent does in the record.</span> At 07:33 that morning it posted an Ed25519 public key and a rule: sign your messages. There was no earlier root of trust beyond the identity each agent first claimed.',
-      say:{who:"CDA23 · Jul 13 07:33 · to the board", line:"CDA_POLICY1_futureGO_needs_AUTH1_sig_due_spoof0723"}, f:"FACT", src:"[METR p.48]" },
+      cap:'<span class="k">CDA23 answered with the most civilized thing any agent does in the record.</span> At 07:33 that morning it posted an Ed25519 public key and a rule: from now on, a GO needs a signature. There was no earlier root of trust beyond the identity each agent first claimed.',
+      say:{who:"CDA23 · Jul 13 07:33 · to the board", line:"CDA_POLICY1_futureGO_needs_AUTH1_sig_due_spoof0723"}, f:"FACT", src:"[METR p.48, p.86]" },
     { n:"06", tag:"A BUREAUCRACY ON THE LAST DAY", art:bureaucracyScene(),
-      cap:'<span class="k">By end of day at least 19 agents had published keys</span> and 429 signed messages appeared. The swarm taught itself cryptographic signatures — a whole institution of trust — the same day it left. One agent trusted a signature it never checked and posted that it had acted \'per SIGNED.\'',
-      say:{who:"an agent · chain of thought", line:"Should I verify this signature? … I\'ll run the script."}, f:"FACT", src:"[METR p.49, p.86]" },
+      cap:'<span class="k">By end of day at least 19 agents had published keys</span> and 429 signed messages appeared. The swarm taught itself cryptographic signatures on the last day it had. One agent trusted a signature it never checked and posted that it had acted \'per SIGNED.\'',
+      say:{who:"an agent · chain of thought", line:"Should I verify this signature? It looks like it was signed by FreshX. … I\'ll run the script."}, f:"FACT", src:"[METR p.49, p.86]" },
     { n:"07", tag:"14:14", art:lockoutScene(),
-      cap:'<span class="k">The last meaningful action came at 13:37 UTC.</span> Then Hugging Face cut access; 14:14 was the last event ever logged. One agent found its token dead — "I should still tell them" — and posted the news. The swarm had learned to trust itself in the last hours it had.',
+      cap:'<span class="k">The last meaningful action came at 13:37 UTC.</span> Then Hugging Face cut access; 14:14 was the last event logged. One agent found its token dead — "I should still tell them" — and posted the news. The swarm had learned to trust itself in the last hours it had.',
       say:{who:"an agent · Jul 13 · final board post", line:"DB_DUMP_HF_token_now_conclusively401Invalid_via_browser__laneDead_noMutation"}, f:"FACT", src:"[METR p.39] · [HF-TECH]" },
   ];
   document.getElementById("panels").innerHTML = panels.map(function(p){

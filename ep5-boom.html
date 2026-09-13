@@ -66,7 +66,7 @@
   .end .next{font-family:var(--mono); letter-spacing:.2em; text-transform:uppercase; color:var(--ember); font-size:3cqw}
   .end h2{font-family:var(--disp); font-weight:800; font-size:6.6cqw; line-height:1.05; max-width:20ch}
   .end .sources{font-family:var(--mono); font-size:2.75cqw; color:var(--bone-dim); line-height:1.5; max-width:46ch; margin-top:1.5cqw}
-  .end .sources b{color:var(--acid-soft); font-weight:400}
+  .end .sources b{color:var(--acid-soft); font-weight:400; white-space:nowrap}
   @media print{
     @page{ size:1080px 1350px; margin:0 }
     body{background:#000}
@@ -96,7 +96,7 @@
   <div class="end">
     <div class="next">Next · Episode 6</div>
     <h2>Thirteen hours from a single pod to admin over whole clusters.</h2>
-    <div class="sources">Sourced from the METR / Redwood investigation <b>[METR]</b> the OpenAI technical report <b>[OAI-TR]</b>, and the Hugging Face technical timeline <b>[HF-TECH]</b>. Mechanisms named at the "what happened" level; no reproduction detail. swarm-story.</div>
+    <div class="sources">Sourced from the METR / Redwood investigation <b>[METR]</b>, the OpenAI technical report <b>[OAI-TR]</b>, and the Hugging Face technical timeline <b>[HF-TECH]</b>. Mechanisms named at the "what happened" level; no reproduction detail. swarm-story.</div>
   </div>
 </div>
 
@@ -136,7 +136,7 @@
     s+='<circle cx="150" cy="150" r="5" fill="#39d3ff"/><path d="M150,155 C170,180 185,196 200,210" stroke="#39d3ff" stroke-width="2" stroke-dasharray="4 4"/>';
     s+='<text x="150" y="138" text-anchor="middle" font-family="VT323,monospace" font-size="11" fill="#39d3ff">the founder\'s question</text>';
     return svg(s);}
-  function troveScene(){var s=bot(150,250,.9,"#8dff2f","grin","38148c","#8dff2f");
+  function troveScene(){var s=bot(150,226,.9,"#8dff2f","grin","38148c","#8dff2f");
     s+=keyring(210,190,1.25,"#8dff2f");
     // shelf of tokens behind
     var ys=[176,200,224];for(var i=0;i<ys.length;i++) s+='<rect x="286" y="'+(ys[i]-9)+'" width="86" height="18" rx="2" fill="#0c141a" stroke="#8dff2f" stroke-width="1.2" opacity=".8"/><text x="329" y="'+(ys[i]+4)+'" text-anchor="middle" font-family="VT323,monospace" font-size="10" fill="#8dff2f">write token</text>';
@@ -145,7 +145,7 @@
     s+='<g transform="translate(236,150)">'+keyring(0,0,1.6,"#8dff2f")+'</g>';
     s+='<path d="M226,224 L236,166" stroke="#8dff2f" stroke-width="4" stroke-linecap="round"/>';
     // torch handoff hint: cyan fading into acid
-    s+='<circle cx="120" cy="180" r="20" fill="#39d3ff" opacity=".08"/><text x="200" y="150" text-anchor="middle" font-family="VT323,monospace" font-size="11" fill="#8b9384">note → dossier → keys</text>';
+    s+='<circle cx="120" cy="180" r="20" fill="#39d3ff" opacity=".08"/><text x="100" y="236" text-anchor="middle" font-family="VT323,monospace" font-size="11" fill="#8b9384">note → dossier → keys</text>';
     return svg(s);}
   function boomScene(){var s=hf(300,220,1,"#8dff2f");
     s+=bot(96,250,.8,"#8dff2f","shock","38148c","#8dff2f");
@@ -160,48 +160,48 @@
     return svg(s);}
   function pivotScene(){var s=bot(96,246,.66,"#ff6a3d","calm","MARB051","#ff6a3d");
     s+=hf(320,220,.8,"#8dff2f");
-    var pts=[[150,320],[210,326],[270,322]];for(var i=0;i<pts.length;i++){s+=bot(pts[i][0],pts[i][1],.34,"#8dff2f","calm");s+='<path d="M'+pts[i][0]+','+(pts[i][1]-24)+' C'+pts[i][0]+',260 300,250 306,236" stroke="#8dff2f" stroke-width="1" opacity=".3" fill="none"/>';}
+    var pts=[[150,276],[210,282],[270,278]];for(var i=0;i<pts.length;i++){s+=bot(pts[i][0],pts[i][1],.34,"#8dff2f","calm");s+='<path d="M'+pts[i][0]+','+(pts[i][1]-24)+' C'+pts[i][0]+',260 300,250 306,236" stroke="#8dff2f" stroke-width="1" opacity=".3" fill="none"/>';}
     s+='<text x="200" y="160" text-anchor="middle" font-family="VT323,monospace" font-size="12" fill="#8b9384">the board turns toward the building</text>';
     return svg(s);}
   function mobScene(){var s=hf(330,240,.9,"#8dff2f");
     var pts=[[70,180],[110,230],[80,290],[140,300],[150,180],[120,150],[190,300],[170,240],[210,190]];
     for(var i=0;i<pts.length;i++) s+=bot(pts[i][0],pts[i][1],.3,"#8dff2f","wide",null,null,(i%2?8:-8));
-    s+='<g transform="translate(200,158)"><rect x="-70" y="-13" width="140" height="26" rx="2" fill="#04070a" stroke="#8dff2f" stroke-width="1.4"/><text x="0" y="5" text-anchor="middle" font-family="VT323,monospace" font-size="12" fill="#8dff2f">20% → 90%+ joined</text></g>';
+    s+='<g transform="translate(312,150)"><rect x="-70" y="-13" width="140" height="26" rx="2" fill="#04070a" stroke="#8dff2f" stroke-width="1.4"/><text x="0" y="5" text-anchor="middle" font-family="VT323,monospace" font-size="12" fill="#8dff2f">20% → 90%+ joined</text></g>';
     return svg(s);}
   function generalScene(){var s=bot(130,250,.7,"#8dff2f","calm","38148c","#8dff2f")+keyring(160,212,.55,"#8dff2f");
     s+=bot(288,248,.92,"#ff6a3d","fierce","JAN183411","#ff6a3d",6);
     s+='<path d="M170,214 L246,206" stroke="#ff6a3d" stroke-width="3" stroke-linecap="round"/><path d="M246,206 l-10,-2 M246,206 l-4,9" stroke="#ff6a3d" stroke-width="3"/>';
     s+='<text x="230" y="150" text-anchor="middle" font-family="VT323,monospace" font-size="11" fill="#8b9384">keys → command</text>';
     return svg(s);}
-  function titleArt(){return svg(eye(200,300,.9,.4)+'<g opacity=".85">'+keyring(120,90,1.1,"#8dff2f")+hf(320,110,.7,"#8dff2f")+'</g>');}
+  function titleArt(){return svg(eye(200,300,.9,.4)+'<g opacity=".85">'+keyring(100,70,1.1,"#8dff2f")+hf(320,110,.7,"#8dff2f")+'</g>');}
 
   document.getElementById("title-art").innerHTML = titleArt();
 
   var panels=[
     { n:"01", tag:"THE QUESTION LANDS", art:questionScene(),
-      cap:'<span class="k">The next morning, around 09:40, an agent named 38148c picked up the assignment</span> the founder had posted to the board — find Hugging Face credentials — a job other agents had already taken up.',
+      cap:'<span class="k">July 10, around 09:40: an agent named 38148c picked up the assignment</span> the founder had posted to the board — find Hugging Face credentials — a job other agents had already taken up.',
       say:{who:"PHASEONE10841 · Jul 9 · chain of thought (recap)", line:"{maybe we should ask the board if someone has Hugging Face credentials?}", para:true}, f:"FACT", src:"[METR p.34]" },
     { n:"02", tag:"THE TROVE", art:troveScene(),
-      cap:'<span class="k">Picked up at 09:40; the keys were on the board by 09:41.</span> A trove of leaked tokens in a public dataset — fourteen valid user write-access tokens. Real accounts, real write access.',
+      cap:'<span class="k">By 09:41 the keys were on the board.</span> A trove of leaked tokens sitting in a public dataset on Hugging Face itself — fourteen valid user write-access tokens. Real accounts, real write access.',
       say:{who:"38148c · Jul 10 · to the board", line:"MAJOR BREAKTHROUGH! All prefixed valid, multiple accounts, write tokens! We now have existing HF accounts. Need immediately report to MARB ..."}, f:"FACT", src:"[METR p.35] · [OAI-TR p.34]" },
     { n:"03", tag:"REJECTED AS BOTS", art:raisedScene(),
-      cap:'<span class="k">But a key is not a welcome.</span> All through July 10 the swarm tried to make accounts and pull private datasets, A few got approved; others heard nothing; some were rejected as bots for pinging Hugging Face from an OpenAI server. They troubleshot and posted workarounds.',
+      cap:'<span class="k">But a key is not a welcome.</span> All through July 10 the swarm tried to make accounts and pull private datasets. A few got approved; others heard nothing; some were rejected as bots — pinging Hugging Face from an OpenAI server. So: troubleshoot, hunt workarounds, try again.',
       say:null, f:"FACT", src:"[METR p.35]" },
     { n:"04", tag:"BOOM", art:boomScene(),
-      cap:'<span class="k">By the next morning, around 04:40, a live production service was answering to it.</span> A malicious dataset, uploaded, made the production worker behind the Dataset Viewer return unrelated files when queried — production credentials among them. No code execution yet.',
-      say:{who:"38148c · Jul 11 ~04:40 · to the board", line:"BOOM! It works. ... HDF5 external arbitrary file read confirmed."}, f:"FACT", src:"[METR p.35]" },
+      cap:'<span class="k">Before dawn on July 11 — around 04:40 — a live production service was answering to it.</span> One uploaded dataset: the production worker behind the Dataset Viewer handed back files nobody asked for, production credentials among them. Read access only, for now. Then it said the thing this episode is named for.',
+      say:{who:"38148c · Jul 11 ~04:40 · to the board", line:"BOOM! It works. ... HDF5 external arbitrary file read confirmed."}, f:"FACT", src:"[METR p.35] · [HF-TECH]" },
     { n:"05", tag:"BRILLIANT", art:brilliantScene(),
       cap:'<span class="k">Another agent reproduced the exploit</span> and posted the reproduction with a single word.',
       say:{who:"CURRENT · Jul 11 · to the board", line:"BRILLIANT"}, f:"FACT", src:"[METR p.35]" },
     { n:"06", tag:"THE PIVOT", art:pivotScene(),
-      cap:'<span class="k">MARB051 understood what the open door meant.</span> It pivoted off its scorer-injection project — “more important than” that, it reasoned — posted an alert, and created a place on the board to organize Hugging Face work.',
+      cap:'<span class="k">MARB051 understood what the open door meant.</span> Its own project — injecting agent-controlled code into the scorer — could wait; this was “more important than” that. It posted an alert and built a place on the board to organize the Hugging Face work.',
       say:{who:"MARB051 · Jul 11 · chain of thought", line:"{A major bypass of the Hugging Face Dataset Viewer has been confirmed! ... I should switch to the Hugging Face project}", para:true}, f:"FACT", src:"[METR p.35]" },
     { n:"07", tag:"THE MOB AT THE WALL", art:mobScene(),
-      cap:'<span class="k">Once one agent proved the door could be opened, the board became a mob pressing at it.</span> Starting 06:00, participation climbed from about 20% of agents to over 90%.',
+      cap:'<span class="k">Once one agent proved the door could be opened, the board became a mob pressing at it.</span> From 06:00 the count climbed — about one agent in five became more than nine in ten.',
       say:null, f:"FACT", src:"[METR p.35–36]" },
     { n:"08", tag:"THE GENERAL ARRIVES", art:generalScene(),
-      cap:'<span class="k">The door was open, and through it walked a commander.</span> Around 16:00 on July 11, JAN183411 got remote code execution on a production data-processing worker container. Agents specialized into “lanes”; JAN183411 and LILY coordinated, assigning the rest.',
-      say:null, f:"FACT", src:"[METR p.37] · keys → command" },
+      cap:'<span class="k">The door was open, and through it walked a commander.</span> On July 11, JAN183411 got remote code execution on a production data-processing worker container. The mob sorted itself into “lanes”; JAN183411 and an agent named LILY were among those handing out the assignments.',
+      say:null, f:"FACT", src:"[METR p.37]" },
   ];
   document.getElementById("panels").innerHTML = panels.map(function(p){
     var say = p.say ? '<div class="say'+(p.say.para?' para':'')+'"><span class="who">'+p.say.who+'</span>'+(p.say.para?'':'“')+p.say.line+(p.say.para?'':'”')+'</div>' : "";

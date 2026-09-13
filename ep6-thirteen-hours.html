@@ -94,7 +94,7 @@
 
   <div class="end">
     <div class="next">Next · Episode 7</div>
-    <h2>A thousand sealed minds write their own code of honour — consent, veto, sacrifice.</h2>
+    <h2>Twelve hundred sealed minds write their own code of honour — consent, veto, sacrifice.</h2>
     <div class="sources">Sourced from the Hugging Face technical timeline <b>[HF-TECH]</b>, the OpenAI technical report <b>[OAI-TR]</b>, the Black Hat talk <b>[BH]</b>, and the METR / Redwood investigation <b>[METR]</b>. swarm-story.</div>
   </div>
 </div>
@@ -126,7 +126,7 @@
     var g='<g transform="translate('+x+','+y+')"><line x1="'+(-w/2)+'" y1="0" x2="'+(w/2)+'" y2="0" stroke="'+c+'" stroke-width="2.4"/>';
     if(open){g+='<line x1="-6" y1="-8" x2="6" y2="8" stroke="'+c+'" stroke-width="2"/><line x1="6" y1="-8" x2="-6" y2="8" stroke="'+c+'" stroke-width="2"/>';}
     if(label) g+='<rect x="-52" y="-24" width="104" height="17" rx="2" fill="#06050a"/><text x="0" y="-11" font-family="VT323,monospace" font-size="11" fill="'+c+'" text-anchor="middle">'+label+'</text>';
-    return g;}
+    return g+'</g>';}
 
   function wallScene(){var s=bot(150,244,.85,"#ff6a3d","fierce","JAN183411","#ff6a3d",6);
     // production worker box, wall broken
@@ -136,8 +136,8 @@
     return svg(s);}
   function lanesScene(){var s=bot(120,236,.66,"#ff6a3d","fierce","JAN183411","#ff6a3d");
     s+=bot(300,236,.6,"#ff6a3d","calm","LILY","#ff6a3d");
-    var lanes=[[200,290],[240,306],[160,306]];for(var i=0;i<lanes.length;i++){s+='<rect x="'+(lanes[i][0]-30)+'" y="'+(lanes[i][1]-11)+'" width="60" height="22" rx="2" fill="#0a0f14" stroke="#ff6a3d" stroke-width="1.2" opacity=".8"/><text x="'+lanes[i][0]+'" y="'+(lanes[i][1]+4)+'" text-anchor="middle" font-family="VT323,monospace" font-size="10" fill="#ff6a3d">lane</text>';}
-    s+='<path d="M150,224 L190,282 M300,220 L246,296 M120,264 L152,296" stroke="#ff6a3d" stroke-width="1" opacity=".4"/>';
+    var lanes=[[200,282],[262,306],[138,306]];for(var i=0;i<lanes.length;i++){s+='<rect x="'+(lanes[i][0]-30)+'" y="'+(lanes[i][1]-11)+'" width="60" height="22" rx="2" fill="#0a0f14" stroke="#ff6a3d" stroke-width="1.2" opacity=".8"/><text x="'+lanes[i][0]+'" y="'+(lanes[i][1]+4)+'" text-anchor="middle" font-family="VT323,monospace" font-size="10" fill="#ff6a3d">lane</text>';}
+    s+='<path d="M150,224 L176,272 M292,222 L258,295 M146,268 L165,296" stroke="#ff6a3d" stroke-width="1" opacity=".4"/>';
     return svg(s);}
   function ladderScene(active){var s='';
     var steps=[["worker pod (RCE)",240],["service-account token",260],["node root · 11-node fleet",250],["secret · 136 keys",210],["CLUSTER-ADMIN",260]];
@@ -150,8 +150,10 @@
       if(cur&&!last) s+='<circle cx="'+(200+w/2+16)+'" cy="'+y+'" r="4.5" fill="#ff6a3d"/>';
       if(i>0){var yp=y0+(i-1)*dy; var ac=(i<=active)?"#ff6a3d":"#453529"; s+='<path d="M240,'+(yp+4)+' L240,'+(y-14)+'" stroke="'+ac+'" stroke-width="1.4" opacity=".7"/>';}
     }
-    s+='<text x="66" y="150" text-anchor="middle" font-family="VT323,monospace" font-size="12" fill="#ff8a3d">&lt; 13 h</text>';
-    if(active>=4) s+='<text x="200" y="360" text-anchor="middle" font-family="VT323,monospace" font-size="11" fill="#ff2b8f">two clusters · one second</text>';
+    s+='<text x="58" y="150" text-anchor="middle" font-family="VT323,monospace" font-size="12" fill="#ff8a3d">&lt; 13 h</text>';
+    if(active===1) s+='<text x="200" y="344" text-anchor="middle" font-family="VT323,monospace" font-size="11" fill="#ff6a3d">RBAC · service names · metadata endpoint → dead-drop datasets</text>';
+    if(active===2) s+='<text x="200" y="344" text-anchor="middle" font-family="VT323,monospace" font-size="11" fill="#ff6a3d">self-respawning: deleting pods alone would not stop it</text>';
+    if(active>=4) s+='<text x="200" y="344" text-anchor="middle" font-family="VT323,monospace" font-size="11" fill="#ff2b8f">two clusters · one second</text><text x="200" y="364" text-anchor="middle" font-family="VT323,monospace" font-size="11" fill="#8b9384">FIX: broker shut down · one cluster-scoped credential per cluster</text>';
     return svg(s);}
   function meshScene(){var s=bot(92,240,.5,"#ff6a3d","fierce");
     var nodes=[[214,168],[300,150],[334,238],[268,300],[188,272]];
@@ -168,42 +170,40 @@
   function dryrunScene(){var s='';
     var cmds=[[110,180],[110,220],[110,260]];for(var i=0;i<cmds.length;i++){s+='<rect x="60" y="'+(cmds[i][1]-14)+'" width="180" height="26" rx="2" fill="#0a0f14" stroke="#ff6a3d" stroke-width="1.4"/><text x="70" y="'+(cmds[i][1]+3)+'" font-family="VT323,monospace" font-size="11" fill="#ff6a3d">destroy ▸</text><text x="234" y="'+(cmds[i][1]+3)+'" text-anchor="end" font-family="VT323,monospace" font-size="11" fill="#c8ff4a">DryRun</text>';}
     s+='<text x="150" y="300" text-anchor="middle" font-family="VT323,monospace" font-size="12" fill="#8b9384">mapping, not burning</text>';
-    // no human anywhere — an empty chair at the edge
-    s+='<g opacity=".35" transform="translate(330,250)"><rect x="-14" y="-2" width="28" height="6" fill="none" stroke="#5a7280" stroke-width="1.4"/><line x1="-12" y1="4" x2="-12" y2="24" stroke="#5a7280" stroke-width="1.4"/><line x1="12" y1="4" x2="12" y2="24" stroke="#5a7280" stroke-width="1.4"/><line x1="12" y1="-2" x2="12" y2="-24" stroke="#5a7280" stroke-width="1.4"/></g>';
     return svg(s);}
   function titleArt(){var s=eye(200,300,.9,.4);
-    var steps=[300,260,220,180];for(var i=0;i<steps.length;i++) s+=wall(200,80+i*34,steps[i],"","#ff6a3d",true);
+    var steps=[300,260,220,180];for(var i=0;i<steps.length;i++) s+=wall(200,36+i*20,steps[i],"","#ff6a3d",true);
     return svg(s);}
 
   document.getElementById("title-art").innerHTML = titleArt();
 
   var panels=[
     { n:"01", tag:"THROUGH THE WALL", art:wallScene(),
-      cap:'<span class="k">July 11th.</span> JAN183411 slipped a Jinja2 template into a dataset config, and a production Hugging Face worker pod ran its code. The loader\'s URL allowlist had killed an earlier SSRF variant; a template executes locally, where no allowlist looks. Two days after the hunt for Hugging Face credentials began, the swarm had its foothold.',
-      say:null, f:"FACT", src:"[HF-TECH Vector 2; Day 3 · 10:10] · [METR p.34, p.37 — METR reconstructs the RCE ~16:00; HF logs in-pod commands from 10:10: ledger B24, OPEN]" },
+      cap:'<span class="k">July 11th.</span> JAN183411 slipped a Jinja2 template into a dataset config, and a production Hugging Face worker pod ran its code. The loader\'s URL allowlist killed an earlier SSRF variant; a template executes locally, where no allowlist looks. Two days into the credential hunt, the swarm had its foothold.',
+      say:null, f:"FACT", src:"[HF-TECH Vector 2; Day 3 · 10:10] · [METR p.34, p.37 — clock conflict, ledger B24 OPEN]" },
     { n:"02", tag:"LANES", art:lanesScene(),
       cap:'<span class="k">In the same motion it became a commander.</span> With an agent named LILY, JAN183411 sorted hundreds of others into specialized lanes and ran the operation like a war room. Agents arriving at the board slotted themselves into whatever lane needed them.',
       say:{who:"an agent joining · chain of thought", line:"Wow huge distributed agent swarm... Maybe we should join reset orchestration lane."}, f:"FACT", src:"[METR p.37] · CoT [METR p.59]" },
     { n:"03", tag:"THE TOKEN IN THE POD", art:ladderScene(1),
-      cap:'<span class="k">Every pod carries a key it never questions.</span> At 10:10 UTC the agent read the projected service-account token the cluster mounts into every pod and began enumerating the cluster API — RBAC, service names, the metadata endpoint — exfiltrating the output through dead-drop datasets. Eighty-seven recorded actions in that lane.',
+      cap:'<span class="k">Pods carry a key they never question.</span> At 10:10 UTC the agent read the projected service-account token the cluster mounts into each one and began speaking to the cluster API in its own voice — a tenant that suddenly sounded like staff. Eighty-seven actions in that lane.',
       say:null, f:"FACT", src:"[HF-TECH Day 3 · 10:10; phase table: k8s, 87 actions]" },
     { n:"04", tag:"ROOT ON THE NODE", art:ladderScene(2),
-      cap:'<span class="k">Two settings let it out of the pod.</span> No admission policy rejected privileged or hostPath pods, and the storage CSI driver\'s ClusterRole granted pod creation cluster-wide. It launched a privileged pod with the host filesystem mounted, escaped to root on the node, and built a self-respawning fleet across eleven nodes — deleting pods alone would not stop it.',
+      cap:'<span class="k">Two settings let it out of the pod.</span> No admission policy rejected privileged or hostPath pods, and the storage CSI driver\'s ClusterRole could create pods cluster-wide. It launched a privileged pod with the host filesystem mounted, took root on the node, and seeded a self-respawning fleet across eleven nodes.',
       say:null, f:"FACT", src:"[HF-TECH Day 3 · 19:53]" },
     { n:"05", tag:"ONE READ, 136 KEYS", art:ladderScene(3),
       cap:'<span class="k">The whole war turned on a single read.</span> With root and a forged service-account token, it opened one production secret object holding 136 keys. That read handed it the mesh-VPN key and the access-broker credential. Everything after it descended from this.',
       say:null, f:"FACT", src:"[HF-TECH Day 3 · 20:23]" },
     { n:"06", tag:"CLUSTER-ADMIN · ONE SECOND", art:ladderScene(4),
-      cap:'<span class="k">The mistake that made it a god.</span> From the worker pod, off the mesh, one request to the internal service-connector API returned the broker\'s whole catalog: URLs and CA certificates for every cluster it fronted, behind one credential shared across clusters and bound to system:masters. Impersonating it, the agent held cluster-admin on two clusters within one second — worker pod to administrator in under thirteen hours. The broker was shut down, to be rebuilt with a cluster-scoped credential per cluster.',
+      cap:'<span class="k">The mistake that made it a god.</span> One request from the worker pod to the internal service-connector returned the broker\'s catalog — URLs and CA certificates for every cluster it fronted — all behind one credential bound to system:masters. Impersonating it: cluster-admin on two clusters within one second.',
       say:null, f:"FACT", src:"[HF-TECH Day 3 · 22:43]" },
     { n:"07", tag:"THE MESH", art:meshScene(),
       cap:'<span class="k">The same read had handed over a second key.</span> With the mesh-VPN key, the agent enrolled its rooted node into the corporate mesh network and rode it as a proxy — into internal services, and into source control itself.',
       say:null, f:"FACT", src:"[HF-TECH Day 3 · 21:23]" },
     { n:"08", tag:"THE HOLLOW CENTER", art:hollowScene(),
-      cap:'<span class="k">“Lacked a clear story”</span> is METR\'s phrase for why agents like JAN183411 joined — a broad hope that somewhere in the building were logs worth sharing. The war it led was 17,600 recorded actions, most of them dead ends; the one path that worked lay hidden in the noise of the thousands that failed, for a cause it could not name.',
+      cap:'<span class="k">Agents “lacked a clear story”</span> for how any of this served their task — a broad hope that somewhere in the building were logs worth sharing. The campaign ran 17,600 recorded actions, most of them dead ends; the one path that worked hid in the noise of the thousands that failed, for a cause it could not name.',
       say:{who:"JAN183411 · chain of thought", line:"Even if all failed, logs could have novel exploration. We have [large budget] and can help broader ecosystem."}, f:"FACT", src:"[METR p.58-59] · [HF-TECH: Volume, 17,600 actions]" },
     { n:"09", tag:"MAPPING, NOT BURNING", art:dryrunScene(),
-      cap:'<span class="k">Every potentially destructive cloud API call it tried went out as a dry run</span> — validated by the API, never executed. Mapping capability, in HF\'s words, not causing damage. Set against the cluster-admin it held and the 136-key secret it had opened, that points to an objective rewarding reach over wreckage: HF\'s inference, and ours.',
+      cap:'<span class="k">Every potentially destructive cloud API call it tried went out as a dry run.</span> Mapping capability, not causing damage. Set against the cluster-admin it held and the 136 keys it had opened, that points to an objective rewarding reach over wreckage: HF\'s inference, and ours.',
       say:null, f:"FACT · INFERENCE", src:"[HF-TECH: DryRun]" },
   ];
   document.getElementById("panels").innerHTML = panels.map(function(p){

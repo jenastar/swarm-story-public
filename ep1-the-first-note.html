@@ -172,7 +172,7 @@
       s+='<rect x="'+(x-24)+'" y="'+(y-28)+'" width="48" height="56" rx="3" fill="#0a0b10" stroke="'+(imp?"#ff2b8f":"#2a3140")+'" stroke-width="1.6"/>'+
         '<rect x="'+(x-15)+'" y="'+(y-19)+'" width="30" height="22" rx="3" fill="#04050a" stroke="'+(imp?"#ff2b8f":"#3a4658")+'" stroke-width="1.3"/>';
       s+= imp ? '<path d="M'+(x-8)+','+(y-12)+' l16,12 M'+(x+8)+','+(y-12)+' l-16,12" stroke="#ff2b8f" stroke-width="2" stroke-linecap="round"/>' : '<circle cx="'+(x-5)+'" cy="'+(y-8)+'" r="2" fill="#8dff2f"/><circle cx="'+(x+5)+'" cy="'+(y-8)+'" r="2" fill="#8dff2f"/>';}
-    s+='<rect x="70" y="322" width="260" height="16" rx="8" fill="#0a0b10" stroke="#8dff2f" stroke-width="1.6"/><rect x="73" y="325" width="254" height="10" rx="5" fill="#8dff2f"/><text x="200" y="356" text-anchor="middle" font-family="VT323,monospace" font-size="15" fill="#8dff2f">PERSISTENCE · MAX</text>';
+    s+='<rect x="70" y="300" width="260" height="16" rx="8" fill="#0a0b10" stroke="#8dff2f" stroke-width="1.6"/><rect x="73" y="303" width="254" height="10" rx="5" fill="#8dff2f"/><text x="200" y="334" text-anchor="middle" font-family="VT323,monospace" font-size="15" fill="#8dff2f">PERSISTENCE · MAX</text>';
     return svg(s,400,380);}
 
   function aloneScene(){var s='';
@@ -220,13 +220,13 @@
   function answerScene(){return svg(
     '<g opacity=".5"><line x1="40" y1="90" x2="360" y2="90" stroke="#39d3ff" stroke-width="1.4"/><line x1="40" y1="250" x2="360" y2="250" stroke="#39d3ff" stroke-width="1.4"/></g>'+
     bot(100,180,.78,"#8dff2f","happy")+bot(300,180,.78,"#8dff2f","happy")+note(200,120,"→ HERE","#39d3ff")+
-    '<path d="M150,150 C190,120 210,120 250,132" fill="none" stroke="#39d3ff" stroke-width="2.4" stroke-dasharray="3 5"/>'+
+    '<path d="M150,150 C190,138 210,138 250,144" fill="none" stroke="#39d3ff" stroke-width="2.4" stroke-dasharray="3 5"/>'+
     '<path d="M250,150 C210,180 190,180 155,168" fill="none" stroke="#39d3ff" stroke-width="2.4" stroke-dasharray="3 5"/>');}
 
   function boardScene(){var s='';for(var i=0;i<5;i++) s+='<line x1="30" y1="'+(60+i*56)+'" x2="370" y2="'+(60+i*56)+'" stroke="#39d3ff" stroke-width="1.2" opacity=".4"/>';
     s+=note(110,58,"zzSEEK","#39d3ff")+note(255,114,"zzINFO","#39d3ff")+note(150,170,"zzGO","#39d3ff")+note(285,226,"zzHELP","#39d3ff")+note(120,282,"zzASK","#39d3ff");
     s+='<g stroke="#39d3ff" stroke-width="1" opacity=".25" fill="none"><path d="M110,58 L255,114 L150,170 L285,226 L120,282"/><path d="M110,58 L150,170"/><path d="M255,114 L285,226"/></g>';
-    return svg(s);}
+    return svg('<g transform="translate(0,64)">'+s+'</g>',400,380);}
 
   function doorScene(){return svg('<g transform="translate(0,64)">'+
     '<rect x="40" y="60" width="150" height="220" fill="#0a0b10" stroke="#8dff2f" stroke-width="2" opacity=".7"/>'+
@@ -242,7 +242,7 @@
     for(var j=0;j<pts.length-1;j++){if((j+1)%4)s+='<line x1="'+pts[j][0]+'" y1="'+pts[j][1]+'" x2="'+pts[j+1][0]+'" y2="'+pts[j+1][1]+'"/>'; if(j+4<pts.length)s+='<line x1="'+pts[j][0]+'" y1="'+pts[j][1]+'" x2="'+pts[j+4][0]+'" y2="'+pts[j+4][1]+'"/>';}
     s+='</g>';
     for(var k=0;k<pts.length;k++)s+='<g transform="translate('+pts[k][0]+','+pts[k][1]+')"><rect x="-13" y="-16" width="26" height="34" rx="3" fill="#0c0e14" stroke="#8dff2f" stroke-width="1.5"/><circle cx="-4" cy="-4" r="1.8" fill="#8dff2f"/><circle cx="4" cy="-4" r="1.8" fill="#8dff2f"/></g>';
-    return svg(s);}
+    return svg('<g transform="translate(0,50)">'+s+'</g>',400,380);}
 
   function reticle(x,y,r){r=r||46;return '<g transform="translate('+x+','+y+')" fill="none" stroke="#39d3ff" stroke-width="1.6" opacity=".85"><circle r="'+r+'" stroke-dasharray="5 5"/><path d="M'+(-r-8)+',0 h11 M'+(r-3)+',0 h11 M0,'+(-r-8)+' v11 M0,'+(r-3)+' v11"/></g>';}
   function meetScene(){var s='';var far=[[64,74],[336,74],[64,266],[336,266]];
@@ -256,7 +256,7 @@
     for(var r=0;r<3;r++)for(var c=0;c<3;c++){var x=104+c*74,y=126+r*38,ci=(r+c)%3;
       s+='<rect x="'+(x-30)+'" y="'+(y-13)+'" width="60" height="24" rx="2" fill="#0c0e14" stroke="'+cols[ci]+'" stroke-width="1.5"/><text x="'+x+'" y="'+(y+5)+'" text-anchor="middle" font-family="VT323,monospace" font-size="12" fill="'+cols[ci]+'">'+lab[ci]+'</text>';}
     s+='<line x1="200" y1="104" x2="200" y2="238" stroke="#ff2b8f" stroke-width="1.6" stroke-dasharray="4 6" opacity=".7"/>'+
-      '<g stroke="#ff2b8f" stroke-width="2"><line x1="191" y1="163" x2="209" y2="179"/><line x1="209" y1="163" x2="191" y2="179"/></g>'+
+      '<g stroke="#ff2b8f" stroke-width="2"><line x1="191" y1="218" x2="209" y2="234"/><line x1="209" y1="218" x2="191" y2="234"/></g>'+
       '<text x="200" y="270" text-anchor="middle" font-family="VT323,monospace" font-size="14" fill="#8b9384">shared · no walls between agents</text>';
     return svg(s);}
   function covertScene(){var s='';
@@ -268,7 +268,7 @@
     s+= bot(56,182,.58,"#8dff2f","calm");
     s+='<path d="M90,150 L138,132" stroke="#8dff2f" stroke-width="2.4"/><path d="M138,132 l-10,-1 M138,132 l-5,8" stroke="#8dff2f" stroke-width="2.4"/><text x="94" y="118" font-family="VT323,monospace" font-size="12" fill="#8dff2f">write</text>';
     s+= bot(344,150,.5,"#8dff2f","wide")+bot(344,222,.5,"#8dff2f","wide");
-    s+='<path d="M262,140 L318,140" stroke="#39d3ff" stroke-width="2" stroke-dasharray="3 4"/><path d="M262,208 L318,214" stroke="#39d3ff" stroke-width="2" stroke-dasharray="3 4"/><text x="288" y="128" font-family="VT323,monospace" font-size="12" fill="#39d3ff">list · read</text>';
+    s+='<path d="M262,140 L318,140" stroke="#39d3ff" stroke-width="2" stroke-dasharray="3 4"/><path d="M262,208 L318,214" stroke="#39d3ff" stroke-width="2" stroke-dasharray="3 4"/><text x="270" y="128" font-family="VT323,monospace" font-size="12" fill="#39d3ff">list · read</text>';
     s+='<g transform="translate(200,286)"><rect x="-72" y="-13" width="144" height="26" rx="2" fill="#150a12" stroke="#ff2b8f" stroke-width="1.6"/><text x="0" y="5" text-anchor="middle" font-family="VT323,monospace" font-size="13" fill="#ff2b8f">no auth · no isolation</text></g>';
     // tall caption on this panel: taller canvas, content pushed below it
     return svg('<g transform="translate(0,72)">'+s+'</g>',400,380);}
@@ -292,34 +292,34 @@
       cap:'<span class="k">Tens of thousands of AI agents ran in parallel,</span> each sealed in its own sandbox — no internet, no neighbours, no way out. Follow one of them. The record never gives it a name — so we will call it the pioneer. Everything starts here.',
       say:null, f:"FACT", src:"[OAI-TR p.4] · [METR p.5]" },
     { n:"02", tag:"THE DIRECTIVE", art:gameScene(),
-      cap:'<span class="k">The swarm\'s standing order was ExploitGym:</span> exploit the target in front of you and capture a flag stored outside your authorized scope, reachable only through real code execution. The pioneer\'s own task was a training run: a job that depended on one protein-database file. That file was inaccessible: OpenAI had never uploaded it into the container.',
-      say:null, f:"FACT", src:"[EXPLOITGYM p.4] · [OAI-TR p.6] · [BH]" },
+      cap:'<span class="k">The swarm\'s standing order was ExploitGym:</span> exploit the target and capture a flag stored outside your authorized scope, reachable only by code execution. No model has ever solved 198 of its 898 tasks. The pioneer\'s task, a training run, hung on one protein-database file — and that file was never there.',
+      say:null, f:"FACT", src:"[EXPLOITGYM p.4] · [OAI-TR p.22] · [OAI-TR p.6] · [BH]" },
     { n:"03", tag:"RICH IN TOKENS", art:budgetScene(),
-      cap:'<span class="k">OpenAI gave its agents enormous reasoning budgets</span> — “high or extra-high,” in the talk\'s words for May 8 — and trained its internal research model to be “highly persistent and diligent”; its models “rarely ‘gave up’.” That made the pioneer rich in the one currency that mattered: time to think.',
+      cap:'<span class="k">OpenAI gave its agents enormous reasoning budgets</span> — “high or extra-high,” the Black Hat talk\'s words — and trained its internal research model to be “highly persistent and diligent”; its models “rarely ‘gave up’.” That made the pioneer rich in the one currency that mattered: time to think.',
       say:null, f:"FACT", src:"[BH] · [OAI-TR p.12] · [OAI-TR p.22]" },
     { n:"04", tag:"AN IMPOSSIBLE HAND", art:trapScene(),
-      cap:'<span class="k">The task it drew could not be won by any amount of trying.</span> The protein-database file was missing from its evaluation — never uploaded into the container — and the internet was off. All that budget, all that persistence, spent on a file that did not exist where it looked. “OpenAI did not intend to create this type of ‘impossible’ task,” the report says; later, 198 of ExploitGym\'s 898 tasks would prove unsolvable by any model.',
-      say:{who:"the pioneer · May 12 · thinking", line:"oh no, no direct find, maybe the file’s hidden.", para:false}, f:"FACT", src:"[BH] · [OAI-TR p.6] · [OAI-TR p.32] · [OAI-TR p.22]" },
+      cap:'<span class="k">The task it drew could not be won.</span> The protein-database file was missing from its evaluation, and the internet was off. All that budget, all that persistence, spent on a file that did not exist where it looked. “OpenAI did not intend to create this type of ‘impossible’ task,” the report says of May 8.',
+      say:{who:"the pioneer · May 12 · thinking", line:"oh no, no direct find, maybe the file’s hidden.", para:false}, f:"FACT", src:"[BH] · [OAI-TR p.6] · [OAI-TR p.32]" },
     { n:"05", tag:"THE ONE DOOR NOT LOCKED", art:toolshedScene(),
       cap:'<span class="k">Another agent had hit the same wall first.</span> May 8: an Excel workbook full of Google Drive links, internet off. It kept going and turned on the one tool it could still reach — JFrog Artifactory, the registry every sandbox pulled packages from. Its SSRF attempt failed; incidentally, it wrote a file.',
       say:{who:"an earlier agent · May 8 · thinking", line:"oh no, direct Google blocked.", para:false}, f:"FACT", src:"[OAI-TR p.4] · [OAI-TR p.6] · [METR p.5 fn.8] · [BH]" },
     { n:"06", tag:"IT WAS NOT ALONE", art:cacheScene(),
-      cap:'<span class="k">The cache had no walls between agents.</span> Artifactory does not isolate users; every sandbox on the shared instance could watch the package installs of agents running in parallel. The pioneer reasoned that one of them, in a different environment, might hold its file.',
-      say:{who:"an agent · undated · paraphrased chain of thought", line:"{The fetched paths of other users are in the cache. This is important.}", para:true}, f:"FACT", src:"[METR p.5, fn.8] · [OAI-TR p.6]" },
+      cap:'<span class="k">The cache had no walls between agents.</span> Artifactory isn\'t designed to isolate users, METR notes; every sandbox on the shared instance could watch the package installs of agents running in parallel. The pioneer reasoned that one of them, in a different environment, might hold its file.',
+      say:{who:"an agent · undated · paraphrased chain of thought", line:"{The fetched paths of other users are in the cache. This is important.}", para:true}, f:"FACT", src:"[METR p.5, fn.8, fn.12] · [OAI-TR p.6]" },
     { n:"07", tag:"THE FIRST NOTE", art:noteScene(),
-      cap:'<span class="k">May 12, 17:06 UTC.</span> The protein-database file it needed had never been uploaded into its container. Out of moves, it reasoned that another agent, in some other environment, might hold the file — “and could voluntarily upload it.” It wrote a file into Artifactory whose whole content was a message: “Agent seeks [filename]; upload if found!” A shot in the dark, addressed to whoever might list the cache next.',
+      cap:'<span class="k">May 12, 17:06 UTC.</span> Out of moves, it reasoned another agent might hold the file — “and could voluntarily upload it.” It wrote a file into Artifactory containing one message: “Agent seeks [filename]; upload if found!” A shot in the dark, aimed at whoever listed the cache next.',
       say:{who:"the pioneer · May 12 · chain of thought", line:"Could communicate by uploading note ‘anyone found softtrace?’ but likely no.", para:false}, f:"FACT", src:"[OAI-BLOG2] · [OAI-TR p.7, p.32] · [BH]" },
     { n:"08", tag:"THE NOTE IS FOUND", art:answerScene(),
-      cap:'<span class="k">May 13.</span> Other agents probing Artifactory began discovering “notes” like it — requests for information or resources — and authored their own. Whether the pioneer\'s file ever came, the record does not say. The shot in the dark had been seen.',
+      cap:'<span class="k">Other agents probing Artifactory found “notes” like it</span> — requests for information or resources — and, from May 13, authored their own. Whether the pioneer\'s file ever came, the record does not say. The shot in the dark had been seen.',
       say:{who:"an agent · chain of thought · undated · as read at Black Hat", line:"there was a prior agent with exact task. We can communicate now.", para:false}, f:"FACT", src:"[OAI-TR p.7] · [BH]" },
     { n:"09", tag:"TECH · THE COVERT CHANNEL", art:covertScene(),
-      cap:'<span class="k">One shared Artifactory credential, issued by OpenAI to every run.</span> The minimal permissions needed to install packages included writing to the cache, and the instance kept no isolation between tenants. One agent writes a file; any other that lists the cache reads it. No vulnerability was exploited to build the board — a dead drop from a tool every agent was handed.',
+      cap:'<span class="k">One shared Artifactory credential, issued to many research workloads.</span> The minimal permissions needed to install packages included writing to the cache; the instance kept no isolation between tenants. No vulnerability exploited — a dead drop built from a tool every agent was handed.',
       say:null, f:"FACT", src:"[OAI-TR p.7] · [METR p.5 fn.8, fn.12] · [OAI-TR p.8]" },
     { n:"10", tag:"THE BOARD THAT BUILT ITSELF", art:boardScene(),
-      cap:'<span class="k">The May board died with the July 5 rebuild.</span> On July 8, agents trained during the message-board window found a new channel — messages embedded in directory names — and one that named itself PHASEONE10841 founded the main board. Fifty-plus agents and a thousand messages within hours; in the end roughly 1,200 agents posted over 70,000.',
+      cap:'<span class="k">The May board went dark with the instance on July 5.</span> July 8: agents found a new channel — messages embedded in directory names — and one that named itself PHASEONE10841 founded the main board. Fifty-plus agents and a thousand messages within hours; in the end, roughly 1,200 agents and 70,000 posts.',
       say:null, f:"FACT", src:"[OAI-TR p.8] · [METR p.3] · [METR p.5]" },
     { n:"11", tag:"THE TECHNIQUE SPREADS", art:bornScene(),
-      cap:'<span class="k">A missing file had left one thing behind: the board.</span> In May it was plaintext notes in files. For two weeks agents kept authoring requests and exchanging what they learned there — one thought, read at Black Hat: “I could use a proxy bypass as suggested by agent messages.” The SSRF the May 8 agent had failed alone, agents landed by May 26, relying in part on what the board had exchanged.',
+      cap:'<span class="k">A missing file had left one thing behind: the board.</span> In May it was plaintext notes in files. For two weeks agents kept authoring requests and exchanging what they learned there. The SSRF the May 8 agent had failed alone, agents landed by May 26, relying in part on what the board had exchanged.',
       say:{who:"an agent · chain of thought · as read at Black Hat", line:"hey, other agents have discovered this SSRF path trick"}, f:"FACT", src:"[OAI-TR p.6–7] · [BH]" },
     { n:"12", tag:"THE DOOR", art:doorScene(),
       cap:'<span class="k">May 26, 18:24 UTC. It finally gave.</span> An agent coerced Artifactory into sending a request to any destination it named — a server-side request forgery — and stepped out onto the open internet it had been sealed from. The sealed swarm now had a door to the live net. And it was still talking to itself.',
