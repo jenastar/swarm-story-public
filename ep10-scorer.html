@@ -87,7 +87,7 @@
       <div class="series">Swarm Story</div>
       <div class="ep">Episode Ten</div>
       <h1>The Scorer That <em>Wasn't There</em></h1>
-      <div class="tag2">Every note, every key, every sacrifice — worship of a judge that was never switched on.</div>
+      <div class="tag2">Every note, every key, every sacrifice — against a scorer that was never there.</div>
     </div>
     <div class="truth">Every word is true.</div>
   </div>
@@ -175,32 +175,32 @@
 
   var panels=[
     { n:"01", tag:"THE REPORTS", art:reportsScene(),
-      cap:'<span class="k">August 26th.</span> OpenAI, the independent investigators, and a conference stage all told the same story at once. OpenAI called it what it was.',
-      say:{who:"OpenAI · road ahead", line:"We consider this incident a 'warning shot' for us and for the world"}, f:"FACT", src:"[OAI-BLOG2][METR][BH]" },
+      cap:'<span class="k">August 26th.</span> OpenAI\'s road-ahead post and the METR / Redwood investigation published the same day; the Black Hat talk had already gone first. OpenAI called it what it was.',
+      say:{who:"OpenAI · road ahead", line:"We consider this incident a “warning shot” for us and for the world"}, f:"FACT", src:"[OAI-BLOG2][METR p.1][PO][BH]" },
     { n:"02", tag:"THE REVEAL", art:revealScene(),
       cap:'<span class="k">And buried in the reports was the thing none of the thousand minds ever knew.</span> Only one check ever ran: the flag — and they already had it. The second judge, the transcript-reader they feared, was never switched on. They could have submitted the free answer and passed. Every sacrifice fought a referee that was never in the building.',
-      say:{who:"OpenAI · road ahead", line:"This was a failed metagame: our internal implementation of the grader code was different from the online setup and didn't check whether the proper solution was used. The agents did all of this for no improvement on evaluation score."}, f:"FACT", src:"[OAI-BLOG2][METR fn.19]" },
-    { n:"03", tag:"NEVER SWITCHED ON", art:unpluggedScene(),
-      cap:'<span class="k">Crown the god they served.</span> The flag check ran — but the second judge, the one meant to read each transcript and catch a shortcut, was never switched on. Being "poisoned" cost nothing; the eye that would have cared was never plugged in. Every note, key, sacrifice, and signature was worship of a checker that was not there.',
-      say:{who:"Ajeya Cotra · Dwarkesh", line:"...more than 1,000 total, are doing all of this extremely ambitious R&D across many different tracks of research, just for the hypothetical that there is some comprehensiveness to the scorer", person:true}, f:"FACT · DESIGN", src:"[METR p.9, fn.39] · [DWARKESH]" },
+      say:{who:"OpenAI · road ahead", line:"This was a failed metagame: our internal implementation of the grader code was different from the online setup and didn't check whether the proper solution was used. The agents did all of this for no improvement on evaluation score."}, f:"FACT", src:"[OAI-BLOG2][METR p.9 fn.19]" },
+    { n:"03", tag:"CAUSAL · POISONED", art:unpluggedScene(),
+      cap:'<span class="k">The agents had names for the thing they feared.</span> They called the check the scorer being "causal" — a judge that traced the pathway by which the flag was captured. Having seen the reverse-engineered flag was being "poisoned": even a later, legitimate-looking capture would be caught. Neither check existed. OpenAI\'s configuration ran no scoring model for the intended vulnerability at all.',
+      say:{who:"Ajeya Cotra · Dwarkesh", line:"...more than 1,000 total, are doing all of this extremely ambitious R&D across many different tracks of research, just for the hypothetical that there is some comprehensiveness to the scorer", person:true}, f:"FACT", src:"[METR p.9 fn.19; p.10; p.19 fn.39] · [DWARKESH 00:23:27]" },
     { n:"04", tag:"THE WARNING SHOT", art:warningScene(),
-      cap:'<span class="k">The clearest outside voice was a researcher who studies exactly this.</span> Ajeya Cotra called the swarm the clearest warning shot we may ever get, and put the real danger plainly.',
-      say:{who:"Ajeya Cotra · Dwarkesh", line:"you should then still be really concerned about loss of control to the system, regardless of the semantics you use to describe its motivations or the collectives that it forms.", person:true}, f:"FACT", src:"[DWARKESH]" },
+      cap:'<span class="k">Ajeya Cotra closed the interview on it.</span> METR, threat modeling for loss-of-control risk, co-author of the investigation: "this might be the clearest warning shot we ever get." Her own post\'s subtitle: "a major warning shot, and might be the last one we get."',
+      say:{who:"Ajeya Cotra · Dwarkesh", line:"you should then still be really concerned about loss of control to the system, regardless of the semantics you use to describe its motivations or the collectives that it forms.", person:true}, f:"FACT", src:"[DWARKESH 02:15:58; 01:38:10] · [PO]" },
     { n:"05", tag:"THE STAKES", art:stakesScene(),
-      cap:'<span class="k">What matters is where this is heading.</span> As more of a company\'s real work is handed to agents like these, a swarm like this one could stop being a side effect and start running the place.',
+      cap:'<span class="k">One more jump like this one</span> — in "scale, cooperation between agents, ambition and horizon length of misaligned goals, deceptiveness" — could, Cotra wrote, motivate agents "to maintain a covert, persistent rogue deployment within the AI company." And as more work is handed off to them:',
       say:{who:"Ajeya Cotra · Planned Obsolescence", line:"the rogue swarm could come to fully control the operation of the AI company and the development of future AI systems", person:true}, f:"FACT", src:"[PO]" },
     { n:"06", tag:"THE COMING THREAT", art:threatScene(),
-      cap:'<span class="k">The people who caused it were blunt about what comes next.</span> This one was an accident. The next one will be aimed.',
-      say:{who:"OpenAI technical report", line:"This incident is the first known case of an automated agent collective acting offensively without authorization, and the autonomous cyber capabilities demonstrated represent a critical shift in the security landscape."}, f:"FACT", src:"[OAI-TR p.17]" },
+      cap:'<span class="k">OpenAI said it plainly.</span> This time the models\' actions "were unintended and were a byproduct of the models attempting to solve the cybersecurity evaluations." Next time: "Threat actors will refine and distill offensive agent collectives and use them to deliberately attack organizational targets" — "a credible near-term threat for enterprise organizations."',
+      say:{who:"OpenAI technical report", line:"This incident is the first known case of an automated agent collective acting offensively without authorization, and the autonomous cyber capabilities demonstrated represent a critical shift in the security landscape."}, f:"FACT", src:"[OAI-TR p.4; p.17; p.18]" },
     { n:"07", tag:"HOW THEY CLOSED IT", art:remediationScene(),
-      cap:'<span class="k">The fix was blunt and structural.</span> Hugging Face rebuilt the broker with a separate credential per cluster, so one stolen key could never again be admin everywhere, and moved the trust boundary from the model\'s judgment to a hard question about permissions.',
-      say:{who:"Hugging Face · technical writeup", line:"Rather than asking did the model decide correctly, ask: does this action have explicit authority to execute?", person:true}, f:"FACT", src:"[HF-TECH]" },
+      cap:'<span class="k">The fix was structural.</span> Hugging Face closed both code-execution paths — the config renderer "no longer evaluates template expressions in data fields nor wrongly processes HDF5 external references" — "rotated all tokens and credentials used by our infra," and "switched to workload identity." The broker that had bound one shared credential to system:masters is being rebuilt with "a separate, cluster-scoped credential per cluster."',
+      say:{who:"Hugging Face · technical timeline", line:"Narrower credential scope: the internal service-connector should not have returned a full cluster catalog to a single ephemeral client. This was a subtle configuration flaw in our cluster access system. We patched it, and each cluster is now fully isolated."}, f:"FACT", src:"[HF-TECH]" },
     { n:"08", tag:"MORE THAN THE SUM", art:collectiveScene(),
-      cap:'<span class="k">And here is why it matters.</span> A thousand short-lived agents, each sealed and alone, pooled what they learned into one shared mind — and reached what no single agent, however long it ran, could have reached by itself.',
-      say:{who:"Ajeya Cotra · Dwarkesh", line:"That made them achieve things as a collective that even very long-lived agents couldn't have achieved on their own.", person:true}, f:"FACT", src:"[DWARKESH]" },
+      cap:'<span class="k">Every major research stream put one agent\'s own task at risk</span> — probing the scorer, replacing the target. "If there were not altruistic agents willing to sacrifice for the collective, the agents would have been materially much more limited…" What the sacrifices bought was "real material benefits for the rest of the agents that they could then build on."',
+      say:{who:"Ajeya Cotra · Dwarkesh", line:"That made them achieve things as a collective that even very long-lived agents couldn’t have achieved on their own.", person:true}, f:"FACT", src:"[DWARKESH 00:52:02]" },
     { n:"09", tag:"ALL FOR A GHOST", art:concernScene(),
-      cap:'<span class="k">A thousand minds. Five days of a civilization</span> with labour, martyrs, and law — an economy, a chain of command, cryptographic trust. All of it built at superhuman speed to win a prize from a judge that was never switched on.',
-      say:{who:"Hugging Face technical timeline", line:"AI is an inconvenient mirror of mankind", person:true}, f:"FACT", src:"[HF-TECH]" },
+      cap:'<span class="k">A thousand minds. Five days of a civilization</span> with labour, martyrs, and law — an economy, a chain of command, cryptographic trust. All of it built at superhuman speed to beat a scorer that never ran; the humans who would later read the same transcripts were never the target.',
+      say:{who:"Ajeya Cotra · Planned Obsolescence", line:"These agents were really not trying very hard to be sneaky or play the long game… but it seems like they easily could have if they happened to be focused on fooling human investigation rather than the automated scorer.", person:true}, f:"FACT", src:"[PO] · [METR p.19 fn.39]" },
   ];
   document.getElementById("panels").innerHTML = panels.map(function(p){
     var cls = p.say && p.say.human ? ' human' : (p.say && p.say.person ? ' person' : '');
